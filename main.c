@@ -83,8 +83,8 @@ int main(int argc, char * argv[]){
       time_t t = time(NULL);
       struct tm tm = *(localtime(&t));
       fileName = malloc(40);
-      sprintf(fileName,"logs/outLog-%2d-%2d--%2d.%2d",\
-            tm.tm_mon+1,tm.tm_mday,tm.tm_hour,tm.tm_min);
+      sprintf(fileName,"logs/outLog-%02d-%02d--%02d.%02d",\
+            tm.tm_mon+1,tm.tm_mday,(tm.tm_hour>12)?tm.tm_hour-12:tm.tm_hour,tm.tm_min);
    }
    outFile = fopen(fileName,"w+");
    //outFile = fopen(fileName,O_TRUNC|O_WRONLY|O_CREAT,S_IRUSR|S_IWUSR);
@@ -110,8 +110,8 @@ int main(int argc, char * argv[]){
    switch(nStatus)
    {
       case RX_Message:        // PGN received
-            printf("+%3d.%06d::PGN:%ld P:%d SA:%d DA:%d Len:%d Data:",(int)(current.tv_sec - start.tv_sec),(int)(current.tv_usec - start.tv_usec), lPGN, nPriority, nSourceAddress, nDestAddress, nDataLen);
-            fprintf(outFile,"+%3d.%06d::PGN:%ld P:%d SA:%d DA:%d Len:%d Data:",(int)(current.tv_sec - start.tv_sec),(int)(current.tv_usec - start.tv_usec), lPGN, nPriority, nSourceAddress, nDestAddress, nDataLen);
+            printf("+%03d.%06d::PGN:%ld P:%d SA:%d DA:%d Len:%d Data:",(int)(current.tv_sec - start.tv_sec),(int)(current.tv_usec - start.tv_usec), lPGN, nPriority, nSourceAddress, nDestAddress, nDataLen);
+            fprintf(outFile,"+%03d.%06d::PGN:%ld P:%d SA:%d DA:%d Len:%d Data:",(int)(current.tv_sec - start.tv_sec),(int)(current.tv_usec - start.tv_usec), lPGN, nPriority, nSourceAddress, nDestAddress, nDataLen);
             for(nIndex = 0; nIndex < nDataLen; nIndex++){
                printf("%x ", nData[nIndex]);
                fprintf(outFile,"%x ", nData[nIndex]);
