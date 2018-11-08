@@ -1,0 +1,1411 @@
++004.478814::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++004.500510::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++004.501694::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++004.502888::PGN:61184 P:6 SA:0 DA:6 Len:8 Data:64 e 5 0 ff ff ff ff 
++004.504013::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++004.505149::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 15 f0 0 0 1 f 
++004.506268::PGN:65265 P:6 SA:71 DA:255 Len:8 Data:ff 0 0 ff ff ff ff ff 
++004.507389::PGN:61445 P:6 SA:3 DA:255 Len:8 Data:7d ff ff ff ff ff ff ff 
++004.508507::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++004.518804::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++004.519994::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++004.521185::PGN:61184 P:6 SA:0 DA:255 Len:8 Data:64 10 b b 20 3 0 7d 
++004.522375::PGN:65247 P:6 SA:0 DA:255 Len:8 Data:7d 2 1e ff ff ff ff ff 
++004.523568::PGN:0 P:4 SA:124 DA:40 Len:8 Data:13 0 0 0 13 0 0 0 
++004.524758::PGN:0 P:4 SA:104 DA:40 Len:0 Data:
++004.525944::PGN:0 P:4 SA:180 DA:55 Len:0 Data:
++004.527131::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++004.545046::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++004.546204::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++004.547367::PGN:65263 P:6 SA:0 DA:255 Len:8 Data:ff ff ff 0 ff ff ff fa 
++004.548501::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++004.549609::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 17 f0 0 0 1 f 
++004.550773::PGN:65097 P:3 SA:71 DA:255 Len:8 Data:ff ff ff ff ff ff ff ff 
++004.551935::PGN:65535 P:3 SA:71 DA:255 Len:8 Data:5d ff ff f3 ff ff ff ff 
++004.553095::PGN:65091 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++004.554199::PGN:65092 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++004.555326::PGN:65534 P:3 SA:6 DA:255 Len:8 Data:5c 3 1e 3 1e ff ff ff 
++004.556479::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++004.557636::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++004.558760::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++004.559919::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++004.561077::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 18 f0 0 0 1 f 
++004.562199::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++004.580558::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++004.581775::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++004.582997::PGN:65266 P:6 SA:0 DA:255 Len:8 Data:0 0 ff ff ff ff ff ff 
++004.584183::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++004.585408::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 19 f0 0 0 1 f 
++004.586630::PGN:65265 P:6 SA:71 DA:255 Len:8 Data:ff 0 0 ff ff ff ff ff 
++004.587847::PGN:61445 P:6 SA:3 DA:255 Len:8 Data:7d ff ff ff ff ff ff ff 
++004.589028::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++004.596026::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++004.597178::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++004.598321::PGN:61184 P:6 SA:0 DA:6 Len:8 Data:64 e f 0 ff ff ff ff 
++004.599450::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++004.600610::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1a f0 0 0 1 f 
++004.601770::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++004.623642::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++004.624831::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++004.626020::PGN:61184 P:6 SA:0 DA:255 Len:8 Data:64 10 b b 20 3 0 7d 
++004.627214::PGN:65270 P:6 SA:0 DA:255 Len:8 Data:ff 0 40 ff 0 ff ff ff 
++004.628405::PGN:126720 P:3 SA:71 DA:6 Len:8 Data:1 4 ff ff ff ff ff f1 
++004.629546::PGN:126720 P:3 SA:3 DA:6 Len:19 Data:1 1 ff ff b4 37 0 10 13 0 0 0 7c 28 0 10 13 0 0 
++004.630662::PGN:0 P:4 SA:124 DA:40 Len:8 Data:1e 0 0 0 1e 0 0 0 
++004.631769::PGN:0 P:4 SA:104 DA:40 Len:0 Data:
++004.632865::PGN:0 P:4 SA:180 DA:55 Len:0 Data:
++004.633982::PGN:1280 P:3 SA:180 DA:4 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++004.635118::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++004.636226::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++004.637333::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++004.638476::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1c f0 0 0 1 f 
++004.639587::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++004.663467::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++004.664556::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++004.665671::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++004.666781::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1d f0 0 0 1 f 
++004.667901::PGN:65097 P:3 SA:71 DA:255 Len:8 Data:ff ff ff ff ff ff ff ff 
++004.669020::PGN:64991 P:7 SA:71 DA:255 Len:8 Data:fc ff ff ff ff ff ff ff 
++004.670139::PGN:65091 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++004.671317::PGN:65092 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++004.672505::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++004.673693::PGN:65530 P:6 SA:0 DA:255 Len:8 Data:2 2c 0 0 18 c 0 a5 
++004.676052::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++004.677243::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++004.678467::PGN:65266 P:6 SA:0 DA:255 Len:8 Data:0 0 ff ff ff ff ff ff 
++004.679650::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++004.680812::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1e f0 0 0 1 f 
++004.681968::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++004.704324::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++004.705483::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++004.706644::PGN:61184 P:6 SA:0 DA:6 Len:8 Data:64 e 19 0 ff ff ff ff 
++004.707801::PGN:65269 P:6 SA:0 DA:255 Len:8 Data:c7 ff ff ff ff 3b ff ff 
++004.708962::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++004.710120::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1f f0 0 0 1 f 
++004.711281::PGN:65265 P:6 SA:71 DA:255 Len:8 Data:ff 0 0 ff ff ff ff ff 
++004.712438::PGN:61446 P:6 SA:71 DA:255 Len:8 Data:ff cf ff ff ff ff ff ff 
++004.713597::PGN:61445 P:6 SA:3 DA:255 Len:8 Data:7d ff ff ff ff ff ff ff 
++004.714757::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++004.719340::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++004.720461::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++004.721610::PGN:61184 P:6 SA:0 DA:255 Len:8 Data:64 10 b b 20 3 0 7d 
++004.722771::PGN:126720 P:3 SA:71 DA:6 Len:8 Data:1 4 ff ff ff ff ff f1 
++004.723931::PGN:126720 P:3 SA:3 DA:6 Len:19 Data:1 1 ff ff b4 37 0 10 13 0 0 0 6 0 ef 4 64 15 10 
++004.725091::PGN:0 P:4 SA:124 DA:40 Len:8 Data:1e 0 0 0 1e 0 0 0 
++004.726197::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++004.744112::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++004.745269::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++004.746428::PGN:65129 P:6 SA:0 DA:255 Len:8 Data:3c 25 e4 24 ff ff 60 fe 
++004.747589::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++004.748747::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 11 f0 0 0 1 f 
++004.749906::PGN:65097 P:3 SA:71 DA:255 Len:8 Data:ff ff ff ff ff ff ff ff 
++004.751064::PGN:65091 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++004.752221::PGN:65092 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++004.753401::PGN:65534 P:3 SA:6 DA:255 Len:8 Data:5c 3 1e 3 1e ff ff ff 
++004.754558::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++004.755736::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++004.756898::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++004.758020::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++004.759126::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 12 f0 0 0 1 f 
++004.760212::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++004.761308::PGN:65247 P:6 SA:0 DA:255 Len:8 Data:7d 2 1e ff ff ff ff ff 
++004.781092::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++004.782253::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++004.783434::PGN:65266 P:6 SA:0 DA:255 Len:8 Data:0 0 ff ff ff ff ff ff 
++004.784592::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++004.785750::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 13 f0 0 0 1 f 
++004.786912::PGN:91136 P:5 SA:6 DA:1 Len:8 Data:13 f0 0 0 1 f 6a ff 
++004.788070::PGN:61445 P:6 SA:3 DA:255 Len:8 Data:7d ff ff ff ff ff ff ff 
++004.789225::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++004.795803::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.-203091::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.-201986::PGN:61184 P:6 SA:0 DA:6 Len:8 Data:64 e 23 0 ff ff ff ff 
++005.-200836::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.-199678::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 14 f0 0 0 1 f 
++005.-198550::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.-179102::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.-178006::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.-176910::PGN:61184 P:6 SA:0 DA:255 Len:8 Data:64 10 b b 20 3 0 7d 
++005.-175815::PGN:126720 P:3 SA:71 DA:6 Len:8 Data:1 4 ff ff ff ff ff f1 
++005.-174706::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.-173590::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 15 f0 0 0 1 f 
++005.-172461::PGN:65534 P:3 SA:6 DA:255 Len:8 Data:5c 3 1e 3 1e ff ff ff 
++005.-171342::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.-165877::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.-164758::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.-163638::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.-162520::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 16 f0 0 0 1 f 
++005.-161426::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.-137965::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.-136858::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.-135714::PGN:64892 P:6 SA:0 DA:255 Len:8 Data:f8 80 f1 f0 0 df 3 fc 
++005.-134556::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.-133395::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 17 f0 0 0 1 f 
++005.-132235::PGN:65097 P:3 SA:71 DA:255 Len:8 Data:ff ff ff ff ff ff ff ff 
++005.-131077::PGN:65091 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++005.-129915::PGN:65092 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++005.-128753::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.-124300::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.-123150::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.-121992::PGN:65266 P:6 SA:0 DA:255 Len:8 Data:0 0 ff ff ff ff ff ff 
++005.-120828::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.-119670::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 18 f0 0 0 1 f 
++005.-118510::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.-99666::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.-98508::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.-97398::PGN:61184 P:6 SA:0 DA:6 Len:8 Data:64 e 2d 0 ff ff ff ff 
++005.-96240::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.-95083::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 19 f0 0 0 1 f 
++005.-93924::PGN:65265 P:6 SA:71 DA:255 Len:8 Data:ff 0 0 ff ff ff ff ff 
++005.-92763::PGN:61445 P:6 SA:3 DA:255 Len:8 Data:7d ff ff ff ff ff ff ff 
++005.-91604::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.-82478::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.-81374::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.-80259::PGN:61184 P:6 SA:0 DA:255 Len:8 Data:64 10 b b 20 3 0 7d 
++005.-79157::PGN:126720 P:3 SA:71 DA:6 Len:8 Data:1 4 ff ff ff ff ff f1 
++005.-78051::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.-76926::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1a f0 0 0 1 f 
++005.-75838::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.-59253::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.-58135::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.-57028::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.-55881::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1b f0 0 0 1 f 
++005.-54722::PGN:65097 P:3 SA:71 DA:255 Len:8 Data:ff ff ff ff ff ff ff ff 
++005.-53563::PGN:0 P:4 SA:124 DA:40 Len:8 Data:13 0 0 0 13 0 0 0 
++005.-52404::PGN:0 P:4 SA:104 DA:40 Len:0 Data:
++005.-51248::PGN:0 P:4 SA:180 DA:55 Len:0 Data:
++005.-50087::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.-42448::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.-41370::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.-40221::PGN:64947 P:6 SA:0 DA:255 Len:8 Data:ff ff 64 25 ff ff ff ff 
++005.-39060::PGN:61184 P:7 SA:0 DA:255 Len:8 Data:64 7 0 0 ff ff ff ff 
++005.-37900::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.-36804::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1c f0 0 0 1 f 
++005.-35646::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.-34490::PGN:65535 P:7 SA:23 DA:255 Len:8 Data:22 ff ff 3c ff ff ff ff 
++005.-19674::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.-18515::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.-17403::PGN:65266 P:6 SA:0 DA:255 Len:8 Data:0 0 ff ff ff ff ff ff 
++005.-16294::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.-15194::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1d f0 0 0 1 f 
++005.-14091::PGN:65265 P:6 SA:71 DA:255 Len:8 Data:ff 0 0 ff ff ff ff ff 
++005.-12999::PGN:61445 P:6 SA:3 DA:255 Len:8 Data:7d ff ff ff ff ff ff ff 
++005.-11918::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.-04043::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.-02886::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.-01728::PGN:61184 P:6 SA:0 DA:6 Len:8 Data:64 e 37 0 ff ff ff ff 
++005.-00566::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.000547::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1e f0 0 0 1 f 
++005.001665::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.021828::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.022979::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.024137::PGN:61184 P:6 SA:0 DA:255 Len:8 Data:64 10 b b 20 3 0 7d 
++005.025294::PGN:65247 P:6 SA:0 DA:255 Len:8 Data:7d 2 1e ff ff ff ff ff 
++005.026453::PGN:126720 P:3 SA:71 DA:6 Len:8 Data:1 4 ff ff ff ff ff f1 
++005.027614::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.028771::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1f f0 0 0 1 f 
++005.029927::PGN:65534 P:3 SA:6 DA:255 Len:8 Data:5c 3 1e 3 1e ff ff ff 
++005.031087::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.035678::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.036836::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.037994::PGN:65263 P:6 SA:0 DA:255 Len:8 Data:ff ff ff 0 ff ff ff fa 
++005.039155::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.040312::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 10 f0 0 0 1 f 
++005.041470::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.062730::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.063887::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.065046::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.066204::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 11 f0 0 0 1 f 
++005.067336::PGN:65097 P:3 SA:71 DA:255 Len:8 Data:ff ff ff ff ff ff ff ff 
++005.068491::PGN:65535 P:3 SA:71 DA:255 Len:8 Data:5d ff ff f3 ff ff ff ff 
++005.069649::PGN:65091 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++005.070808::PGN:65092 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++005.071966::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.075412::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.076568::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.077748::PGN:65266 P:6 SA:0 DA:255 Len:8 Data:0 0 ff ff ff ff ff ff 
++005.078969::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.080084::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 12 f0 0 0 1 f 
++005.081197::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.100387::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.101544::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.102662::PGN:61184 P:6 SA:0 DA:6 Len:8 Data:64 e 41 0 ff ff ff ff 
++005.103821::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.104976::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 13 f0 0 0 1 f 
++005.106135::PGN:0 P:4 SA:104 DA:40 Len:0 Data:
++005.107293::PGN:0 P:4 SA:180 DA:55 Len:0 Data:
++005.108449::PGN:1280 P:6 SA:180 DA:4 Len:8 Data:7d ff ff ff ff ff ff ff 
++005.109609::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.120646::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.121804::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.122928::PGN:61184 P:6 SA:0 DA:255 Len:8 Data:64 10 b b 20 3 0 7d 
++005.124086::PGN:65270 P:6 SA:0 DA:255 Len:8 Data:ff 0 40 ff 0 ff ff ff 
++005.125243::PGN:126720 P:3 SA:71 DA:6 Len:8 Data:1 4 ff ff ff ff ff f1 
++005.126401::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.127563::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 14 f0 0 0 1 f 
++005.128722::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.145681::PGN:61184 P:6 SA:0 DA:250 Len:8 Data:64 1 ff 0 0 ff ff ff 
++005.146792::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.147899::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.149004::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.150108::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 15 f0 0 0 1 f 
++005.151257::PGN:65097 P:3 SA:71 DA:255 Len:8 Data:ff ff ff ff ff ff ff ff 
++005.152416::PGN:65128 P:6 SA:71 DA:255 Len:19 Data:3f ff ff ff b4 37 0 10 13 0 0 0 7c 28 0 10 13 0 0 
++005.153562::PGN:0 P:4 SA:124 DA:40 Len:8 Data:1e 0 0 0 1e 0 0 0 
++005.154680::PGN:0 P:4 SA:104 DA:40 Len:0 Data:
++005.155836::PGN:0 P:4 SA:180 DA:55 Len:0 Data:
++005.156993::PGN:1280 P:0 SA:180 DA:4 Len:0 Data:
++005.158148::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.159308::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.160468::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.161626::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.162789::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 16 f0 0 0 1 f 
++005.163947::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.190718::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.191885::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.193050::PGN:65266 P:6 SA:0 DA:255 Len:8 Data:0 0 ff ff ff ff ff ff 
++005.194215::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.195383::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 17 f0 0 0 1 f 
++005.196547::PGN:65535 P:3 SA:71 DA:255 Len:8 Data:5e ff ff ff ff ff ff ff 
++005.197713::PGN:65265 P:6 SA:71 DA:255 Len:8 Data:ff 0 0 ff ff ff ff ff 
++005.198881::PGN:65276 P:6 SA:71 DA:255 Len:8 Data:ff ff ff ff ff ff ff ff 
++005.200046::PGN:61184 P:6 SA:71 DA:0 Len:8 Data:f2 20 61 f ff ff ff ff 
++005.201211::PGN:61446 P:6 SA:71 DA:255 Len:19 Data:ff cf ff ff b4 37 0 10 13 0 0 0 7c 28 0 10 13 0 0 
++005.202378::PGN:0 P:4 SA:124 DA:40 Len:8 Data:1e 0 0 0 1e 0 0 0 
++005.203547::PGN:0 P:4 SA:104 DA:40 Len:0 Data:
++005.204711::PGN:0 P:4 SA:180 DA:55 Len:0 Data:
++005.205872::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.206985::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.208113::PGN:61184 P:6 SA:0 DA:6 Len:8 Data:64 e 4b 0 ff ff ff ff 
++005.209209::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.210317::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 18 f0 0 0 1 f 
++005.211423::PGN:0 P:3 SA:6 DA:0 Len:8 Data:30 ff ff ff f8 ff ff ff 
++005.212549::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.222672::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.223790::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.224897::PGN:61184 P:6 SA:0 DA:255 Len:8 Data:64 10 b b 20 3 0 7d 
++005.226003::PGN:126720 P:3 SA:71 DA:6 Len:8 Data:1 4 ff ff ff ff ff f1 
++005.227151::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.228307::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 19 f0 0 0 1 f 
++005.229465::PGN:65534 P:3 SA:6 DA:255 Len:8 Data:5c 3 1e 3 1e ff ff ff 
++005.230591::PGN:65531 P:6 SA:6 DA:255 Len:8 Data:0 5 7d f8 ff ff ff ff 
++005.231742::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.235158::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.236290::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.237446::PGN:65262 P:6 SA:0 DA:255 Len:8 Data:3e 3e ff ff ff ff ff ff 
++005.238555::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.239634::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1a f0 0 0 1 f 
++005.240728::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.262130::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.263290::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.264447::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.265605::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1b f0 0 0 1 f 
++005.266764::PGN:65097 P:3 SA:71 DA:255 Len:8 Data:ff ff ff ff ff ff ff ff 
++005.267920::PGN:65091 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++005.269078::PGN:65092 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++005.270236::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.271338::PGN:65247 P:6 SA:0 DA:255 Len:8 Data:7d 2 1e ff ff ff ff ff 
++005.275631::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.276720::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.277812::PGN:65266 P:6 SA:0 DA:255 Len:8 Data:0 0 ff ff ff ff ff ff 
++005.278917::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.280064::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1c f0 0 0 1 f 
++005.281221::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.300603::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.301760::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.302884::PGN:61184 P:6 SA:0 DA:6 Len:8 Data:64 e 55 0 ff ff ff ff 
++005.303986::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.305081::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1d f0 0 0 1 f 
++005.306180::PGN:65265 P:6 SA:71 DA:255 Len:8 Data:ff 0 0 ff ff ff ff ff 
++005.307280::PGN:61445 P:6 SA:3 DA:255 Len:8 Data:7d ff ff ff ff ff ff ff 
++005.308365::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.320789::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.321949::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.323112::PGN:61184 P:6 SA:0 DA:255 Len:8 Data:64 10 b b 20 3 0 7d 
++005.324272::PGN:65271 P:6 SA:0 DA:255 Len:8 Data:ff ff ff ff ff ff f6 0 
++005.325429::PGN:126720 P:3 SA:71 DA:6 Len:8 Data:1 4 ff ff ff ff ff f1 
++005.326600::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.327713::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1e f0 0 0 1 f 
++005.328858::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.346634::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.347741::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.348860::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.349979::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1f f0 0 0 1 f 
++005.351099::PGN:65097 P:3 SA:71 DA:255 Len:8 Data:ff ff ff ff ff ff ff ff 
++005.352219::PGN:0 P:4 SA:104 DA:40 Len:73 Data:8 0 0 0 ac 30 0 10 49 fe 0 0 47 44 fe c 0 0 ff ff 3f ff ff ff 8 1 0 ff 6 fe ff c 5c 3 1e 3 1e ff ff ff 8 1 0 28 6 0 ef 4 64 15 1d f0 0 0 1 f 8 1 0 0 47 f1 fe 18 ff 0 0 ff ff ff ff ff 8 
++005.353347::PGN:0 P:4 SA:180 DA:55 Len:0 Data:
++005.354482::PGN:1280 P:0 SA:180 DA:4 Len:0 Data:
++005.355600::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.356746::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.357869::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.359032::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.360194::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 10 f0 0 0 1 f 
++005.361352::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.380390::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.381555::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.382725::PGN:65266 P:6 SA:0 DA:255 Len:8 Data:0 0 ff ff ff ff ff ff 
++005.383857::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.385017::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 11 f0 0 0 1 f 
++005.386182::PGN:65265 P:6 SA:71 DA:255 Len:8 Data:ff 0 0 ff ff ff ff ff 
++005.387350::PGN:61445 P:6 SA:3 DA:255 Len:8 Data:7d ff ff ff ff ff ff ff 
++005.388513::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.395399::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.396565::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.397730::PGN:61184 P:6 SA:0 DA:6 Len:8 Data:64 e 5f 0 ff ff ff ff 
++005.398896::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.400060::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 12 f0 0 0 1 f 
++005.401167::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.422603::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.423761::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.424920::PGN:61184 P:6 SA:0 DA:255 Len:8 Data:64 10 b b 20 3 0 7d 
++005.426078::PGN:65237 P:6 SA:0 DA:255 Len:8 Data:ff ff fc ff ff ff ff ff 
++005.427239::PGN:126720 P:3 SA:71 DA:6 Len:8 Data:1 4 ff ff ff ff ff f1 
++005.428372::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.429530::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 13 f0 0 0 1 f 
++005.430690::PGN:65534 P:3 SA:6 DA:255 Len:8 Data:5c 3 1e 3 1e ff ff ff 
++005.431849::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.434034::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.435131::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.436239::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.437344::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 14 f0 0 0 1 f 
++005.439584::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.462409::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.463573::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.464673::PGN:64947 P:6 SA:0 DA:255 Len:8 Data:ff ff 72 25 ff ff ff ff 
++005.465780::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.466856::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 15 f0 0 0 1 f 
++005.467957::PGN:91136 P:5 SA:6 DA:1 Len:8 Data:15 f0 0 0 1 f 68 ff 
++005.469056::PGN:65091 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++005.470125::PGN:65092 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++005.471229::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.475805::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.476963::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.478120::PGN:65266 P:6 SA:0 DA:255 Len:8 Data:0 0 ff ff ff ff ff ff 
++005.479278::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.480436::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 16 f0 0 0 1 f 
++005.481592::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.501814::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.502912::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.504012::PGN:61184 P:6 SA:0 DA:6 Len:8 Data:64 e 69 0 ff ff ff ff 
++005.505115::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.506218::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 17 f0 0 0 1 f 
++005.507366::PGN:65265 P:6 SA:71 DA:255 Len:8 Data:ff 0 0 ff ff ff ff ff 
++005.508527::PGN:61445 P:6 SA:3 DA:255 Len:19 Data:7d ff ff ff b4 37 0 10 13 0 0 0 7c 28 0 10 13 0 0 
++005.509707::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.520025::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.521182::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.522339::PGN:61184 P:6 SA:0 DA:255 Len:8 Data:64 10 b b 20 3 0 7d 
++005.523499::PGN:65247 P:6 SA:0 DA:255 Len:8 Data:7d 2 1e ff ff ff ff ff 
++005.524656::PGN:126720 P:3 SA:71 DA:6 Len:8 Data:1 4 ff ff ff ff ff f1 
++005.525813::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.526972::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 18 f0 0 0 1 f 
++005.528094::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.546813::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.547934::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.549054::PGN:65263 P:6 SA:0 DA:255 Len:8 Data:ff ff ff 0 ff ff ff fa 
++005.550131::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.551250::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 19 f0 0 0 1 f 
++005.552369::PGN:65097 P:3 SA:71 DA:255 Len:8 Data:ff ff ff ff ff ff ff ff 
++005.553464::PGN:65535 P:3 SA:71 DA:255 Len:8 Data:5d ff ff f3 ff ff ff ff 
++005.554593::PGN:65091 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++005.555699::PGN:65092 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++005.556819::PGN:65534 P:3 SA:6 DA:255 Len:8 Data:5c 3 1e 3 1e ff ff ff 
++005.557965::PGN:61444 P:3 SA:0 DA:255 Len:19 Data:f0 ff 7d 0 b4 37 0 10 13 0 0 0 7c 28 0 10 13 0 0 
++005.559130::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.560252::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.561345::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.562456::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1a f0 0 0 1 f 
++005.563549::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.580537::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.581633::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.582795::PGN:65266 P:6 SA:0 DA:255 Len:8 Data:0 0 ff ff ff ff ff ff 
++005.583916::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.585071::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1b f0 0 0 1 f 
++005.586228::PGN:65265 P:6 SA:71 DA:255 Len:8 Data:ff 0 0 ff ff ff ff ff 
++005.587389::PGN:61445 P:6 SA:3 DA:255 Len:8 Data:7d ff ff ff ff ff ff ff 
++005.588545::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.595216::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.596307::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.597411::PGN:61184 P:6 SA:0 DA:6 Len:8 Data:64 e 73 0 ff ff ff ff 
++005.598515::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.599616::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1c f0 0 0 1 f 
++005.600713::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.624443::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.625550::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.626656::PGN:61184 P:6 SA:0 DA:255 Len:8 Data:64 10 b b 20 3 0 7d 
++005.627753::PGN:65270 P:6 SA:0 DA:255 Len:8 Data:ff 0 40 ff 0 ff ff ff 
++005.628863::PGN:65286 P:0 SA:0 DA:255 Len:8 Data:40 ff 0 ff ff ff b8 f1 
++005.629969::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.631067::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1d f0 0 0 1 f 
++005.632180::PGN:65534 P:3 SA:6 DA:255 Len:8 Data:5c 3 1e 3 1e ff ff ff 
++005.633292::PGN:65535 P:6 SA:6 DA:255 Len:8 Data:73 ff ff ff ff ff ff ff 
++005.634413::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.635532::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.636650::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.637770::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.638888::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1e f0 0 0 1 f 
++005.641099::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.642214::PGN:65535 P:7 SA:23 DA:255 Len:8 Data:22 ff ff 3c ff ff ff ff 
++005.662028::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.663153::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.664305::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.665462::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1f f0 0 0 1 f 
++005.666605::PGN:65097 P:3 SA:71 DA:255 Len:8 Data:ff ff ff ff ff ff ff ff 
++005.667763::PGN:0 P:4 SA:124 DA:40 Len:8 Data:13 0 0 0 13 0 0 0 
++005.668922::PGN:0 P:4 SA:104 DA:40 Len:0 Data:
++005.670077::PGN:0 P:4 SA:180 DA:55 Len:0 Data:
++005.671232::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.672389::PGN:65530 P:6 SA:0 DA:255 Len:8 Data:2 2c 0 0 18 c 0 a5 
++005.675839::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.677004::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.678168::PGN:65266 P:6 SA:0 DA:255 Len:8 Data:0 0 ff ff ff ff ff ff 
++005.679330::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.680492::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 10 f0 0 0 1 f 
++005.681657::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.705150::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.706307::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.707468::PGN:61184 P:6 SA:0 DA:6 Len:8 Data:64 e 7d 0 ff ff ff ff 
++005.708625::PGN:65269 P:6 SA:0 DA:255 Len:8 Data:c7 ff ff ff ff 3b ff ff 
++005.709782::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.710906::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 11 f0 0 0 1 f 
++005.712055::PGN:65265 P:6 SA:71 DA:255 Len:8 Data:ff 0 0 ff ff ff ff ff 
++005.713212::PGN:61446 P:6 SA:71 DA:255 Len:8 Data:ff cf ff ff ff ff ff ff 
++005.714369::PGN:61445 P:6 SA:3 DA:255 Len:19 Data:7d ff ff ff b4 37 0 10 13 0 0 0 0 4 f0 c f0 ff 7d 
++005.715531::PGN:0 P:4 SA:124 DA:40 Len:8 Data:1e 0 0 0 1e 0 0 0 
++005.717831::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.718992::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.720150::PGN:61184 P:6 SA:0 DA:255 Len:8 Data:64 10 b b 20 3 0 7d 
++005.721273::PGN:126720 P:3 SA:71 DA:6 Len:8 Data:1 4 ff ff ff ff ff f1 
++005.722369::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.723480::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 12 f0 0 0 1 f 
++005.724583::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.743904::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.745083::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.746258::PGN:65129 P:6 SA:0 DA:255 Len:8 Data:3c 25 e4 24 ff ff 60 fe 
++005.747436::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.748610::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 13 f0 0 0 1 f 
++005.749784::PGN:65097 P:3 SA:71 DA:255 Len:8 Data:ff ff ff ff ff ff ff ff 
++005.750964::PGN:65091 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++005.752141::PGN:65092 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++005.753316::PGN:65534 P:3 SA:6 DA:255 Len:8 Data:5c 3 1e 3 1e ff ff ff 
++005.754434::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.755546::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.756624::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.757701::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.758776::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 14 f0 0 0 1 f 
++005.760963::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.762080::PGN:65247 P:6 SA:0 DA:255 Len:8 Data:7d 2 1e ff ff ff ff ff 
++005.780134::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++005.781288::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++005.782448::PGN:65266 P:6 SA:0 DA:255 Len:8 Data:0 0 ff ff ff ff ff ff 
++005.783607::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++005.784763::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 15 f0 0 0 1 f 
++005.785920::PGN:65265 P:6 SA:71 DA:255 Len:8 Data:ff 0 0 ff ff ff ff ff 
++005.787013::PGN:61445 P:6 SA:3 DA:255 Len:8 Data:7d ff ff ff ff ff ff ff 
++005.788154::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++005.795841::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.-202996::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.-201832::PGN:61184 P:6 SA:0 DA:6 Len:8 Data:64 e 87 0 ff ff ff ff 
++006.-200670::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.-199505::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 16 f0 0 0 1 f 
++006.-198385::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.-180268::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.-179170::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.-178059::PGN:61184 P:6 SA:0 DA:255 Len:8 Data:64 10 b b 20 3 0 7d 
++006.-176950::PGN:126720 P:3 SA:71 DA:6 Len:8 Data:1 4 ff ff ff ff ff f1 
++006.-175825::PGN:0 P:4 SA:180 DA:55 Len:1 Data:1 
++006.-174709::PGN:65792 P:0 SA:180 DA:4 Len:8 Data:64 15 17 f0 0 0 1 f 
++006.-173590::PGN:65534 P:3 SA:6 DA:255 Len:8 Data:5c 3 1e 3 1e ff ff ff 
++006.-172430::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.-165566::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.-164387::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.-163212::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.-162035::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 18 f0 0 0 1 f 
++006.-160856::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.-137191::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.-136022::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.-134857::PGN:64892 P:6 SA:0 DA:255 Len:8 Data:f8 80 f1 f0 0 df 3 fc 
++006.-133693::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.-132525::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 19 f0 0 0 1 f 
++006.-131364::PGN:65097 P:3 SA:71 DA:255 Len:8 Data:ff ff ff ff ff ff ff ff 
++006.-130206::PGN:65091 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++006.-129044::PGN:65092 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++006.-127886::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.-124436::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.-123272::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.-122107::PGN:65266 P:6 SA:0 DA:255 Len:8 Data:0 0 ff ff ff ff ff ff 
++006.-120938::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.-119773::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1a f0 0 0 1 f 
++006.-118605::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.-99529::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.-98370::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.-97201::PGN:61184 P:6 SA:0 DA:6 Len:8 Data:64 e 91 0 ff ff ff ff 
++006.-96037::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.-94871::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1b f0 0 0 1 f 
++006.-93707::PGN:65265 P:6 SA:71 DA:255 Len:8 Data:ff 0 0 ff ff ff ff ff 
++006.-92540::PGN:61445 P:6 SA:3 DA:255 Len:8 Data:7d ff ff ff ff ff ff ff 
++006.-91374::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.-80135::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.-79022::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.-77917::PGN:61184 P:6 SA:0 DA:255 Len:8 Data:64 10 b b 20 3 0 7d 
++006.-76808::PGN:126720 P:3 SA:71 DA:6 Len:8 Data:1 4 ff ff ff ff ff f1 
++006.-75663::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.-74505::PGN:61184 P:1 SA:6 DA:0 Len:19 Data:64 15 1c f0 b4 37 0 10 13 0 0 0 7c 28 0 10 13 0 0 
++006.-73343::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.-57333::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.-56165::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.-55000::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.-53834::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1d f0 0 0 1 f 
++006.-52669::PGN:65097 P:3 SA:71 DA:255 Len:8 Data:ff ff ff ff ff ff ff ff 
++006.-51550::PGN:65091 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++006.-50440::PGN:65092 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++006.-49345::PGN:65534 P:3 SA:6 DA:255 Len:8 Data:5c 3 1e 3 1e ff ff ff 
++006.-48238::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.-42648::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.-41479::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.-40318::PGN:64947 P:6 SA:0 DA:255 Len:8 Data:ff ff 64 25 ff ff ff ff 
++006.-39153::PGN:61184 P:7 SA:0 DA:255 Len:8 Data:64 7 0 0 ff ff ff ff 
++006.-37989::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.-36822::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1e f0 0 0 1 f 
++006.-35693::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.-19740::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.-18626::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.-17531::PGN:65266 P:6 SA:0 DA:255 Len:8 Data:0 0 ff ff ff ff ff ff 
++006.-16425::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.-15321::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1f f0 0 0 1 f 
++006.-14217::PGN:0 P:4 SA:180 DA:55 Len:0 Data:
++006.-13073::PGN:66816 P:5 SA:180 DA:4 Len:8 Data:1f f0 0 0 1 f 5e ff 
++006.-11916::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.-03899::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.-02739::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.-01581::PGN:61184 P:6 SA:0 DA:6 Len:8 Data:64 e 9b 0 ff ff ff ff 
++006.-00420::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.000740::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 10 f0 0 0 1 f 
++006.001898::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.022017::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.023177::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.024336::PGN:61184 P:6 SA:0 DA:255 Len:8 Data:64 10 b b 20 3 0 7d 
++006.025494::PGN:65247 P:6 SA:0 DA:255 Len:8 Data:7d 2 1e ff ff ff ff ff 
++006.026655::PGN:126720 P:3 SA:71 DA:6 Len:8 Data:1 4 ff ff ff ff ff f1 
++006.027813::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.028970::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 11 f0 0 0 1 f 
++006.030129::PGN:65534 P:3 SA:6 DA:255 Len:8 Data:5c 3 1e 3 1e ff ff ff 
++006.031288::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.035881::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.037040::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.038198::PGN:65263 P:6 SA:0 DA:255 Len:8 Data:ff ff ff 0 ff ff ff fa 
++006.039360::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.040518::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 12 f0 0 0 1 f 
++006.041674::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.061864::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.063022::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.064181::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.065339::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 13 f0 0 0 1 f 
++006.066460::PGN:65097 P:3 SA:71 DA:255 Len:8 Data:ff ff ff ff ff ff ff ff 
++006.067618::PGN:65535 P:3 SA:71 DA:255 Len:8 Data:5d ff ff f3 ff ff ff ff 
++006.068775::PGN:65091 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++006.069933::PGN:65092 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++006.071092::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.075628::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.076732::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.077836::PGN:65266 P:6 SA:0 DA:255 Len:8 Data:0 0 ff ff ff ff ff ff 
++006.078921::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.080032::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 14 f0 0 0 1 f 
++006.081135::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.102745::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.103928::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.105088::PGN:61184 P:6 SA:0 DA:6 Len:8 Data:64 e a5 0 ff ff ff ff 
++006.106247::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.107406::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 15 f0 0 0 1 f 
++006.108512::PGN:65265 P:6 SA:71 DA:255 Len:8 Data:ff 0 0 ff ff ff ff ff 
++006.109617::PGN:65531 P:6 SA:6 DA:255 Len:8 Data:0 1b ff ff ff ff ff ff 
++006.110699::PGN:61445 P:6 SA:3 DA:255 Len:8 Data:7d ff ff ff ff ff ff ff 
++006.111811::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.120768::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.121931::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.123049::PGN:61184 P:6 SA:0 DA:255 Len:8 Data:64 10 b b 20 3 0 7d 
++006.124155::PGN:65270 P:6 SA:0 DA:255 Len:8 Data:ff 0 40 ff 0 ff ff ff 
++006.125260::PGN:126720 P:3 SA:71 DA:6 Len:8 Data:1 4 ff ff ff ff ff f1 
++006.126364::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.127510::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 16 f0 0 0 1 f 
++006.128670::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.146642::PGN:61184 P:6 SA:0 DA:250 Len:8 Data:64 1 ff 0 0 ff ff ff 
++006.147795::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.148957::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.150098::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.151262::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 17 f0 0 0 1 f 
++006.152427::PGN:91136 P:5 SA:6 DA:1 Len:8 Data:17 f0 0 0 1 f 66 ff 
++006.153534::PGN:65128 P:6 SA:71 DA:255 Len:8 Data:3f ff ff ff ff ff ff ff 
++006.154667::PGN:65091 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++006.155826::PGN:65535 P:6 SA:6 DA:255 Len:8 Data:73 ff ff ff ff ff ff ff 
++006.156986::PGN:65092 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++006.158145::PGN:65534 P:3 SA:6 DA:255 Len:8 Data:5c 3 1e 3 1e ff ff ff 
++006.159305::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.160467::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.161625::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.162760::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.163917::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 18 f0 0 0 1 f 
++006.165076::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.189718::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.190877::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.192036::PGN:65266 P:6 SA:0 DA:255 Len:8 Data:0 0 ff ff ff ff ff ff 
++006.193195::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.194353::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 19 f0 0 0 1 f 
++006.195516::PGN:0 P:4 SA:124 DA:40 Len:8 Data:13 0 0 0 13 0 0 0 
++006.196638::PGN:0 P:4 SA:104 DA:40 Len:0 Data:
++006.197785::PGN:0 P:4 SA:180 DA:55 Len:0 Data:
++006.198908::PGN:1280 P:0 SA:180 DA:4 Len:8 Data:0 0 13 0 0 0 1e ff 
++006.200065::PGN:61446 P:6 SA:71 DA:255 Len:8 Data:ff cf ff ff ff ff ff ff 
++006.201224::PGN:64991 P:7 SA:71 DA:255 Len:8 Data:fc ff ff ff ff ff ff ff 
++006.202383::PGN:61445 P:6 SA:3 DA:255 Len:8 Data:7d ff ff ff ff ff ff ff 
++006.203543::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.204666::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.205769::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.206887::PGN:61184 P:6 SA:0 DA:6 Len:8 Data:64 e af 0 ff ff ff ff 
++006.207971::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.209084::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1a f0 0 0 1 f 
++006.210191::PGN:0 P:3 SA:6 DA:0 Len:8 Data:30 ff ff ff f8 ff ff ff 
++006.211295::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.221385::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.222542::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.223700::PGN:61184 P:6 SA:0 DA:255 Len:8 Data:64 10 b b 20 3 0 7d 
++006.224862::PGN:126720 P:3 SA:71 DA:6 Len:8 Data:1 4 ff ff ff ff ff f1 
++006.226043::PGN:126720 P:3 SA:3 DA:6 Len:19 Data:1 1 ff ff b4 37 0 10 13 0 0 0 6 0 ef 4 64 15 1b 
++006.227208::PGN:0 P:4 SA:124 DA:40 Len:8 Data:1e 0 0 0 1e 0 0 0 
++006.228367::PGN:0 P:4 SA:104 DA:40 Len:0 Data:
++006.229521::PGN:0 P:4 SA:180 DA:55 Len:0 Data:
++006.230680::PGN:1280 P:3 SA:180 DA:4 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.235205::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.236362::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.237469::PGN:65262 P:6 SA:0 DA:255 Len:8 Data:3e 3e ff ff ff ff ff ff 
++006.238554::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.239638::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1c f0 0 0 1 f 
++006.240751::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.262064::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.263223::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.264382::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.265540::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1d f0 0 0 1 f 
++006.266700::PGN:65097 P:3 SA:71 DA:255 Len:8 Data:ff ff ff ff ff ff ff ff 
++006.267857::PGN:65091 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++006.268965::PGN:65092 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++006.270092::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.271184::PGN:65247 P:6 SA:0 DA:255 Len:8 Data:7d 2 1e ff ff ff ff ff 
++006.275637::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.276757::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.277851::PGN:65266 P:6 SA:0 DA:255 Len:8 Data:0 0 ff ff ff ff ff ff 
++006.278958::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.280076::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1e f0 0 0 1 f 
++006.281194::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.302163::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.303259::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.304381::PGN:61184 P:6 SA:0 DA:6 Len:8 Data:64 e b9 0 ff ff ff ff 
++006.305501::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.306611::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1f f0 0 0 1 f 
++006.307731::PGN:65265 P:6 SA:71 DA:255 Len:8 Data:ff 0 0 ff ff ff ff ff 
++006.308850::PGN:61445 P:6 SA:3 DA:255 Len:8 Data:7d ff ff ff ff ff ff ff 
++006.309968::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.311086::PGN:65535 P:7 SA:23 DA:255 Len:8 Data:22 ff ff 3c ff ff ff ff 
++006.321178::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.322336::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.323497::PGN:61184 P:6 SA:0 DA:255 Len:8 Data:64 10 b b 20 3 0 7d 
++006.324656::PGN:65271 P:6 SA:0 DA:255 Len:8 Data:ff ff ff ff ff ff f6 0 
++006.325814::PGN:126720 P:3 SA:71 DA:6 Len:8 Data:1 4 ff ff ff ff ff f1 
++006.326976::PGN:126720 P:3 SA:3 DA:6 Len:19 Data:1 1 ff ff b4 37 0 10 13 0 0 0 7c 28 0 10 13 0 0 
++006.328137::PGN:0 P:4 SA:124 DA:40 Len:8 Data:1e 0 0 0 1e 0 0 0 
++006.329294::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.342524::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.343676::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.344834::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.345992::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 11 f0 0 0 1 f 
++006.347151::PGN:65097 P:3 SA:71 DA:255 Len:8 Data:ff ff ff ff ff ff ff ff 
++006.348274::PGN:65091 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++006.349383::PGN:65092 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++006.350542::PGN:65534 P:3 SA:6 DA:255 Len:8 Data:5c 3 1e 3 1e ff ff ff 
++006.351700::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.353974::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.355128::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.356285::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.357442::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 12 f0 0 0 1 f 
++006.358560::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.379681::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.380830::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.381992::PGN:65266 P:6 SA:0 DA:255 Len:8 Data:0 0 ff ff ff ff ff ff 
++006.383154::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.384317::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 13 f0 0 0 1 f 
++006.385480::PGN:0 P:4 SA:104 DA:40 Len:0 Data:
++006.386643::PGN:0 P:4 SA:180 DA:55 Len:0 Data:
++006.387803::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.395798::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.396956::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.398051::PGN:61184 P:6 SA:0 DA:6 Len:8 Data:64 e c3 0 ff ff ff ff 
++006.399164::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.400274::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 14 f0 0 0 1 f 
++006.401381::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.422628::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.423785::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.424942::PGN:61184 P:6 SA:0 DA:255 Len:8 Data:64 10 b b 20 3 0 7d 
++006.426100::PGN:65237 P:6 SA:0 DA:255 Len:8 Data:ff ff fc ff ff ff ff ff 
++006.427260::PGN:126720 P:3 SA:71 DA:6 Len:8 Data:1 4 ff ff ff ff ff f1 
++006.428417::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.429521::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 15 f0 0 0 1 f 
++006.430630::PGN:65534 P:3 SA:6 DA:255 Len:8 Data:5c 3 1e 3 1e ff ff ff 
++006.431726::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.433925::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.435073::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.436231::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.437388::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 16 f0 0 0 1 f 
++006.438564::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.462517::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.463627::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.464752::PGN:64947 P:6 SA:0 DA:255 Len:8 Data:ff ff 64 25 ff ff ff ff 
++006.465883::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.466989::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 17 f0 0 0 1 f 
++006.468094::PGN:65097 P:3 SA:71 DA:255 Len:8 Data:ff ff ff ff ff ff ff ff 
++006.469198::PGN:65091 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++006.470302::PGN:65092 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++006.471450::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.476045::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.477204::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.478362::PGN:65266 P:6 SA:0 DA:255 Len:8 Data:0 0 ff ff ff ff ff ff 
++006.479486::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.480635::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 18 f0 0 0 1 f 
++006.481793::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.500817::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.501924::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.503072::PGN:61184 P:6 SA:0 DA:6 Len:8 Data:64 e cd 0 ff ff ff ff 
++006.504229::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.505386::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 19 f0 0 0 1 f 
++006.506545::PGN:65265 P:6 SA:71 DA:255 Len:8 Data:ff 0 0 ff ff ff ff ff 
++006.507703::PGN:61445 P:6 SA:3 DA:255 Len:8 Data:7d ff ff ff ff ff ff ff 
++006.508862::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.520286::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.521442::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.522603::PGN:61184 P:6 SA:0 DA:255 Len:8 Data:64 10 b b 20 3 0 7d 
++006.523762::PGN:65247 P:6 SA:0 DA:255 Len:8 Data:7d 2 1e ff ff ff ff ff 
++006.524942::PGN:126720 P:3 SA:71 DA:6 Len:8 Data:1 4 ff ff ff ff ff f1 
++006.526048::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.527158::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1a f0 0 0 1 f 
++006.528246::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.543965::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.545126::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.546286::PGN:65263 P:6 SA:0 DA:255 Len:8 Data:ff ff ff 0 ff ff ff fa 
++006.547445::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.548603::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1b f0 0 0 1 f 
++006.549761::PGN:0 P:4 SA:124 DA:40 Len:8 Data:13 0 0 0 13 0 0 0 
++006.550924::PGN:0 P:4 SA:104 DA:40 Len:0 Data:
++006.552079::PGN:0 P:4 SA:180 DA:55 Len:0 Data:
++006.553235::PGN:1280 P:0 SA:180 DA:4 Len:8 Data:0 0 13 0 0 0 1e ff 
++006.554395::PGN:65534 P:3 SA:6 DA:255 Len:8 Data:5c 3 1e 3 1e ff ff ff 
++006.555556::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.556715::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.557821::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.558935::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.560022::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1c f0 0 0 1 f 
++006.561167::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.581106::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.582225::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.583346::PGN:65266 P:6 SA:0 DA:255 Len:8 Data:0 0 ff ff ff ff ff ff 
++006.584465::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.585615::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1d f0 0 0 1 f 
++006.586776::PGN:65265 P:6 SA:71 DA:255 Len:8 Data:ff 0 0 ff ff ff ff ff 
++006.587935::PGN:61445 P:6 SA:3 DA:255 Len:8 Data:7d ff ff ff ff ff ff ff 
++006.589058::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.595614::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.596721::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.597825::PGN:61184 P:6 SA:0 DA:6 Len:8 Data:64 e d7 0 ff ff ff ff 
++006.598930::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.600040::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1e f0 0 0 1 f 
++006.601185::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.623916::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.625005::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.626118::PGN:61184 P:6 SA:0 DA:255 Len:8 Data:64 10 b b 20 3 0 7d 
++006.627226::PGN:65270 P:6 SA:0 DA:255 Len:8 Data:ff 0 40 ff 0 ff ff ff 
++006.628330::PGN:126720 P:3 SA:71 DA:6 Len:8 Data:1 4 ff ff ff ff ff f1 
++006.629434::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.630538::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1f f0 0 0 1 f 
++006.631684::PGN:65534 P:3 SA:6 DA:255 Len:8 Data:5c 3 1e 3 1e ff ff ff 
++006.632842::PGN:65535 P:6 SA:6 DA:255 Len:8 Data:73 ff ff ff ff ff ff ff 
++006.633967::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.635126::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.636283::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.637443::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.638611::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 10 f0 0 0 1 f 
++006.639731::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.664382::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.665505::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.666625::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.667744::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 11 f0 0 0 1 f 
++006.668864::PGN:65097 P:3 SA:71 DA:255 Len:8 Data:ff ff ff ff ff ff ff ff 
++006.669982::PGN:64991 P:7 SA:71 DA:255 Len:8 Data:fc ff ff ff ff ff ff ff 
++006.671102::PGN:65091 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++006.672223::PGN:65092 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++006.673363::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.674482::PGN:65530 P:6 SA:0 DA:255 Len:8 Data:2 2c 0 0 18 c 0 a5 
++006.675589::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.676709::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.677828::PGN:65266 P:6 SA:0 DA:255 Len:8 Data:0 0 ff ff ff ff ff ff 
++006.678936::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.680055::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 12 f0 0 0 1 f 
++006.681176::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.702304::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.703463::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.704621::PGN:61184 P:6 SA:0 DA:6 Len:8 Data:64 e e1 0 ff ff ff ff 
++006.705780::PGN:65269 P:6 SA:0 DA:255 Len:8 Data:c7 ff ff ff ff 3b ff ff 
++006.706940::PGN:0 P:4 SA:124 DA:40 Len:8 Data:13 0 0 0 13 0 0 0 
++006.708097::PGN:0 P:4 SA:104 DA:40 Len:0 Data:
++006.709252::PGN:0 P:4 SA:180 DA:55 Len:0 Data:
++006.710410::PGN:1280 P:0 SA:180 DA:4 Len:8 Data:0 0 13 0 0 0 1e ff 
++006.711535::PGN:61445 P:6 SA:3 DA:255 Len:8 Data:7d ff ff ff ff ff ff ff 
++006.712684::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.720549::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.721654::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.722767::PGN:61184 P:6 SA:0 DA:255 Len:8 Data:64 10 b b 20 3 0 7d 
++006.723872::PGN:60416 P:7 SA:0 DA:255 Len:8 Data:20 22 0 5 ff e3 fe 0 
++006.724977::PGN:126720 P:3 SA:71 DA:6 Len:8 Data:1 4 ff ff ff ff ff f1 
++006.726082::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.727229::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 14 f0 0 0 1 f 
++006.728388::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.743236::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.744393::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.745551::PGN:65129 P:6 SA:0 DA:255 Len:8 Data:3c 25 e4 24 ff ff 60 fe 
++006.746712::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.747870::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 15 f0 0 0 1 f 
++006.749028::PGN:65097 P:3 SA:71 DA:255 Len:19 Data:ff ff ff ff b4 37 0 10 13 0 0 0 7c 28 0 10 13 0 0 
++006.750153::PGN:0 P:4 SA:124 DA:40 Len:8 Data:1e 0 0 0 1e 0 0 0 
++006.751252::PGN:0 P:4 SA:104 DA:40 Len:0 Data:
++006.752363::PGN:0 P:4 SA:180 DA:55 Len:0 Data:
++006.753448::PGN:1280 P:3 SA:180 DA:4 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.754563::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.755680::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.756785::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.757889::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 16 f0 0 0 1 f 
++006.761321::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.762445::PGN:65247 P:6 SA:0 DA:255 Len:8 Data:7d 2 1e ff ff ff ff ff 
++006.763594::PGN:60160 P:7 SA:0 DA:255 Len:8 Data:1 20 1c dd 68 42 dc a0 
++006.780671::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.781794::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++006.782893::PGN:65266 P:6 SA:0 DA:255 Len:8 Data:0 0 ff ff ff ff ff ff 
++006.784004::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++006.785087::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 17 f0 0 0 1 f 
++006.786199::PGN:65265 P:6 SA:71 DA:255 Len:8 Data:ff 0 0 ff ff ff ff ff 
++006.787320::PGN:61445 P:6 SA:3 DA:255 Len:8 Data:7d ff ff ff ff ff ff ff 
++006.788426::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++006.795181::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++006.796297::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++007.-202561::PGN:61184 P:6 SA:0 DA:6 Len:8 Data:64 e eb 0 ff ff ff ff 
++007.-201412::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++007.-200255::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 18 f0 0 0 1 f 
++007.-199098::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++007.-177936::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++007.-176782::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++007.-175623::PGN:61184 P:6 SA:0 DA:255 Len:8 Data:64 10 b b 20 3 0 7d 
++007.-174464::PGN:60160 P:7 SA:0 DA:255 Len:8 Data:2 f d5 8d 20 e3 7a 31 
++007.-173304::PGN:126720 P:3 SA:71 DA:6 Len:8 Data:1 4 ff ff ff ff ff f1 
++007.-172146::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++007.-170990::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 19 f0 0 0 1 f 
++007.-169831::PGN:65534 P:3 SA:6 DA:255 Len:8 Data:5c 3 1e 3 1e ff ff ff 
++007.-168672::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++007.-166428::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++007.-165268::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++007.-164111::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++007.-162956::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1a f0 0 0 1 f 
++007.-160653::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++007.-135984::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++007.-134827::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++007.-133666::PGN:64892 P:6 SA:0 DA:255 Len:8 Data:f8 80 f1 f0 0 df 3 fc 
++007.-132504::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++007.-131345::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1b f0 0 0 1 f 
++007.-130187::PGN:65097 P:3 SA:71 DA:255 Len:8 Data:ff ff ff ff ff ff ff ff 
++007.-129028::PGN:65091 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++007.-127871::PGN:65092 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++007.-126748::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++007.-125599::PGN:60160 P:7 SA:0 DA:255 Len:8 Data:3 f1 c0 44 ff ff 4 1 
++007.-124441::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++007.-123328::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++007.-122209::PGN:65266 P:6 SA:0 DA:255 Len:8 Data:0 0 ff ff ff ff ff ff 
++007.-121128::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++007.-120022::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1c f0 0 0 1 f 
++007.-118934::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++007.-99817::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++007.-98659::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++007.-97502::PGN:61184 P:6 SA:0 DA:6 Len:8 Data:64 e f5 0 ff ff ff ff 
++007.-96343::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++007.-95184::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1d f0 0 0 1 f 
++007.-94026::PGN:0 P:4 SA:124 DA:40 Len:8 Data:13 0 0 0 13 0 0 0 
++007.-92867::PGN:0 P:4 SA:104 DA:40 Len:0 Data:
++007.-91715::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++007.-79575::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++007.-78417::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++007.-77256::PGN:61184 P:6 SA:0 DA:255 Len:8 Data:64 10 b b 20 3 0 7d 
++007.-76098::PGN:60160 P:7 SA:0 DA:255 Len:8 Data:4 20 4e 0 1 fa c9 fa 
++007.-74976::PGN:126720 P:3 SA:71 DA:6 Len:8 Data:1 4 ff ff ff ff ff f1 
++007.-73826::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++007.-72666::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1e f0 0 0 1 f 
++007.-71507::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++007.-58030::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++007.-56928::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++007.-55812::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++007.-54709::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1f f0 0 0 1 f 
++007.-53580::PGN:65097 P:3 SA:71 DA:255 Len:8 Data:ff ff ff ff ff ff ff ff 
++007.-52452::PGN:65091 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++007.-51344::PGN:65092 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++007.-50229::PGN:65534 P:3 SA:6 DA:255 Len:8 Data:5c 3 1e 3 1e ff ff ff 
++007.-49105::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++007.-42388::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++007.-41200::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++007.-40033::PGN:64947 P:6 SA:0 DA:255 Len:8 Data:ff ff 64 25 ff ff ff ff 
++007.-38865::PGN:61184 P:7 SA:0 DA:255 Len:8 Data:64 7 0 0 ff ff ff ff 
++007.-37715::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++007.-36544::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 10 f0 0 0 1 f 
++007.-35376::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++007.-34255::PGN:65535 P:7 SA:23 DA:255 Len:8 Data:22 ff ff 3c ff ff ff ff 
++007.-33143::PGN:60160 P:7 SA:0 DA:255 Len:8 Data:5 c0 5d 0 0 ff ff ff 
++007.-19671::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++007.-18503::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++007.-17316::PGN:65266 P:6 SA:0 DA:255 Len:8 Data:0 0 ff ff ff ff ff ff 
++007.-16100::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++007.-14887::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 11 f0 0 0 1 f 
++007.-13656::PGN:65265 P:6 SA:71 DA:255 Len:8 Data:ff 0 0 ff ff ff ff ff 
++007.-12421::PGN:61445 P:6 SA:3 DA:255 Len:8 Data:7d ff ff ff ff ff ff ff 
++007.-11192::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++007.-04002::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++007.-02772::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++007.-01541::PGN:61184 P:6 SA:0 DA:6 Len:8 Data:64 e ff 0 ff ff ff ff 
++007.-00306::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++007.000920::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 12 f0 0 0 1 f 
++007.002150::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++007.021848::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++007.023085::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++007.024315::PGN:61184 P:6 SA:0 DA:255 Len:8 Data:64 10 b b 20 3 0 7d 
++007.025545::PGN:65247 P:6 SA:0 DA:255 Len:8 Data:7d 2 1e ff ff ff ff ff 
++007.026782::PGN:126720 P:3 SA:71 DA:6 Len:8 Data:1 4 ff ff ff ff ff f1 
++007.028011::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++007.029238::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 13 f0 0 0 1 f 
++007.030469::PGN:65534 P:3 SA:6 DA:255 Len:8 Data:5c 3 1e 3 1e ff ff ff 
++007.031701::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++007.035285::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++007.036514::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++007.037744::PGN:65263 P:6 SA:0 DA:255 Len:8 Data:ff ff ff 0 ff ff ff fa 
++007.038974::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++007.040201::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 14 f0 0 0 1 f 
++007.041387::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++007.062239::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++007.063459::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++007.064669::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++007.065843::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 15 f0 0 0 1 f 
++007.067048::PGN:65097 P:3 SA:71 DA:255 Len:8 Data:ff ff ff ff ff ff ff ff 
++007.068259::PGN:130819 P:7 SA:71 DA:255 Len:8 Data:ff ff ff ff ff ff 64 ff 
++007.069469::PGN:65091 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++007.070683::PGN:65092 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++007.071892::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++007.075417::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++007.076577::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++007.077717::PGN:65266 P:6 SA:0 DA:255 Len:8 Data:0 0 ff ff ff ff ff ff 
++007.078857::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++007.079995::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 16 f0 0 0 1 f 
++007.081137::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++007.103256::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++007.104467::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++007.105678::PGN:61184 P:6 SA:0 DA:6 Len:8 Data:64 e 9 0 ff ff ff ff 
++007.106870::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++007.108076::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 17 f0 0 0 1 f 
++007.109193::PGN:65265 P:6 SA:71 DA:255 Len:8 Data:ff 0 0 ff ff ff ff ff 
++007.110321::PGN:65531 P:6 SA:6 DA:255 Len:19 Data:0 1b ff ff b4 37 0 10 13 0 0 0 7c 28 0 10 13 0 0 
++007.111438::PGN:0 P:4 SA:124 DA:40 Len:8 Data:1e 0 0 0 1e 0 0 0 
++007.112554::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++007.120311::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++007.121491::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++007.122673::PGN:61184 P:6 SA:0 DA:255 Len:8 Data:64 10 b b 20 3 0 7d 
++007.123850::PGN:65270 P:6 SA:0 DA:255 Len:8 Data:ff 0 40 ff 0 ff ff ff 
++007.125026::PGN:126720 P:3 SA:71 DA:6 Len:8 Data:1 4 ff ff ff ff ff f1 
++007.126203::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++007.127381::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 18 f0 0 0 1 f 
++007.128561::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++007.150038::PGN:61184 P:6 SA:0 DA:250 Len:8 Data:64 1 ff 0 0 ff ff ff 
++007.151192::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++007.152360::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++007.153524::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++007.154668::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 19 f0 0 0 1 f 
++007.155830::PGN:65097 P:3 SA:71 DA:255 Len:8 Data:ff ff ff ff ff ff ff ff 
++007.156995::PGN:65128 P:6 SA:71 DA:255 Len:8 Data:3f ff ff ff ff ff ff ff 
++007.158160::PGN:65091 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++007.171892::PGN:0 P:0 SA:50 DA:0 Len:104 Data:73 ff ff ff 40 28 0 10 68 28 0 10 f9 ff ff ff 70 28 0 10 b4 37 0 10 13 0 0 0 7c 28 0 10 13 0 0 0 13 0 0 0 78 c 0 0 0 4 f0 c f0 ff 7d 0 0 ff ff ff 8 1 0 0 b4 37 0 10 ff 0 0 ff c0 0 10 4 0 fe 43 ff 47 3 0 0 ff ff 3f ff ff ff 28 ff 8 1 0 28 0 ff ef 18 64 10 b b 20 3 0 7d 
++007.173075::PGN:65536 P:0 SA:0 DA:0 Len:115 Data:70 28 0 10 b4 37 0 10 73 0 0 0 7c 28 0 10 73 0 0 0 74 0 0 0 78 c 0 0 68 28 0 10 68 0 0 0 ac 30 0 10 0 0 0 0 b4 37 0 10 ff 0 0 ff c0 0 70 4 0 0 0 0 32 0 73 ff ff ff 40 28 0 10 68 28 0 10 f9 ff ff ff 70 28 0 10 b4 37 0 10 13 0 0 0 7c 28 0 10 13 0 0 0 13 0 0 0 78 c 0 0 0 4 f0 c f0 ff 7d 0 0 
++007.194560::PGN:0 P:4 SA:124 DA:40 Len:120 Data:7e 0 0 0 7f 0 0 0 78 c 0 0 68 28 0 10 73 0 0 0 ac 30 0 10 0 0 1 0 0 3 f0 c ff 0 0 ff b ff ff ff 8 1 0 0 0 ff ef c 64 6 0 7d ff ff ff ff 8 1 0 28 3 6 ef d 1 1 ff ff ff ff ff f5 8 1 0 28 0 10 68 0 0 0 ac 30 0 10 0 0 0 0 b4 37 0 10 ff 0 0 ff c0 0 70 4 0 0 0 0 32 0 73 ff ff ff 40 28 0 10 68 28 0 10 
++007.195759::PGN:0 P:4 SA:104 DA:40 Len:0 Data:
++007.196920::PGN:0 P:4 SA:180 DA:55 Len:0 Data:
++007.198080::PGN:1280 P:0 SA:180 DA:4 Len:0 Data:
++007.199235::PGN:29440 P:0 SA:0 DA:16 Len:1 Data:0 
++007.200395::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1a f0 0 0 1 f 
++007.201553::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++007.202715::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++007.203871::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++007.205028::PGN:65266 P:6 SA:0 DA:255 Len:8 Data:0 0 ff ff ff ff ff ff 
++007.206132::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++007.207255::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1b f0 0 0 1 f 
++007.208345::PGN:65535 P:3 SA:71 DA:255 Len:8 Data:5e ff ff ff ff ff ff ff 
++007.209454::PGN:65265 P:6 SA:71 DA:255 Len:8 Data:ff 0 0 ff ff ff ff ff 
++007.210559::PGN:65276 P:6 SA:71 DA:255 Len:8 Data:ff ff ff ff ff ff ff ff 
++007.217240::PGN:61184 P:6 SA:71 DA:0 Len:8 Data:f2 20 61 f ff ff ff ff 
++007.218398::PGN:61446 P:6 SA:71 DA:255 Len:8 Data:ff cf ff ff ff ff ff ff 
++007.219559::PGN:64991 P:7 SA:71 DA:255 Len:8 Data:fc ff ff ff ff ff ff ff 
++007.220719::PGN:0 P:0 SA:50 DA:0 Len:104 Data:7d ff ff ff 40 28 0 10 68 28 0 10 f9 ff ff ff 70 28 0 10 b4 37 0 10 13 0 0 0 7c 28 0 10 13 0 0 0 13 0 0 0 6e c 0 0 68 28 0 10 8 0 0 0 ac 30 0 10 df fd 0 0 b4 37 0 10 64 e 13 0 c0 0 10 4 0 fd df ff 47 7 fc ff ff ff ff ff ff ff ce f5 8 1 0 28 6 0 ef 4 64 15 1c f0 0 0 1 f 
++007.238984::PGN:65536 P:0 SA:0 DA:0 Len:115 Data:70 28 0 10 b4 37 0 10 73 0 0 0 7c 28 0 10 73 0 0 0 74 0 0 0 6e c 0 0 68 28 0 10 68 0 0 0 ac 30 0 10 0 0 0 0 b4 37 0 10 64 e 13 0 c0 0 70 4 0 0 0 0 32 0 7d ff ff ff 40 28 0 10 68 28 0 10 f9 ff ff ff 70 28 0 10 b4 37 0 10 13 0 0 0 7c 28 0 10 13 0 0 0 13 0 0 0 6e c 0 0 68 28 0 4 f0 c f0 ff 7d 
++007.240095::PGN:0 P:4 SA:124 DA:40 Len:110 Data:7e 0 0 0 7f 0 0 0 6e c 0 0 68 28 0 10 73 0 0 0 ac 30 0 10 0 0 1 0 b4 37 0 10 64 e 13 0 c0 0 7b 4 1 0 0 0 0 0 70 28 0 10 b4 37 0 10 73 0 0 0 7c 28 0 10 73 0 0 0 74 0 0 0 6e c 0 0 68 28 0 10 68 0 0 0 ac 30 0 10 0 0 0 0 b4 37 0 10 64 e 13 0 c0 0 70 4 0 0 0 0 32 0 0 3 
++007.241205::PGN:0 P:4 SA:104 DA:40 Len:0 Data:
++007.242301::PGN:0 P:4 SA:180 DA:55 Len:0 Data:
++007.243373::PGN:1280 P:0 SA:180 DA:4 Len:0 Data:
++007.244475::PGN:29440 P:0 SA:0 DA:16 Len:1 Data:0 
++007.245584::PGN:25600 P:3 SA:0 DA:16 Len:0 Data:
++007.261583::PGN:0 P:4 SA:112 DA:40 Len:124 Data:b4 37 0 10 73 0 0 0 7c 28 0 10 73 0 0 0 74 0 0 0 6e c 0 0 68 28 0 10 68 0 0 0 ac 30 0 10 0 0 0 0 b4 37 0 10 64 e 13 0 c0 0 70 4 0 0 0 0 32 0 0 3 47 6 ef d 1 4 ff ff ff ff ff f1 8 1 0 0 3 6 ef d 1 1 ff ff ff ff ff f5 8 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 4 4 0 0 0 0 c0 0 5 5 a5 69 5a 8e 
++007.262759::PGN:256 P:1 SA:239 DA:13 Len:0 Data:
++007.263915::PGN:65792 P:0 SA:239 DA:13 Len:0 Data:
++007.265070::PGN:0 P:0 SA:0 DA:0 Len:0 Data:
++007.266228::PGN:0 P:0 SA:4 DA:4 Len:90 Data:0 0 c0 0 5 5 a5 69 5a 8e 71 0 3 6 ef d 1 1 ff ff ff ff ff f5 8 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 5 5 0 0 0 0 c0 0 5 5 a5 69 5a 8e c0 0 3 f 2 ec c0 0 5 1 10 0 0 ea 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
++007.267399::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++007.282824::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1d f0 0 0 1 f 
++007.283979::PGN:65534 P:3 SA:6 DA:255 Len:8 Data:5c 3 1e 3 1e ff ff ff 
++007.285134::PGN:65531 P:6 SA:6 DA:255 Len:8 Data:0 5 7d f8 ff ff ff ff 
++007.286292::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++007.287454::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff c2 ff 
++007.288614::PGN:0 P:4 SA:72 DA:40 Len:55 Data:7c 28 0 10 0 0 0 0 37 0 0 0 37 0 0 0 8 0 40 a bf c 0 0 96 b 0 0 0 0 0 81 70 28 0 10 b4 37 0 10 13 0 0 0 7c 28 0 10 13 0 0 0 13 0 0 
++007.306624::PGN:0 P:4 SA:209 DA:55 Len:114 Data:8 0 40 a db c 0 0 72 d 0 0 0 0 0 1 70 28 0 10 b4 37 0 10 42 0 0 0 7c 28 0 10 42 0 0 0 42 0 0 0 56 c 0 0 68 28 0 10 37 0 0 0 ac 30 0 10 0 0 0 0 b4 37 0 10 ff 0 0 ff c0 0 3f 4 0 0 0 28 48 4 7c 28 0 10 0 0 0 0 37 0 0 0 37 0 0 0 8 0 40 a bf c 0 0 96 b 0 0 0 0 0 81 70 28 0 10 
++007.307751::PGN:65536 P:0 SA:0 DA:0 Len:125 Data:70 28 0 10 b4 37 0 10 7d 0 0 0 7c 28 0 10 7d 0 0 0 7f 0 0 0 74 c 0 0 68 28 0 10 72 0 0 0 ac 30 0 10 0 0 0 0 b4 37 0 10 ff 0 0 ff c0 0 7a 4 0 0 0 37 d1 4 8 0 40 a db c 0 0 72 d 0 0 0 0 0 1 70 28 0 10 b4 37 0 10 42 0 0 0 7c 28 0 10 42 0 0 0 42 0 0 0 56 c 0 0 68 28 0 10 37 0 0 0 ac 30 0 10 0 0 0 0 b4 37 0 
++007.328185::PGN:0 P:4 SA:124 DA:40 Len:116 Data:88 0 0 0 8a 0 0 0 74 c 0 0 68 28 0 10 7d 0 0 0 ac 30 0 10 0 0 1 0 b4 37 0 10 ff 0 0 ff c0 0 85 4 1 0 0 0 0 0 70 28 0 10 b4 37 0 10 7d 0 0 0 7c 28 0 10 7d 0 0 0 7f 0 0 0 74 c 0 0 68 28 0 10 72 0 0 0 ac 30 0 10 0 0 0 0 b4 37 0 10 ff 0 0 ff c0 0 7a 4 0 0 0 37 d1 4 8 0 40 a db c 0 0 
++007.329360::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 11 f0 0 0 1 f 
++007.330517::PGN:0 P:4 SA:180 DA:55 Len:0 Data:
++007.331673::PGN:66816 P:5 SA:180 DA:4 Len:8 Data:11 f0 0 0 1 f 6c ff 
++007.332788::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++007.333873::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++007.334990::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++007.336086::PGN:61184 P:6 SA:0 DA:255 Len:8 Data:64 10 b b 20 3 0 7d 
++007.337193::PGN:65271 P:6 SA:0 DA:255 Len:8 Data:ff ff ff ff ff ff f6 0 
++007.338298::PGN:126720 P:3 SA:71 DA:6 Len:8 Data:1 4 ff ff ff ff ff f1 
++007.339398::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++007.340502::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 12 f0 0 0 1 f 
++007.350664::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++007.351845::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++007.353002::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++007.354160::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++007.355319::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 13 f0 0 0 1 f 
++007.356476::PGN:65097 P:3 SA:71 DA:255 Len:8 Data:ff ff ff ff ff ff ff ff 
++007.357633::PGN:0 P:4 SA:181 DA:55 Len:120 Data:8 0 40 a db c 0 0 78 d 0 0 0 0 0 1 0 0 ff ff b4 37 0 10 13 0 0 0 7c 28 0 10 13 0 0 0 13 0 0 0 8 1 0 0 68 28 0 10 8 0 0 0 ac 30 0 10 49 fe 0 0 b4 37 0 10 ff 0 0 ff c0 0 10 4 0 fe 49 ff 47 3 ff ff ff ff ff ff ff ff 64 ff 8 1 0 28 0 4 f0 c f0 ff 7d 0 0 ff ff ff 8 1 0 37 0 3 f0 c ff 0 0 ff b ff ff ff 
++007.373199::PGN:65536 P:0 SA:0 DA:0 Len:131 Data:70 28 0 10 b4 37 0 10 83 0 0 0 7c 28 0 10 83 0 0 0 85 0 0 0 56 c 0 0 68 28 0 10 78 0 0 0 ac 30 0 10 0 0 0 0 b4 37 0 10 ff 0 0 ff c0 0 80 4 0 0 0 37 b5 4 8 0 40 a db c 0 0 78 d 0 0 0 0 0 1 0 0 ff ff b4 37 0 10 13 0 0 0 7c 28 0 10 13 0 0 0 13 0 0 0 8 1 0 0 68 28 0 10 8 0 0 0 ac 30 0 10 49 fe 0 0 b4 37 0 10 ff 0 0 ff c0 
++007.374325::PGN:0 P:4 SA:124 DA:40 Len:86 Data:8e 0 0 0 91 0 0 0 56 c 0 0 0 4 f0 c f0 ff 7d 0 0 ff ff ff 8 1 0 0 0 3 f0 c ff 0 0 ff b ff ff ff 8 1 0 0 0 ff ef c 64 6 0 7d ff ff ff ff 8 1 0 28 0 10 83 0 0 0 85 0 0 0 56 c 0 0 68 28 0 10 78 0 0 0 ac 30 0 10 
++007.375485::PGN:0 P:4 SA:104 DA:40 Len:0 Data:
++007.376639::PGN:0 P:4 SA:180 DA:55 Len:0 Data:
++007.377795::PGN:1280 P:0 SA:180 DA:4 Len:0 Data:
++007.394922::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++007.396079::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 14 f0 0 0 1 f 
++007.397201::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++007.398290::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++007.399409::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++007.400502::PGN:65266 P:6 SA:0 DA:255 Len:8 Data:0 0 ff ff ff ff ff ff 
++007.401611::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++007.402717::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 15 f0 0 0 1 f 
++007.403818::PGN:65265 P:6 SA:71 DA:255 Len:8 Data:ff 0 0 ff ff ff ff ff 
++007.404924::PGN:61445 P:6 SA:3 DA:255 Len:8 Data:7d ff ff ff ff ff ff ff 
++007.406028::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++007.407176::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++007.408333::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++007.409491::PGN:61184 P:6 SA:0 DA:6 Len:8 Data:64 e 27 0 ff ff ff ff 
++007.410606::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++007.411753::PGN:61184 P:1 SA:6 DA:0 Len:19 Data:64 15 16 f0 b4 37 0 10 13 0 0 0 7c 28 0 10 13 0 0 
++007.412915::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++007.421775::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++007.422928::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++007.424087::PGN:61184 P:6 SA:0 DA:255 Len:8 Data:64 10 b b 20 3 0 7d 
++007.425245::PGN:65237 P:6 SA:0 DA:255 Len:8 Data:ff ff fc ff ff ff ff ff 
++007.426401::PGN:126720 P:3 SA:71 DA:6 Len:8 Data:1 4 ff ff ff ff ff f1 
++007.427558::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++007.428678::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 17 f0 0 0 1 f 
++007.429765::PGN:65534 P:3 SA:6 DA:255 Len:8 Data:5c 3 1e 3 1e ff ff ff 
++007.431005::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++007.434295::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++007.435405::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++007.436514::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++007.437621::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 18 f0 0 0 1 f 
++007.438736::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++007.460420::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++007.461533::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++007.462649::PGN:64947 P:6 SA:0 DA:255 Len:8 Data:ff ff 64 25 ff ff ff ff 
++007.463746::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++007.464877::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 19 f0 0 0 1 f 
++007.465983::PGN:0 P:4 SA:124 DA:40 Len:8 Data:13 0 0 0 13 0 0 0 
++007.467087::PGN:0 P:4 SA:104 DA:40 Len:0 Data:
++007.468189::PGN:0 P:4 SA:180 DA:55 Len:0 Data:
++007.469291::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++007.476109::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++007.477267::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++007.478425::PGN:65266 P:6 SA:0 DA:255 Len:8 Data:0 0 ff ff ff ff ff ff 
++007.479586::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++007.480744::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1a f0 0 0 1 f 
++007.481858::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++007.500922::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++007.502082::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++007.503242::PGN:61184 P:6 SA:0 DA:6 Len:8 Data:64 e 31 0 ff ff ff ff 
++007.504402::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++007.505557::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1b f0 0 0 1 f 
++007.506716::PGN:65265 P:6 SA:71 DA:255 Len:8 Data:ff 0 0 ff ff ff ff ff 
++007.507873::PGN:61445 P:6 SA:3 DA:255 Len:8 Data:7d ff ff ff ff ff ff ff 
++007.509030::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++007.520490::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++007.521655::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++007.522822::PGN:61184 P:6 SA:0 DA:255 Len:8 Data:64 10 b b 20 3 0 7d 
++007.523984::PGN:65247 P:6 SA:0 DA:255 Len:8 Data:7d 2 1e ff ff ff ff ff 
++007.525090::PGN:0 P:4 SA:180 DA:55 Len:0 Data:
++007.526210::PGN:1280 P:0 SA:180 DA:4 Len:8 Data:1e ff ff ff ff ff 72 f5 
++007.527323::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1c f0 0 0 1 f 
++007.528446::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++007.546114::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++007.547211::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++007.548334::PGN:65263 P:6 SA:0 DA:255 Len:8 Data:ff ff ff 0 ff ff ff fa 
++007.549456::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++007.550578::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1d f0 0 0 1 f 
++007.551685::PGN:65097 P:3 SA:71 DA:255 Len:8 Data:ff ff ff ff ff ff ff ff 
++007.552807::PGN:65535 P:3 SA:71 DA:255 Len:8 Data:5d ff ff f3 ff ff ff ff 
++007.553916::PGN:65091 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++007.555036::PGN:65092 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++007.556155::PGN:65534 P:3 SA:6 DA:255 Len:8 Data:5c 3 1e 3 1e ff ff ff 
++007.557250::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++007.558369::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++007.559467::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++007.560589::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++007.561683::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1e f0 0 0 1 f 
++007.562777::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++007.580507::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++007.581626::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++007.582746::PGN:65266 P:6 SA:0 DA:255 Len:8 Data:0 0 ff ff ff ff ff ff 
++007.583865::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++007.584984::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1f f0 0 0 1 f 
++007.586103::PGN:65265 P:6 SA:71 DA:255 Len:8 Data:ff 0 0 ff ff ff ff ff 
++007.587222::PGN:61445 P:6 SA:3 DA:255 Len:8 Data:7d ff ff ff ff ff ff ff 
++007.588340::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++007.596071::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++007.597230::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++007.598350::PGN:61184 P:6 SA:0 DA:6 Len:8 Data:64 e 3b 0 ff ff ff ff 
++007.599510::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++007.600667::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 10 f0 0 0 1 f 
++007.601826::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++007.622267::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++007.623369::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++007.624477::PGN:61184 P:6 SA:0 DA:255 Len:8 Data:64 10 b b 20 3 0 7d 
++007.625583::PGN:65270 P:6 SA:0 DA:255 Len:8 Data:ff 0 40 ff 0 ff ff ff 
++007.626696::PGN:0 P:4 SA:124 DA:40 Len:8 Data:13 0 0 0 13 0 0 0 
++007.627844::PGN:0 P:4 SA:104 DA:40 Len:0 Data:
++007.628999::PGN:0 P:4 SA:180 DA:55 Len:0 Data:
++007.630154::PGN:1280 P:0 SA:180 DA:4 Len:8 Data:0 0 13 0 0 0 1e ff 
++007.631313::PGN:65535 P:6 SA:6 DA:255 Len:8 Data:73 ff ff ff ff ff ff ff 
++007.632444::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++007.633591::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++007.634714::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++007.635861::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++007.637017::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 12 f0 0 0 1 f 
++007.640465::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++007.641621::PGN:65535 P:7 SA:23 DA:255 Len:8 Data:22 ff ff 3c ff ff ff ff 
++007.664118::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++007.665253::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++007.666410::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++007.667569::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 13 f0 0 0 1 f 
++007.668726::PGN:65097 P:3 SA:71 DA:255 Len:8 Data:ff ff ff ff ff ff ff ff 
++007.669882::PGN:64991 P:7 SA:71 DA:255 Len:8 Data:fc ff ff ff ff ff ff ff 
++007.671042::PGN:65091 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++007.672203::PGN:65092 P:3 SA:71 DA:255 Len:19 Data:0 0 ff ff b4 37 0 10 13 0 0 0 7c 28 0 10 13 0 0 
++007.673363::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++007.674523::PGN:0 P:4 SA:104 DA:40 Len:4 Data:8 0 0 0 
++007.675682::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++007.676841::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++007.677998::PGN:65266 P:6 SA:0 DA:255 Len:8 Data:0 0 ff ff ff ff ff ff 
++007.679157::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++007.680312::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 14 f0 0 0 1 f 
++007.681468::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++007.703607::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++007.704729::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++007.705848::PGN:61184 P:6 SA:0 DA:6 Len:8 Data:64 e 45 0 ff ff ff ff 
++007.706968::PGN:65269 P:6 SA:0 DA:255 Len:8 Data:c7 ff ff ff ff 3b ff ff 
++007.708087::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++007.709205::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 15 f0 0 0 1 f 
++007.710325::PGN:65265 P:6 SA:71 DA:255 Len:8 Data:ff 0 0 ff ff ff ff ff 
++007.711443::PGN:61446 P:6 SA:71 DA:255 Len:8 Data:ff cf ff ff ff ff ff ff 
++007.712566::PGN:61445 P:6 SA:3 DA:255 Len:8 Data:7d ff ff ff ff ff ff ff 
++007.713689::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++007.716974::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++007.718094::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++007.719191::PGN:61184 P:6 SA:0 DA:255 Len:8 Data:64 10 b b 20 3 0 7d 
++007.720313::PGN:126720 P:3 SA:71 DA:6 Len:8 Data:1 4 ff ff ff ff ff f1 
++007.721433::PGN:0 P:4 SA:180 DA:55 Len:1 Data:1 
++007.722551::PGN:65792 P:0 SA:180 DA:4 Len:8 Data:64 15 16 f0 0 0 1 f 
++007.723670::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++007.743605::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++007.744764::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++007.745922::PGN:65129 P:6 SA:0 DA:255 Len:8 Data:3c 25 e4 24 ff ff 60 fe 
++007.747082::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++007.748187::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 17 f0 0 0 1 f 
++007.749289::PGN:65097 P:3 SA:71 DA:255 Len:8 Data:ff ff ff ff ff ff ff ff 
++007.750394::PGN:65091 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++007.751514::PGN:65092 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++007.752622::PGN:65534 P:3 SA:6 DA:255 Len:8 Data:5c 3 1e 3 1e ff ff ff 
++007.753729::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++007.754859::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++007.756015::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++007.757171::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++007.758328::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 18 f0 0 0 1 f 
++007.760629::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++007.761785::PGN:65247 P:6 SA:0 DA:255 Len:8 Data:7d 2 1e ff ff ff ff ff 
++007.781122::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++007.782229::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++007.783328::PGN:65266 P:6 SA:0 DA:255 Len:8 Data:0 0 ff ff ff ff ff ff 
++007.784436::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++007.785542::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 19 f0 0 0 1 f 
++007.786642::PGN:65265 P:6 SA:71 DA:255 Len:8 Data:ff 0 0 ff ff ff ff ff 
++007.787790::PGN:61445 P:6 SA:3 DA:255 Len:8 Data:7d ff ff ff ff ff ff ff 
++007.788946::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++007.795818::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++008.-203025::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++008.-201865::PGN:61184 P:6 SA:0 DA:6 Len:8 Data:64 e 4f 0 ff ff ff ff 
++008.-200707::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++008.-199550::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1a f0 0 0 1 f 
++008.-198392::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++008.-179305::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++008.-178182::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++008.-177062::PGN:61184 P:6 SA:0 DA:255 Len:8 Data:64 10 b b 20 3 0 7d 
++008.-175944::PGN:126720 P:3 SA:71 DA:6 Len:8 Data:1 4 ff ff ff ff ff f1 
++008.-174825::PGN:126720 P:3 SA:3 DA:6 Len:19 Data:1 1 ff ff b4 37 0 10 13 0 0 0 6 0 ef 4 64 15 1b 
++008.-173705::PGN:0 P:4 SA:124 DA:40 Len:8 Data:1e 0 0 0 1e 0 0 0 
++008.-172586::PGN:0 P:4 SA:104 DA:40 Len:0 Data:
++008.-171468::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++008.-165917::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++008.-164798::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++008.-163679::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++008.-162562::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1c f0 0 0 1 f 
++008.-161410::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++008.-137839::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++008.-136680::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++008.-135522::PGN:64892 P:6 SA:0 DA:255 Len:8 Data:f8 80 f1 f0 0 df 3 fc 
++008.-134363::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++008.-133202::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1d f0 0 0 1 f 
++008.-132042::PGN:65097 P:3 SA:71 DA:255 Len:8 Data:ff ff ff ff ff ff ff ff 
++008.-130884::PGN:65091 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++008.-129728::PGN:65092 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++008.-128568::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++008.-124017::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++008.-122918::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++008.-121811::PGN:65266 P:6 SA:0 DA:255 Len:8 Data:0 0 ff ff ff ff ff ff 
++008.-120714::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++008.-119607::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1e f0 0 0 1 f 
++008.-118502::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++008.-99122::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++008.-97962::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++008.-96801::PGN:61184 P:6 SA:0 DA:6 Len:8 Data:64 e 59 0 ff ff ff ff 
++008.-95642::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++008.-94484::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1f f0 0 0 1 f 
++008.-93302::PGN:65265 P:6 SA:71 DA:255 Len:8 Data:ff 0 0 ff ff ff ff ff 
++008.-92181::PGN:61445 P:6 SA:3 DA:255 Len:8 Data:7d ff ff ff ff ff ff ff 
++008.-91095::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++008.-75367::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++008.-74209::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++008.-73047::PGN:61184 P:6 SA:0 DA:255 Len:8 Data:64 10 b b 20 3 0 7d 
++008.-71888::PGN:126720 P:3 SA:71 DA:6 Len:8 Data:1 4 ff ff ff ff ff f1 
++008.-70728::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++008.-69570::PGN:0 P:0 SA:50 DA:0 Len:72 Data:64 15 10 f0 20 28 0 10 48 28 0 10 f9 ff ff ff 7c 28 0 10 f5 0 0 0 1 0 0 0 11 0 0 0 8 0 40 a bf c 0 0 94 b 0 0 0 0 0 81 0 0 ff ff b4 37 0 10 13 0 0 0 7c 28 0 10 13 0 0 0 13 0 0 0 
++008.-68400::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++008.-58186::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++008.-57093::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++008.-55972::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++008.-54852::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 11 f0 0 0 1 f 
++008.-53758::PGN:65097 P:3 SA:71 DA:255 Len:8 Data:ff ff ff ff ff ff ff ff 
++008.-52640::PGN:130819 P:7 SA:71 DA:255 Len:8 Data:ff ff ff ff ff ff 64 ff 
++008.-51496::PGN:65092 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++008.-50338::PGN:65534 P:3 SA:6 DA:255 Len:8 Data:5c 3 1e 3 1e ff ff ff 
++008.-49178::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++008.-42305::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++008.-41148::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++008.-39989::PGN:64947 P:6 SA:0 DA:255 Len:8 Data:ff ff 64 25 ff ff ff ff 
++008.-38831::PGN:61184 P:7 SA:0 DA:255 Len:8 Data:64 7 0 0 ff ff ff ff 
++008.-37674::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++008.-36515::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 12 f0 0 0 1 f 
++008.-35357::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++008.-18516::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++008.-17355::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++008.-16198::PGN:65266 P:6 SA:0 DA:255 Len:8 Data:0 0 ff ff ff ff ff ff 
++008.-15040::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++008.-13882::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 13 f0 0 0 1 f 
++008.-12720::PGN:65265 P:6 SA:71 DA:255 Len:19 Data:ff 0 0 ff b4 37 0 10 13 0 0 0 7c 28 0 10 13 0 0 
++008.-11559::PGN:0 P:4 SA:124 DA:40 Len:8 Data:1e 0 0 0 1e 0 0 0 
++008.-10401::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++008.-04699::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++008.-03543::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++008.-02384::PGN:61184 P:6 SA:0 DA:6 Len:8 Data:64 e 63 0 ff ff ff ff 
++008.-01243::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++008.-00083::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 14 f0 0 0 1 f 
++008.001073::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++008.022438::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++008.023595::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++008.024753::PGN:61184 P:6 SA:0 DA:255 Len:8 Data:64 10 b b 20 3 0 7d 
++008.025909::PGN:65247 P:6 SA:0 DA:255 Len:8 Data:7d 2 1e ff ff ff ff ff 
++008.027066::PGN:126720 P:3 SA:71 DA:6 Len:8 Data:1 4 ff ff ff ff ff f1 
++008.028225::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++008.029385::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 15 f0 0 0 1 f 
++008.030541::PGN:65534 P:3 SA:6 DA:255 Len:8 Data:5c 3 1e 3 1e ff ff ff 
++008.031698::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++008.036182::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++008.037289::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++008.038387::PGN:65263 P:6 SA:0 DA:255 Len:8 Data:ff ff ff 0 ff ff ff fa 
++008.039492::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++008.040620::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 16 f0 0 0 1 f 
++008.041725::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++008.062243::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++008.063405::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++008.064563::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++008.065721::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 17 f0 0 0 1 f 
++008.066880::PGN:65097 P:3 SA:71 DA:255 Len:8 Data:ff ff ff ff ff ff ff ff 
++008.067973::PGN:65535 P:3 SA:71 DA:255 Len:8 Data:5d ff ff f3 ff ff ff ff 
++008.069087::PGN:65091 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++008.070185::PGN:65092 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++008.071293::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++008.075729::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++008.076887::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++008.078044::PGN:65266 P:6 SA:0 DA:255 Len:8 Data:0 0 ff ff ff ff ff ff 
++008.079203::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++008.080360::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 18 f0 0 0 1 f 
++008.081485::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++008.101865::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++008.102978::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++008.104084::PGN:61184 P:6 SA:0 DA:6 Len:8 Data:64 e 6d 0 ff ff ff ff 
++008.105191::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++008.106295::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 19 f0 0 0 1 f 
++008.107444::PGN:91136 P:5 SA:6 DA:1 Len:8 Data:19 f0 0 0 1 f 64 ff 
++008.108602::PGN:65531 P:6 SA:6 DA:255 Len:8 Data:0 1b ff ff ff ff ff ff 
++008.109759::PGN:61445 P:6 SA:3 DA:255 Len:8 Data:7d ff ff ff ff ff ff ff 
++008.110918::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++008.121192::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++008.122356::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++008.123490::PGN:61184 P:6 SA:0 DA:255 Len:8 Data:64 10 b b 20 3 0 7d 
++008.124604::PGN:65270 P:6 SA:0 DA:255 Len:8 Data:ff 0 40 ff 0 ff ff ff 
++008.125709::PGN:126720 P:3 SA:71 DA:6 Len:8 Data:1 4 ff ff ff ff ff f1 
++008.126855::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++008.128012::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1a f0 0 0 1 f 
++008.129167::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++008.145987::PGN:61184 P:6 SA:0 DA:250 Len:8 Data:64 1 ff 0 0 ff ff ff 
++008.147147::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++008.148304::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++008.149462::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++008.150623::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1b f0 0 0 1 f 
++008.151782::PGN:0 P:4 SA:124 DA:40 Len:8 Data:13 0 0 0 13 0 0 0 
++008.152939::PGN:0 P:4 SA:104 DA:40 Len:0 Data:
++008.154096::PGN:0 P:4 SA:180 DA:55 Len:0 Data:
++008.155250::PGN:1280 P:0 SA:180 DA:4 Len:8 Data:0 0 13 0 0 0 1e ff 
++008.156407::PGN:65092 P:3 SA:71 DA:255 Len:8 Data:0 0 ff ff 3f ff ff ff 
++008.157563::PGN:65534 P:3 SA:6 DA:255 Len:8 Data:5c 3 1e 3 1e ff ff ff 
++008.158678::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++008.159835::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++008.160994::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++008.162151::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++008.163244::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1c f0 0 0 1 f 
++008.164352::PGN:61444 P:3 SA:0 DA:255 Len:8 Data:f0 ff 7d 0 0 ff ff ff 
++008.189811::PGN:61443 P:3 SA:0 DA:255 Len:8 Data:ff 0 0 ff b ff ff ff 
++008.190962::PGN:61184 P:3 SA:0 DA:255 Len:8 Data:64 6 0 7d ff ff ff ff 
++008.192119::PGN:65266 P:6 SA:0 DA:255 Len:8 Data:0 0 ff ff ff ff ff ff 
++008.193277::PGN:126720 P:3 SA:3 DA:6 Len:8 Data:1 1 ff ff ff ff ff f5 
++008.194400::PGN:61184 P:1 SA:6 DA:0 Len:8 Data:64 15 1d f0 0 0 1 f 
++008.195487::PGN:65535 P:3 SA:71 DA:255 Le
