@@ -58,7 +58,7 @@ int main(int argc, char * argv[]){
    strcpy(sCOMPort, COMPORT);
    COM1939_Initialize(&sCOMPort[0]);
    COM1939_SendMessageMode(MSGMODE_GATEWAY2);
-
+   COM1939_AddFilter(0x100000); // allow all PGNs
    if(bCommunicationError == false)
    {
    printf("COM Port Init OK. %s\n\r", sPort);
@@ -87,7 +87,7 @@ int main(int argc, char * argv[]){
             tm.tm_mon+1,tm.tm_mday,(tm.tm_hour>12)?tm.tm_hour-12:tm.tm_hour,tm.tm_min);
    }
    outFile = fopen(fileName,"w+");
-   //outFile = fopen(fileName,O_TRUNC|O_WRONLY|O_CREAT,S_IRUSR|S_IWUSR);
+   setvbuf(outFile, NULL, _IOLBF, BUFSIZ);
    if(outFile==NULL){
       perror(NULL);
       exit(EXIT_FAILURE);
