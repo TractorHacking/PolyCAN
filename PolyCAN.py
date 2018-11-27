@@ -46,6 +46,7 @@ def show_log(docs, name):
 #This can be uncommented once all entrys in the known table contain a pgn and desription.
 #        e = entry.to_dict()
 #        known[e['pgn']] = e['description']
+        pass
     data = []
     x = 1
     for doc in docs:
