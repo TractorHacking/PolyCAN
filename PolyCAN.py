@@ -37,14 +37,15 @@ def get_statistics(pgn, log):
 def compare_logs(log1, log2):
     pass
 
+
+
 def show_log(docs, name):
     k = db.collection(u'known').get()
     known = {}
-
     for entry in k:
+#This can be uncommented once all entrys in the known table contain a pgn and desription.
 #        e = entry.to_dict()
 #        known[e['pgn']] = e['description']
-        pass
     data = []
     x = 1
     for doc in docs:
@@ -89,8 +90,6 @@ def find_log():
             print("No logs found. Press 3 to import a log file.")
             main_menu()
         print("")
-
-        
         choice = int(input(input_prompt))
         if (choice == "0"):
             return
@@ -107,13 +106,12 @@ def import_log():
     if len(path) <= 4:
         print("Error, Invalid File Name")
         return
-
-    db.collection(u'logs').document(path[:-4]).set({u'model': '5055E'})
     x = 0
     try:
         with open(path, newline='') as csvfile:
             log = csv.DictReader(csvfile)
             doc_ref = db.collection(u'logs').document(path[:-4]).collection('log')
+            db.collection(u'logs').document(path[:-4]).set({u'model': '5055E'})
             print("\nUploading " + path[:-4] + "...") 
             for line in tqdm(log):
                 line_ref = doc_ref.document(line['time'])
