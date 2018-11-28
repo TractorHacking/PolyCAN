@@ -6,8 +6,7 @@ import collections
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin  import firestore
-import google.cloud.exceptions
-
+from google.cloud.exceptions import NotFound
 input_prompt = ""
 
 # Use a service account
@@ -22,12 +21,38 @@ name = 'Example'
 def detail_view(entry):
     print("Feature not yet implemented\n")
     return
-
-# To Do: Add a search by pgn functionality
+def get_pgn_descr(pgn, srcaddr, priority):
+    print("Test")
+    print('pgn: %s, src: %s, priority: %s' % pgn, scraddr, priority)
+    known = db.collection(u'known')
+    same_pgn = known.where(u'pgn', '==', pgn)
+    same_pgn_src = same_pgn.where(u'source', '==', srcaddr)
+    same_id_ref = same_pgn_src.where(u'priority', '==', priority)
+    try:
+        same_id = same_id_ref.get()
+        return next(same_id).to_dict()['description']
+    except NotFound or ValueError:
+        return None
+     
 def find_pgn():
-    print("Feature not yet implemented\n")
-    return
-
+    pgn = input("Please enter PGN or 'q' to return to main menu: ")
+    if pgn == 'q':
+        return
+    known = db.collection(u'known').where(u'pgn', u'==', pgn).get()
+    list_known = [x for x in known]
+    len_known = len(list_known)
+    if len_known == 0:
+        print('Error: unknown PGN \'{}\'. Please try again.\n'.format(pgn))
+        return find_pgn()
+    print("Found %d known CAN bus IDs:" % len_known)
+    for record in list_known:
+        recdict = record.to_dict()
+        print(u'{rid}:'.format(rid=record.id))
+        print(u'\tPGN:\t{}'.format(recdict['pgn']))
+        print(u'\tSource Address:\t{}'.format(recdict['source']))
+        print(u'\tPriority:\t{}'.format(recdict['priority']))
+        print(u'\tDescription:\t{}\n------------------'.format(recdict['description']))
+    return find_pgn()
 # To Do: Find the mean and variance of dT for a given pgn
 def get_statistics(pgn, log):
     pass
@@ -37,23 +62,15 @@ def get_statistics(pgn, log):
 def compare_logs(log1, log2):
     pass
 
-
-
 def show_log(docs, name):
-    k = db.collection(u'known').get()
-    known = {}
-    for entry in k:
-#This can be uncommented once all entrys in the known table contain a pgn and desription.
-#        e = entry.to_dict()
-#        known[e['pgn']] = e['description']
-        pass
     data = []
     x = 1
     for doc in docs:
         d = doc.to_dict()
         dlist = [d['time'], d['pgn'], d['priority'], d['source'], d['destination']]
-        if d['pgn'] in known:
-            dlist.append(known[d['pgn']]['description'])
+        pgn_descr = get_pgn_descr(d['pgn'], d['source'], d['priority'])
+        if not (pgn_descr == None):
+            dlist.append(pgn_descr)
         else:
             dlist.append("Unknown")
         dlist.append(d['data'])
@@ -130,10 +147,9 @@ def import_log():
     except FileNotFoundError:
         print("Error. File not found.")
         
-
 def main_menu():
     while(1):
-        print("\n1. Find Log\n2. Find PGN\n3. Import Log\n4. Exit\n")
+        print("\n1. Open Log\n2. Find PGN\n3. Import Log\n4. Exit\n")
         choice = input(input_prompt)
         if (choice == "1"):
             find_log()
