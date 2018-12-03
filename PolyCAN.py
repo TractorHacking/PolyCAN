@@ -50,8 +50,6 @@ def find_pgn():
         print(u'\tPriority:\t{}'.format(recdict['priority']))
         print(u'\tDescription:\t{}\n------------------'.format(recdict['description']))
     return find_pgn()
-def sort_by_pgn():
-    log = db.collection(u'logs'). 
 # To Do: Find the mean and variance of dT for a given pgn
 def get_statistics(pgn, log):
     pass
@@ -114,17 +112,16 @@ def find_log():
             target_log = db.collection(u'logs').document(log_names[choice-1]).collection(u'log').order_by("time").get()
             show_log(target_log, name=log_names[choice-1])
             while(1):
-                choice = input("1. Sort by PGN\n2. Entry detailed view\n3. Open another log\n4. Main menu\n\n")
-                if choice == "1":
-                sort_by_pgn(db.collection(u'logs').document(log_names[choice-1]).collection(u'log'))
-            elif choice == "2":
-                choice = input("Enter entry number: ")
-                detail_view(choice)
-            elif choice == "3"
-                find_log()
-            elif choice == "4"
-                return
-	
+                choice2 = input("1. Sort by PGN\n2. Entry detailed view\n3. Open another log\n4. Main menu\n\n")
+                if choice2 == "1":
+                    target_log = db.collection(u'logs').document(log_names[choice-1]).collection(u'log').order_by(u'pgn').get()
+                    show_log(target_log, name=log_names[choice-1])
+                elif choice2 == "2":
+                    choice2 = input("Enter entry number: ")
+                elif choice2 == "3":
+                    find_log()
+                elif choice2 == "4":
+                    return
         else:
             print("Error. Enter an integer between 0 and " + str(x))        
        
