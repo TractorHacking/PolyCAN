@@ -17,13 +17,10 @@ firebase_admin.initialize_app(cred)
 db = firestore.client()
 name = 'Example'
 
-# To Do: Add a detail view for known packets
 def detail_view(entry):
     print("Feature not yet implemented\n")
     return
 def get_pgn_descr(pgn, srcaddr, priority):
-    print("Test")
-    print('pgn: %s, src: %s, priority: %s' % pgn, scraddr, priority)
     known = db.collection(u'known')
     same_pgn = known.where(u'pgn', '==', pgn)
     same_pgn_src = same_pgn.where(u'source', '==', srcaddr)
@@ -31,7 +28,7 @@ def get_pgn_descr(pgn, srcaddr, priority):
     try:
         same_id = same_id_ref.get()
         return next(same_id).to_dict()['description']
-    except NotFound or ValueError:
+    except:
         return None
      
 def find_pgn():
@@ -53,6 +50,8 @@ def find_pgn():
         print(u'\tPriority:\t{}'.format(recdict['priority']))
         print(u'\tDescription:\t{}\n------------------'.format(recdict['description']))
     return find_pgn()
+def sort_by_pgn():
+    log = db.collection(u'logs'). 
 # To Do: Find the mean and variance of dT for a given pgn
 def get_statistics(pgn, log):
     pass
@@ -114,7 +113,18 @@ def find_log():
         elif (choice > 0 and choice <= len(log_names)):
             target_log = db.collection(u'logs').document(log_names[choice-1]).collection(u'log').order_by("time").get()
             show_log(target_log, name=log_names[choice-1])
-            return
+            while(1):
+                choice = input("1. Sort by PGN\n2. Entry detailed view\n3. Open another log\n4. Main menu\n\n")
+                if choice == "1":
+                sort_by_pgn(db.collection(u'logs').document(log_names[choice-1]).collection(u'log'))
+            elif choice == "2":
+                choice = input("Enter entry number: ")
+                detail_view(choice)
+            elif choice == "3"
+                find_log()
+            elif choice == "4"
+                return
+	
         else:
             print("Error. Enter an integer between 0 and " + str(x))        
        
