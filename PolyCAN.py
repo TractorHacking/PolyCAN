@@ -3,6 +3,7 @@ from tabulate import tabulate
 import csv
 import sys
 import collections
+import numpy as np
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin  import firestore
@@ -18,65 +19,39 @@ firebase_admin.initialize_app(cred)
 db = firestore.client()
 name = 'Example'
 
-# To Do: Add a detail view for known packets
-def detail_view(entry):
-    print("Feature not yet implemented\n")
-    return
-
-# To Do: Add a search by pgn functionality
-def find_pgn():
-    print("Feature not yet implemented\n")
-    return
-
 # To Do: Find the mean and variance of dT for a given pgn
 def get_statistics(pgn, log):
     pass
 #    return {"mean": mean, "variance": variance}
 
-# To Do: Compare logs 
-def compare_logs(log1, log2):
+# To Do: Add a detail view for known packets
+def detail_view(pgn, data):
+    print(data)
     pass
+#This function allows the user to search all known pgns for a specific entry
+def find_pgn():
+    pgn = input("\nPlease enter PGN or 'q' to return to main menu: ")
+    if pgn == 'q':
+        return
+    known = db.collection(u'known').where(u'pgn', u'==', pgn).get()
+    list_known = [x for x in known]
+    len_known = len(list_known)
+    if len_known == 0:
+        print('\nError: unknown PGN \'{}\'. Please try again.\n'.format(pgn))
+        return find_pgn()
+    print("\nFound %d known CAN bus IDs:" % len_known)
+    for record in list_known:
+        recdict = record.to_dict()
+        print(u'{rid}:'.format(rid=record.id))
+        print(u'\tPGN:\t{}'.format(recdict['pgn']))
+        print(u'\tSource Address:\t{}'.format(recdict['source']))
+        print(u'\tPriority:\t{}'.format(recdict['priority']))
+        print(u'\tDescription:\t{}\n------------------'.format(recdict['description']))
+    return find_pgn()
 
-
-
-def show_log(docs, name):
-    k = db.collection(u'known').get()
-    known = {}
-    for entry in k:
-#This can be uncommented once all entrys in the known table contain a pgn and desription.
-#        e = entry.to_dict()
-#        known[e['pgn']] = e['description']
-        pass
-    data = []
-    x = 1
-    for doc in docs:
-        d = doc.to_dict()
-        dlist = [d['time'], d['pgn'], d['priority'], d['source'], d['destination']]
-        if d['pgn'] in known:
-            dlist.append(known[d['pgn']]['description'])
-        else:
-            dlist.append("Unknown")
-        dlist.append(d['data'])
-        # Add packet to data
-        data.append(dlist)
-    #Print all data using tabluate
-    print("")
-    print(tabulate(data, headers=["time","pgn", "prty", "src", "dest", "description", "data" ], showindex = True, tablefmt = "pipe"))
-    print("")
-    return
-
-    while(1):
-        cmd = input("PolyCAN> ")
-        if (cmd == 'quit'):
-            main_menu()
-        elif (cmd == 'help'):
-            print("\nType a pgn to get more information about the data it contains\nType 'quit' to return to the main menu\n")
-        elif cmd in known:
-            print(known)
-        else:
-            print("Error, PGN not found.\n")
-       
-def find_log():
+# This function gets the name of all logs in database
+# It prompts the user to select one and returns a list containing [target_log, name] 
+def prompt_log():
     while(1):
         logs = db.collection(u'logs').get()
         x = 1
@@ -89,18 +64,108 @@ def find_log():
             x+=1
         if len(log_names) == 0:
             print("No logs found. Press 3 to import a log file.")
-            main_menu()
+            return main_menu()
         print("")
         choice = int(input(input_prompt))
-        if (choice == "0"):
-            return
+        if (choice == 0):
+            return -1
         elif (choice > 0 and choice <= len(log_names)):
             target_log = db.collection(u'logs').document(log_names[choice-1]).collection(u'log').order_by("time").get()
-            show_log(target_log, name=log_names[choice-1])
+            return [target_log, log_names[choice-1]]
+        else:
+            print("Error. Enter an integer between 0 and " + str(x-1))        
+
+#This function takes the name of the log to be filtered and allows the user to select filter options
+#It queries the database with the filter configuration and displays the filtered list using show_log
+def filter_log(name):
+    while(1):
+        choice = input("\n1. By PGN\n2. Using Log Mask\n3. Remove Filter\n4. Main menu\n\n")
+        if choice == "1":
+            user_pgn = input("Enter a PGN: ")
+#            target_log = assemble_log(db.collection(u'logs').document(name).collection(u'log').where(u'pgn', u'==', int(user_pgn)).order_by(u'time').get()
+            return show_log(target_log, name)
+        elif choice == "2":
+            print("Choose a mask log:\n")
+            mask_data = prompt_log()
+            if (mask_data != -1): 
+                mask_log = assemble_log(mask_data[0], mask_data[1])  
+                target_log = db.collection(u'logs').document(name).collection(u'log').order_by(u'time').get().to_dict()
+                for entry in mask_log:
+                    target_log[:] = [d for d in target_log if ((d['pgn'] != mask_log['pgn']) and (d['data'] != mask_log['data']))]
+                return show_log(target_log, name)
+            
+            print("Error\n")
+            return
+        elif choice == "3":
+            target_log = db.collection(u'logs').document(name).collection(u'log').order_by(u'time').get()
+        elif choice == "4":
             return
         else:
-            print("Error. Enter an integer between 0 and " + str(x))        
-       
+            print("Error. Enter an integer between 1 and 5\n")
+
+def print_log(data):
+    #Print all data using tabluate
+    print("")
+    print(tabulate(data, headers=["time","pgn", "prty", "src", "dest", "description", "data" ], showindex = True, tablefmt = "pipe"))
+    print("")
+
+    while(1):
+        choice2 = input("1. Filter\n2. Sort by PGN\n3. Get entry information\n4. Open another log\n5. Main menu\n\n")
+        if choice2 == "1":
+            return filter_log(name)
+        elif choice2 == "2":
+            #Fetch a log ordered by pgn
+            target_log = db.collection(u'logs').document(name).collection(u'log').order_by(u'pgn').get()
+            return show_log(target_log, name)
+        elif choice2 == "3":
+            choice2 = input("Enter entry number: ")
+            samePNG = []
+            detail_view(data[int(choice2)][1], data[int(choice2)][6])
+            
+        elif choice2 == "4":
+            return find_log()
+        elif choice2 == "5":
+            return
+        else:
+            print("Error. Enter an integer between 1 and 5\n")
+
+#This function gets known packet data and tags all the packets in the log
+#It then tabulates the data and displays to the user
+#This function then allows the user to choose analysis options
+def assemble_log(docs, name):
+    k = db.collection(u'known').get()
+    known = {}
+    for entry in k:
+        e = entry.to_dict()
+        known[e['pgn']] = e['description']
+    data = []
+    sorted_data = {}
+    x = 1
+    for doc in docs:
+        d = doc.to_dict()
+        dlist = [d['time'], d['pgn'], d['priority'], d['source'], d['destination']]
+        if (d['pgn'] in sorted_data):
+            sorted_data[d['pgn']].append(int(d['data'].replace(" ", ""), 16))
+        else:
+            sorted_data[d['pgn']] = [int(d['data'].replace(" ", ""), 16)]
+
+        if int(d['pgn']) in known:
+            dlist.append(known[int(d['pgn'])])
+        else:
+            dlist.append("Unknown")
+        dlist.append(d['data'])
+        # Add packet to data
+        data.append(dlist)
+    return data
+#This function just forwards the info from prompt_log to show_log
+def find_log():
+    log_info = prompt_log()
+    if (log_info != -1): 
+        print_log(assemble_log(log_info[0], log_info[1]))
+        
+    return
+
+#This function allows the user to add a csv log to the database
 def import_log():
     batch = db.batch()
     path = input("\nEnter file path: ")
@@ -109,17 +174,18 @@ def import_log():
         return
     x = 0
     try:
-        with open(path, newline='') as csvfile:
+        with open("logs/"+path, newline='') as csvfile:
             log = csv.DictReader(csvfile)
             doc_ref = db.collection(u'logs').document(path[:-4]).collection('log')
             db.collection(u'logs').document(path[:-4]).set({u'model': '5055E'})
             print("\nUploading " + path[:-4] + "...") 
             for line in tqdm(log):
+                print(line['pgn'])
                 line_ref = doc_ref.document(line['time'])
-                batch.set(line_ref,{ u'pgn': int(line['pgn'], 16),
-                                     u'destination': int(line['destination'], 16),
-                                     u'source': int(line['source'], 16),
-                                     u'priority': int(line['source'], 16),
+                batch.set(line_ref,{ u'pgn': int(line['pgn'], 10),
+                                     u'destination': int(line['destination'], 10),
+                                     u'source': int(line['source'], 10),
+                                     u'priority': int(line['source'], 10),
                                      u'time': float(line['time']),
                                      u'data': line['data']
                                      })
@@ -132,6 +198,13 @@ def import_log():
         
 
 def main_menu():
+    print(
+        "   ___       __     ________   _  __\n"
+        "  / _ \___  / /_ __/ ___/ _ | / |/ /\n"
+        " / ___/ _ \/ / // / /__/ __ |/    / \n"
+        "/_/   \___/_/\_, /\___/_/ |_/_/|_/  \n"
+        "            /___/                   \n")
+
     while(1):
         print("\n1. Find Log\n2. Find PGN\n3. Import Log\n4. Exit\n")
         choice = input(input_prompt)
@@ -144,13 +217,8 @@ def main_menu():
         elif (choice == "4"):
             sys.exit()
         else:
-            print("Error. Enter an integer between 1 and 3")
+            print("Error. Enter an integer between 1 and 5")
 
-print(
-"   ___       __     ________   _  __\n"
-"  / _ \___  / /_ __/ ___/ _ | / |/ /\n"
-" / ___/ _ \/ / // / /__/ __ |/    / \n"
-"/_/   \___/_/\_, /\___/_/ |_/_/|_/  \n"
-"            /___/                   \n")
 
+# Main
 main_menu()
