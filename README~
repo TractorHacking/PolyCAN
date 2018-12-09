@@ -1,4 +1,4 @@
 This is the files the PolyCAN group has created for there work towards our final goal of understanding the John Deere CAN bus
 To install the program, run the following:
 
-pip install git+https://github.com/Morgan-Swanson/CPCAN.git
+pip install git+https://github.com/Morgan-Swanson/polycan@v1.0
