@@ -137,7 +137,7 @@ def assemble_log(docs, name):
     known = {}
     for entry in k:
         e = entry.to_dict()
-        known[e['pgn']] = e['description']
+        known[int(e['pgn'])] = e['description']
     data = []
     sorted_data = {}
     x = 1
