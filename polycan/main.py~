@@ -1,0 +1,28 @@
+import sys
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin  import firestore
+import google.cloud.exceptions
+
+def main:
+    print(
+        "   ___       __     ________   _  __\n"
+        "  / _ \___  / /_ __/ ___/ _ | / |/ /\n"
+        " / ___/ _ \/ / // / /__/ __ |/    / \n"
+        "/_/   \___/_/\_, /\___/_/ |_/_/|_/  \n"
+        "            /___/                   \n")
+    
+    input_prompt = ""
+    known = get_known()
+    current_log = []
+    log_cache = []
+    main_menu()
+    
+    # Use a service account
+    cred = credentials.Certificate('secret.json')
+    firebase_admin.initialize_app(cred)
+    
+    # Get Database
+    db = firestore.client()
+
+    main_menu()
