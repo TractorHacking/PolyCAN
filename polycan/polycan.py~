@@ -38,7 +38,7 @@ def log_menu():
 def main_menu():
     while(1):
         print("\n1. Find Log\n2. Find PGN\n3. Import Log\n4. Exit\n")
-        choice = input(input_prompt)
+        choice = input('')
         if (choice == "1"):
             switch_log()
             log_menu()

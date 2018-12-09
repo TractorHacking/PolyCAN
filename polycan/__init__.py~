@@ -1,13 +1,12 @@
 import firebase_admin
 from firebase_admin import credentials
-from firebase_admin  import firestore
+from firebase_admin import firestore
 import google.cloud.exceptions
 
+print("Initializing.../n")
+# Use the application default credentials
 cred = credentials.Certificate('secret.json')
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 input_prompt = ""
-known = {}
-from .log_handler import get_known
-known = get_known()
-print(known)
+print("Initialized\n")
