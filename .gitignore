@@ -4,5 +4,5 @@ setup.py~
 polycan/log_handler.py~
 polycan/main.py~
 .gitignore~
-polycan.egg_info/
+polycan.egg_info
 polycan/__pycache__/main.cpython-36.pyc
