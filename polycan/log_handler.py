@@ -199,7 +199,6 @@ def switch_log(log_name = '', data = '', filter = 'none', filter_arg = '', sort 
 
     # Get the data for that log
     if data == '':
-        print('switching...' + filter)
         data = get_log(log_name, sort, filter, filter_arg)
 
     # If we are filtering by log
