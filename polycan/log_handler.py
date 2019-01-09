@@ -55,19 +55,34 @@ def print_pgn(known, data)
     print(u'\tPDU Format:\t{}'.format(record['pdu_format']))
     print(u'\tPDU Specific:\t{}'.format(record['pdu_specific']))
     print(u'\tDefault Priority:\t{}'.format(record['default_priority']))
-    print('\n\tStart Position\tLength\tParameter Name\tSPN\n')
-    params = record['parameters'].to_dict()
+    print('\nStart Position\tLength\tParameter Name\tSPN')
+    params = record.document(u'parameters').get().to_dict()
+
+    if data != '':
+        print('\tValue')
+        values = param_values(data, record['data_length'], params)
+
     for parameter in params:
-        print(u'{}\t'.format(parameter['start_pos']))
+        print(u'\n{}\t'.format(parameter['start_pos']))
         print(u'{}\t'.format(parameter['length']))
-        print(u'{}\n'.format(parameter['param_name']))
+        print(u'{}'.format(parameter['param_name']))
+        if data != '':
+            
+        
     if data != '':
         param_values(data, record['data_length'], params)
 
 def param_values(data, length, params):
-    byte_list = []
-    for i in range(0, length):
-        byte_list.append(int(data[i 
+    values = {}
+    byte_list = data.split(" ")
+    # 0 - MSB
+    for parameter in params:
+        start_pos = parameter['start_pos']
+        field_len = parameter['length']
+        param_name = parameter['param_name']
+        
+        
+    
 
 # This function gets the name of all logs in database
 # It prompts the user to select one and returns the chosen name 
