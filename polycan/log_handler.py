@@ -24,79 +24,50 @@ def detail_view(line = []):
         line_data = current_data[line]
         get_pgn(line_data[1], line_data[2], line_data[3], line_data[4], line_data[6])
     return
-# This function facilitates display of pgn information
+
 def get_pgn(pgn = '', priority = '',  source = '', destination = '', data = ''):
-    # Prompt user for pgn
     if pgn == '':
         pgn = input("\nPlease enter PGN or 'q' to return to the log menu: ")
         if pgn == 'q':
             print('\n')
             return
-    # Get the entries for that pgn
     known = find_pgn(pgn, priority, source, destination)
-    # Print entries
-    print_pgn(known, pgn, data)
-    return
+    if len(known) > 0:
+        print_pgn(known, data)
 
-# This function fetches list of known pgns based on input parameters
 def find_pgn(pgn, priority = '',  source = '', destination = ''):
-    known_ref = db.collection(u'known').where(u'pgn', u'==', str(pgn))
-    known = known_ref.get()
-    list_known = []
-    for entry in known:
-        x = entry.to_dict()
-#        if (source == '' or source == x['source'] 
- #           and priority == '' or priority == x['priority']):
-        data_breakdown = db.collection(u'known').document(entry.id).collection('data_breakdown').get()
-        data_list = []
-        for field in data_breakdown:
-            data_list.append(field.to_dict())
-        x['data_breakdown'] = data_list
-    list_known.append(x)
-    return list_known
-
-#This function prints a pgn entry list
-def print_pgn(list_known, pgn = '', data = ''):
-    len_known = len(list_known)
-    if len_known == 0:
+    entry_dict = {}
+    entry_ref = db.collection(u'known').document(pgn)
+    try:
+        entry = entry_ref.get()
+        entry_dict = entry.to_dict()
+    except:
         print('\nError: unknown PGN \'{}\'. Please try again.\n'.format(pgn))
-        return find_pgn()
-#    print("\nFound %d known CAN bus IDs:\n" % len_known)
-    print('\n-----------------------------------------')
-    for record in list_known:
-        print(u'{}'.format(record['pgn']))
-        print(u'\tSource Address:\t{}'.format(record['source']))
-        print(u'\tPriority:\t{}'.format(record['priority']))
-        print(u'\tDescription:\t{}'.format(record['description']))
-        if ( 'data_breakdown' in record and record['data_breakdown'] != []):
-            print('\n\tData Breakdown:')
-            data_breakdown = record['data_breakdown']
-            if (data != ''):
-                n = int(data.replace(" ", "")[::-1], 16)
-            for parameter in data_breakdown:
-                #print(u'\t\t{}'.format(parameter['description']))
-                if (data != ''):
-                    '''
-                    start = int(parameter['start_bit'])
-                    end = int(parameter['end_bit'])
-                    size = int(parameter['size'])
-                    d = (n >> (end-1))
-                    onesmask = ~0
-                    mask = onesmask << size
-                    finalmask = ~mask
-                    d = ~(d & mask)
-                    '''
-                    offset = int(parameter['offset'])
-                    size = int(parameter['size'])
-                    d = rshift(~n, offset) & ((2 ** size) - 1)
-                    
-                else:
-                    d = ''
-                print(u'\t {}:\t{}'.format(parameter['description'],d))
-        print('\n-----------------------------------------')
-    print('\n')
-    return
+    return entry_dict
 
+def print_pgn(known, data)
+    print('\n-----------------------------------------')
+    print(u'{}'.format(record['pgn']))
+    print(u'{}'.format(record['description']))
+    print(u'\tData Length:\t{}'.format(record['data_length']))
+    print(u'\tExtended Data Page:\t{}'.format(record['edp']))
+    print(u'\tData Page:\t{}'.format(record['dp']))
+    print(u'\tPDU Format:\t{}'.format(record['pdu_format']))
+    print(u'\tPDU Specific:\t{}'.format(record['pdu_specific']))
+    print(u'\tDefault Priority:\t{}'.format(record['default_priority']))
+    print('\n\tStart Position\tLength\tParameter Name\tSPN\n')
+    params = record['parameters'].to_dict()
+    for parameter in params:
+        print(u'{}\t'.format(parameter['start_pos']))
+        print(u'{}\t'.format(parameter['length']))
+        print(u'{}\n'.format(parameter['param_name']))
+    if data != '':
+        param_values(data, record['data_length'], params)
+
+def param_values(data, length, params):
+    byte_list = []
+    for i in range(0, length):
+        byte_list.append(int(data[i 
 
 # This function gets the name of all logs in database
 # It prompts the user to select one and returns the chosen name 
