@@ -65,24 +65,70 @@ def print_pgn(known, data)
     for parameter in params:
         print(u'\n{}\t'.format(parameter['start_pos']))
         print(u'{}\t'.format(parameter['length']))
-        print(u'{}'.format(parameter['param_name']))
+        print(u'{}\t'.format(parameter['param_name']))
         if data != '':
-            
-        
-    if data != '':
-        param_values(data, record['data_length'], params)
+            print(u'\t{}'.format(values['param_name']))
+        print('\n')
 
 def param_values(data, length, params):
     values = {}
     byte_list = data.split(" ")
-    # 0 - MSB
+    for i in range(0, length):
+        byte_list[i] = int(byte_list[i])
+
+    # byte_list[0] - MSB
     for parameter in params:
         start_pos = parameter['start_pos']
-        field_len = parameter['length']
+        field_len = int(parameter['length'][:-1])
         param_name = parameter['param_name']
-        
-        
-    
+
+        values[param_name] = 0 
+
+        boundaries = start_pos.split("-")
+        start = []
+        end = []
+        if len(boundaries) == 1:
+        #within the byte
+            start = boundaries[0].split(".")
+            if len(start) == 1:
+            #whole byte
+                values[param_name] = byte_list[int(start[0])]
+            else:
+            #fraction of byte
+                values[param_name] = byte_list[int(start[0])] >> int(start[1]) 
+                values[param_name] = values[param_name] & ~(255 << field_len)
+        else:
+        #across byte boundary
+            start = boundaries[0].split(".")
+            end = boundaries[1].split(".")
+
+            #integer byte length: X-Y (> 1 byte)
+            if len(boundaries[0]) == 1 and len(boundaries[1]) == 1:
+                for i in range(int(start[0]), int(end[0])+1):
+                    values[param_name] += (byte_list[i] << 8*(i-int(start[0])))
+
+            #fractional byte across byte boundary: X.x - Y (> 1 byte)
+            if len(boundaries[0]) > 1 and len(boundaries[1]) == 1:
+                for i in range(int(start[0])+1, int(end[0])+1):
+                    values[param_name] += (byte_list[i] << 8*(i-int(start[0])-1))
+
+                values[param_name] = (values[param_name] << (8-int(start[1])+1)) + \
+                (byte_list[int(start[0])] >> (int(start[1])-1))
+
+            #fractional byte across byte boundary: X - Y.y (> 1 byte)
+            if len(boundaries[0]) == 1 and len(boundaries[1]) > 1:
+                for i in range(int(start[0]), int(end[0])):
+                    values[param_name] += (byte_list[i] << 8*(i-int(start[0])))
+
+                values[param_name] += ((byte_list[int(end[0])] >> (int(end[1])-1)) & \
+                ~(255 << field_len % 8))
+
+            #fractional byte across byte boundary: X.x - Y.y            
+            if len(boundaries[0]) > 1 and len(boundaries[1]) > 1:
+                values[param_name] = byte_list[int(start[0])] >> (int(start[1])-1)
+                values[param_name] += ((byte_list[int(end[0])] >> (int(end[1])-1)) & \
+                ~(255 << field_len-(8-int(start[1])+1))) << (field_len - (8-int(start[1])+1))
+    return values
 
 # This function gets the name of all logs in database
 # It prompts the user to select one and returns the chosen name 
