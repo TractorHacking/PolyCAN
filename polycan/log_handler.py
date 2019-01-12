@@ -100,6 +100,7 @@ def get_pgn(pgn = '', data = ''):
         print('\nError: unknown PGN \'{}\'. Please try again.\n'.format(pgn))
 
 def print_pgn(pgn, data):
+
     record = known[pgn]
     info = record[0]
     params = record[1]
@@ -112,6 +113,7 @@ def print_pgn(pgn, data):
     print('\tPDU Format: {0:15d}'.format(info['pdu_format']))
     print('\tPDU Specific: {0:13d}'.format(info['pdu_specific']))
     print('\tDefault Priority: {0:9d}'.format(info['default_priority']))
+
     if data != '':
         print('\tData: {0:21s}'.format(data))
     print('\nStart Position\tLength\tParameter Name\tSPN', end = '')
@@ -191,6 +193,7 @@ def param_values(data, length, params):
 
 # This function gets the name of all logs in database
 # It prompts the user to select one and returns the chosen name 
+
 def prompt_log():
     while(1):
         logs = db.collection(u'logs').get()
@@ -316,8 +319,6 @@ def switch_log(log_name = '', data = '', filter = 'none', filter_arg = '', sort 
         if (len(log_cache) > 3):
             log_cache.remove()
         log_cache.append(log_name
-                   
-   
    '''
 # Populate list of known   
 def get_known():
@@ -362,4 +363,3 @@ def import_log():
     
     return
 
-known = get_known() 
