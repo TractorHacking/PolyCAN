@@ -17,58 +17,117 @@ def get_statistics(pgn, log):
 #    return {"mean": mean, "variance": variance}
 
 # To Do: Add a detail view for known packets
-def detail_view(line = []):
-    if line == []:
+def param_values(data, length, params):
+    values = {}
+    byte_list = data[1:-1].split(" ")
+    for i in range(0, length):
+        byte_list[i] = int(byte_list[i], 16)
+    byte_list.reverse()
+    byte_list.insert(0, 0)
+    # byte_list[8] - MSB, [1] - LSB
+    for key,value in params.items():
+        start_pos = value['start_pos']
+        field_len = int(value['length'][:-1])
+        param_name = value['param_name']
+
+        values[param_name] = 0
+
+        boundaries = start_pos.split("-")
+        start = []
+        end = []
+        if len(boundaries) == 1:
+        #within the byte
+            start = boundaries[0].split(".")
+            if len(start) == 1:
+            #whole byte
+                values[param_name] = byte_list[int(start[0])]
+            else:
+            #fraction of byte
+                values[param_name] = byte_list[int(start[0])] >> (int(start[1])-1)
+                values[param_name] = values[param_name] & ~(255 << field_len)
+        else:
+        #across byte boundary
+            start = boundaries[0].split(".")
+            end = boundaries[1].split(".")
+
+            #integer byte length: X-Y (> 1 byte)
+            if len(boundaries[0]) == 1 and len(boundaries[1]) == 1:
+                for i in range(int(start[0]), int(end[0])+1):
+                    values[param_name] += (byte_list[i] << 8*(i-int(start[0])))
+
+            #fractional byte across byte boundary: X.x - Y (> 1 byte)
+            if len(boundaries[0]) > 1 and len(boundaries[1]) == 1:
+                for i in range(int(start[0])+1, int(end[0])+1):
+                    values[param_name] += (byte_list[i] << 8*(i-int(start[0])))
+
+                values[param_name] = values[param_name] >> (int(start[1])-1)
+                values[param_name] += (byte_list[int(start[0])] >> (int(start[1])-1))
+            #fractional byte across byte boundary: X - Y.y (> 1 byte)
+            if len(boundaries[0]) == 1 and len(boundaries[1]) > 1:
+                for i in range(int(start[0]), int(end[0])):
+                    values[param_name] += (byte_list[i] << 8*(i-int(start[0])))
+
+                values[param_name] += ((byte_list[int(end[0])] >> (int(end[1])-1)) & \
+                ~(255 << field_len % 8)) << (8*(int(end[0])-int(start[0])))
+
+            #fractional byte across byte boundary: X.x - Y.y            
+            if len(boundaries[0]) > 1 and len(boundaries[1]) > 1:
+                remaining = field_len - (8-int(start[1])+1)
+                values[param_name] = byte_list[int(start[0])] >> (int(start[1])-1)
+                values[param_name] += ((byte_list[int(end[0])] >> (int(end[1])-1)) & \
+                ~(255 << remaining)) << 8-int(start[1])+1
+    return values
+
+def detail_view(line = -1):
+    if line == -1:
         get_pgn()
     else:
-        line_data = current_data[line]
-        get_pgn(line_data[1], line_data[2], line_data[3], line_data[4], line_data[6])
+        if line > len(current_data)-1:
+            print("Number out of bounds")
+            return
+        get_pgn(current_data[line][1], current_data[line][6])
     return
 
-def get_pgn(pgn = '', priority = '',  source = '', destination = '', data = ''):
+def get_pgn(pgn = '', data = ''):
     if pgn == '':
         pgn = input("\nPlease enter PGN or 'q' to return to the log menu: ")
         if pgn == 'q':
             print('\n')
             return
-    known = find_pgn(pgn, priority, source, destination)
-    if len(known) > 0:
-        print_pgn(known, data)
-
-def find_pgn(pgn, priority = '',  source = '', destination = ''):
-    entry_dict = {}
-    entry_ref = db.collection(u'known').document(pgn)
-    try:
-        entry = entry_ref.get()
-        entry_dict = entry.to_dict()
-    except:
+    if int(pgn) in known:
+        print_pgn(int(pgn), data)
+    else:
         print('\nError: unknown PGN \'{}\'. Please try again.\n'.format(pgn))
-    return entry_dict
 
-def print_pgn(known, data)
+def print_pgn(pgn, data):
+    record = known[pgn]
+    info = record[0]
+    params = record[1]
     print('\n-----------------------------------------')
-    print(u'{}'.format(record['pgn']))
-    print(u'{}'.format(record['description']))
-    print(u'\tData Length:\t{}'.format(record['data_length']))
-    print(u'\tExtended Data Page:\t{}'.format(record['edp']))
-    print(u'\tData Page:\t{}'.format(record['dp']))
-    print(u'\tPDU Format:\t{}'.format(record['pdu_format']))
-    print(u'\tPDU Specific:\t{}'.format(record['pdu_specific']))
-    print(u'\tDefault Priority:\t{}'.format(record['default_priority']))
-    print('\nStart Position\tLength\tParameter Name\tSPN')
-    params = record.document(u'parameters').get().to_dict()
+    print('{}'.format(info['pgn']))
+    print('{}'.format(info['description']))
+    print('\tData Length: {0:14d}'.format(info['data_length']))
+    print('\tExtended Data Page: {0:7d}'.format(info['edp']))
+    print('\tData Page: {0:16d}'.format(info['dp']))
+    print('\tPDU Format: {0:15d}'.format(info['pdu_format']))
+    print('\tPDU Specific: {0:13d}'.format(info['pdu_specific']))
+    print('\tDefault Priority: {0:9d}'.format(info['default_priority']))
+    if data != '':
+        print('\tData: {0:21s}'.format(data))
+    print('\nStart Position\tLength\tParameter Name\tSPN', end = '')
 
     if data != '':
         print('\tValue')
-        values = param_values(data, record['data_length'], params)
+        pdata = param_values(data, int(info['data_length']), params)
+    else:
+        print()
 
-    for parameter in params:
-        print(u'\n{}\t'.format(parameter['start_pos']))
-        print(u'{}\t'.format(parameter['length']))
-        print(u'{}\t'.format(parameter['param_name']))
+    for key,value in params.items():
+        print("%-*s %-*s %s" % (15, value['start_pos'], 7, value['length'], value['param_name']), \
+        end = '')
         if data != '':
-            print(u'\t{}'.format(values['param_name']))
-        print('\n')
+            print(10*' ' + "%d" % (pdata[value['param_name']]), end='')
+        print()
 
 def param_values(data, length, params):
     values = {}
@@ -214,10 +273,12 @@ def get_log(log_name, sort, filter_field = '', filter_data = ''):
         d = doc.to_dict()
         dlist = [d['time'], d['pgn'], d['priority'], d['source'], d['destination']]
         if d['pgn'] in known:
-            dlist.append(known[d['pgn']])
+            dlist.append(known[d['pgn']][0]['name'])
         else:
             dlist.append("Unknown")
-        dlist.append(d['data'])
+        if len(d['data']) > 30:
+            dlist.append(d['data'][:24] + "...")
+        else: dlist.append(d['data'])
         # Add packet to data
         data.append(dlist)
     return data
@@ -260,12 +321,14 @@ def switch_log(log_name = '', data = '', filter = 'none', filter_arg = '', sort 
    '''
 # Populate list of known   
 def get_known():
-    known_ref = db.collection(u'known').get()
-    known = {}
-    for entry in known_ref:
-        e = entry.to_dict()
-        known[int(e['pgn'])] = e['description']
-    return known
+    collection_ref = db.collection(u'known')
+    collection = db.collection(u'known').get()
+    for pgn in collection:
+        params_dict = {}
+        params = collection_ref.document(pgn.id).collection(u'parameters').get()
+        for param in params:
+            params_dict[param.id] = param.to_dict()
+        known[int(pgn.id)] = [pgn.to_dict(), params_dict]
 
 #This function allows the user to add a csv log to the database
 def import_log():

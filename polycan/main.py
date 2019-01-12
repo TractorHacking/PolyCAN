@@ -30,7 +30,6 @@ def sort_menu():
 # This function is a submenu for log options
 def log_menu():
     while(1):
-        
         choice2 = input("\nLog Menu\n 1. Filter Log\n 2. Sort Log\n 3. Analyze Data\n 4. Open another log\n 5. Main menu\n\n")
         if choice2 == "1":
             filter_menu()
