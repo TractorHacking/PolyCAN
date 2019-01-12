@@ -131,66 +131,6 @@ def print_pgn(pgn, data):
             print(10*' ' + "%d" % (pdata[value['param_name']]), end='')
         print()
 
-def param_values(data, length, params):
-    values = {}
-    byte_list = data.split(" ")
-    for i in range(0, length):
-        byte_list[i] = int(byte_list[i])
-
-    # byte_list[0] - MSB
-    for parameter in params:
-        start_pos = parameter['start_pos']
-        field_len = int(parameter['length'][:-1])
-        param_name = parameter['param_name']
-
-        values[param_name] = 0 
-
-        boundaries = start_pos.split("-")
-        start = []
-        end = []
-        if len(boundaries) == 1:
-        #within the byte
-            start = boundaries[0].split(".")
-            if len(start) == 1:
-            #whole byte
-                values[param_name] = byte_list[int(start[0])]
-            else:
-            #fraction of byte
-                values[param_name] = byte_list[int(start[0])] >> int(start[1]) 
-                values[param_name] = values[param_name] & ~(255 << field_len)
-        else:
-        #across byte boundary
-            start = boundaries[0].split(".")
-            end = boundaries[1].split(".")
-
-            #integer byte length: X-Y (> 1 byte)
-            if len(boundaries[0]) == 1 and len(boundaries[1]) == 1:
-                for i in range(int(start[0]), int(end[0])+1):
-                    values[param_name] += (byte_list[i] << 8*(i-int(start[0])))
-
-            #fractional byte across byte boundary: X.x - Y (> 1 byte)
-            if len(boundaries[0]) > 1 and len(boundaries[1]) == 1:
-                for i in range(int(start[0])+1, int(end[0])+1):
-                    values[param_name] += (byte_list[i] << 8*(i-int(start[0])-1))
-
-                values[param_name] = (values[param_name] << (8-int(start[1])+1)) + \
-                (byte_list[int(start[0])] >> (int(start[1])-1))
-
-            #fractional byte across byte boundary: X - Y.y (> 1 byte)
-            if len(boundaries[0]) == 1 and len(boundaries[1]) > 1:
-                for i in range(int(start[0]), int(end[0])):
-                    values[param_name] += (byte_list[i] << 8*(i-int(start[0])))
-
-                values[param_name] += ((byte_list[int(end[0])] >> (int(end[1])-1)) & \
-                ~(255 << field_len % 8))
-
-            #fractional byte across byte boundary: X.x - Y.y            
-            if len(boundaries[0]) > 1 and len(boundaries[1]) > 1:
-                values[param_name] = byte_list[int(start[0])] >> (int(start[1])-1)
-                values[param_name] += ((byte_list[int(end[0])] >> (int(end[1])-1)) & \
-                ~(255 << field_len-(8-int(start[1])+1))) << (field_len - (8-int(start[1])+1))
-    return values
-
 # This function gets the name of all logs in database
 # It prompts the user to select one and returns the chosen name 
 
@@ -216,13 +156,11 @@ def prompt_log():
             return log_names[choice-1]
         else:
             print("Error. Enter an integer between 0 and " + str(x-1))        
-
 #This function takes the name of the log to be filtered and allows the user to select filter options
 #It queries the database with the filter configuration and displays the filtered list using show_log
 def filter_log(filter, term):
     switch_log(log_name = current_log, filter = filter, filter_arg = term)
     return
-
 '''
 #This function gets known packet data and tags all the packets in the log
 #It then tabulates the data and displays to the user
@@ -262,7 +200,6 @@ def print_log(data):
     print("")
     print(tabulate(data, headers=["time","pgn", "prty", "src", "dest", "description", "data" ], showindex = True, tablefmt = "pipe"))
     print("")
-
 
 # This function downloads a log from database and returns a list
 def get_log(log_name, sort, filter_field = '', filter_data = ''):
@@ -360,6 +297,4 @@ def import_log():
             print("Uploaded", x-2, "lines.")
     except FileNotFoundError:
         print("Error. File not found.")
-    
     return
-

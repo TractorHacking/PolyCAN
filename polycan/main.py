@@ -69,5 +69,5 @@ def main_menu():
     
 
 def main():
-
+    get_known()
     main_menu()
