@@ -8,7 +8,7 @@ setup(name='polycan',
       author_email='msswanso@calpoly.edu',
       license='Open Source',
       packages=['polycan'],
-      install_requires=['tqdm','firebase-admin', 'tabulate', 'grpc'],
+      install_requires=['tqdm','firebase-admin', 'tabulate', 'grpcio'],
       zip_safe=False,
       entry_points={
         'console_scripts': [
