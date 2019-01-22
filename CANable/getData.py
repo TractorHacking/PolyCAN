@@ -6,6 +6,7 @@ class Packet:
     def __init__(self):
        pass
     def initFromCanUtils(self,line):
+        print(line)
         #This info is not known so put in default
         self.error = 0 
         self.remoteTrRequest = 0 
@@ -13,16 +14,16 @@ class Packet:
         self.flags     =  0
         self.padding     = 0
 
-        line = line.split()
-        self.time = float(line[0][1:-1])
-        pkt = line[2]
-        pkt.split('#')
+        spline = line.split()
+        self.time = float(spline[0][1:-1])
+        pkt = spline[2]
+        pkt = pkt.split('#')
 
-        print("can_id:")
-        print(pkt[0])
-        self.can_id  = hex(pkt[0])
-        self.data    = hex(pkt[1]) 
-        self.d_len   = len(pkt[1])/2 
+        self.can_id  = int(pkt[0],16)
+        print(pkt[1])
+        self.data    = int(pkt[1],16) 
+        print(self.data)
+        self.d_len   = int(len(pkt[1])/2) 
 
         self.priority = (self.can_id & 0x1C000000) >> 26 
         self.pf      = (self.can_id & 0xFF0000)  >> 16  
@@ -58,12 +59,20 @@ class Packet:
         self.sa      = self.can_id & 0xFF
         print(self)
          
+    def turnHexToStr(hexV,bytesLen):
+        tempV = hexV;
+        string = ''
+        for i in range(bytesLen):
+            val = hexV & 0xFF
+            hexV >> 8
+            string += format(val,'02X') + ' '
+        return string
+
+
     def toCSV(self):
-        string = self.time
+        string = str(self.time)
         string += ' , '
         string = str(self.pgn)
-        string += ' , '
-        string = self.time
         string += ' , '
         string += str(self.da)
         string += ' , '
@@ -71,12 +80,12 @@ class Packet:
         string += ' , '
         string += str(self.priority)
         string += ' , '
-        string += " ".joint(["{:02X}".format(x) for x in self.da])
+        string += Packet.turnHexToStr(self.da,self.d_len)
         string += "\n"
 
     def __str__(self):
-        string =  "Packet:"
-        string += "Time:"
+        string =  "Packet:\n"
+        string += "Time:\t\t\t"
         string += str(self.time)
         string += "\nError:\t\t\t"
         string += str(self.error)
@@ -95,8 +104,8 @@ class Packet:
         string += '\t('+str(self.sa)+')'
         string += "\npriority:\t\t"
         string += str(self.priority)
-        string += "\nData:\t\t\t"
-        string += str(self.da)
+        string += "\nData(" + str(self.d_len)+"):\t\t"
+        string += str(self.data)
         string += "\n"
         return string 
 
@@ -113,8 +122,6 @@ def listenForPkts():
    len = d  & 0x0F0000000000000000000000
 
 
-print("starting!\n")
-print(len(sys.argv))
 if(len(sys.argv)==1):
    #no argumnets so listen for packets
    listenForPkts()
@@ -127,6 +134,6 @@ for file in sys.argv[1:]:
    for line in lines:
       p = Packet()
       p.initFromCanUtils(line)
-      print(p.toCSV)
+      print(p.toCSV())
 
 
