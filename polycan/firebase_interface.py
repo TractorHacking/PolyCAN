@@ -40,13 +40,13 @@ def import_log():
             db.collection(u'logs').document(path[:-4]).set({u'model': '5055E'})
             print("\nUploading " + path[:-4] + "...") 
             for line in tqdm(log):
-                line_ref = doc_ref.document(line['time'])
-                batch.set(line_ref,{ u'pgn': int(line['pgn'], 16),
-                                     u'destination': int(line['destination'], 16),
-                                     u'source': int(line['source'], 16),
-                                     u'priority': int(line['source'], 16),
-                                     u'time': float(line['time']),
-                                     u'data': line['data']
+                line_ref = doc_ref.document(line['Time'])
+                batch.set(line_ref,{ u'pgn': int(line['PGN'], 16),
+                                     u'destination': int(line['DA'], 16),
+                                     u'source': int(line['SA'], 16),
+                                     u'priority': int(line['Priority'], 16),
+                                     u'time': float(line['Time']),
+                                     u'data': line['Data']
                                      })  
                 x += 1
                 if x % 500 == 0:
