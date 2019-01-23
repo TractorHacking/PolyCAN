@@ -1,0 +1,2 @@
+#!/bin/bash
+cansend can0 1823ff40#0123
