@@ -226,6 +226,7 @@ class Log:
     @property
     def sortkey(self):
         return self.__sortkey
+
     @property
     def filtkey(self):
         return self.__filtkey
@@ -277,13 +278,13 @@ class Log:
     def add(self, value):
         assert isinstance(value, LogEntry)
         self.__data.append(value)
+
     def sort_by(self):
         res = {}
         for e in self:
             if not self.sortkey(e) in res:
                 res[self.sortkey(e)] = []
-            else:
-                res[self.sortkey(e)].append(e)
+            res[self.sortkey(e)].append(e)
         res = sorted(res.items())
         self.__data = []
         for x in res:
