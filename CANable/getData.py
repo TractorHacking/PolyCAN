@@ -69,15 +69,15 @@ class Packet:
 
     def toCSV(self):
         string = str(self.time)
-        string += ' , '
+        string += ','
         string += str(self.pgn)
-        string += ' , '
+        string += ','
         string += str(self.da)
-        string += ' , '
+        string += ','
         string += str(self.sa)
-        string += ' , '
+        string += ','
         string += str(self.priority)
-        string += ' , '
+        string += ','
         string += Packet.turnHexToStr(self.data,self.d_len)
         string += "\n"
         return string
@@ -136,7 +136,7 @@ for file in sys.argv[1:]:
       p.initFromCanUtils(line)
       outlines.append(p.toCSV())
    with open(file.replace('.log','.csv'),"w+") as f:
-       f.write("Time , PGN , DA , SA , Prioirty , Data\n")
+       f.write("Time,PGN,DA,SA,Priority,Data\n")
        for line in outlines:
            f.write(line)
 
