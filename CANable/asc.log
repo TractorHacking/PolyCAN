@@ -1,0 +1,43 @@
+date Sun Jan 13 19:23:53 2019
+base hex  timestamps absolute
+no internal events logged                          PGN   SA    DA    P     L     Data
+   0.000000 1  0x              Rx   d 1 00          0     0     0    0     1     00     
+  28.017343 1  0x              Rx   d 2 00 00       0     0     0    0     2     00 00  
+  48.670165 1  0x              Rx   d 2 FF FF       0     0     0    0     2     FF FF  
+  67.518578 1  0x              Rx   d 2 FF FF       1     0     0    0     2     FF FF  
+  95.666639 1  FFFF00x         Rx   d 2 FF FF      FFFF   0     0    0     2     FF FF  
+ 128.090130 1  0x              Rx   d 2 FF FF       0     0     0    0     2     FF FF  
+ 142.120606 1  100x            Rx   d 2 FF FF       0     0     1    0     2     FF FF  
+ 153.854930 1  FF00x           Rx   d 2 FF FF       0     0    FF    0     2     FF FF  
+ 169.288521 1  18000000x       Rx   d 2 FF FF       0     0     0    6     2     FF FF  
+ 000.000000 1  1CFFFF00x       Rx   d 2 FF FF      FFFF   0    FF    7     2     FF FF
+   0.000000 1  1CFFFF00x       Rx   d 2 FF FF      FFFF   0     0    7     2     FF FF
+   5.480269 1  1CFFFF00x       Rx   d 2 FF FF      FFFF   0    80    7     2     FF FF
+
+                                             PGN   SA    DA    P     L     Data
+(1547436233.506915) can0 00000000  #00        0     0     0    0     1     00    
+(1547436261.524258) can0 00000000  #0000      0     0     0    0     2     00 00 
+(1547436282.177080) can0 00000000  #FFFF      0     0     0    0     2     FF FF 
+(1547436301.025493) can0 00000000  #FFFF      1     0     0    0     2     FF FF 
+(1547436329.173554) can0 00FFFF00  #FFFF     FFFF   0     0    0     2     FF FF 
+(1547436361.597045) can0 00000000  #FFFF      0     0     0    0     2     FF FF 
+(1547436375.627521) can0 00000100  #FFFF      0     0     1    0     2     FF FF 
+(1547436386.361845) can0 0000FF00  #FFFF      0     0    FF    0     2     FF FF 
+(1547436402.795436) can0 18000000  #FFFF      0     0     0    6     2     FF FF 
+(1547437430.292867) can0 1CFFFF00  #FFFF     FFFF   0    FF    7     2     FF FF
+(1547437676.507149) can0 1CFFFF00  #FFFF     FFFF   0     0    7     2     FF FF
+(1547437681.987418) can0 1CFFFF00  #FFFF     FFFF   0    80    7     2     FF FF
+
+                                           PGN   SA    DA    P     L     Data
+(1547436233.506915) can0 00000000#00        0     0     0    0     1     00    
+(1547436261.524258) can0 00000000#0000      0     0     0    0     2     00 00 
+(1547436282.177080) can0 00000000#FFFF      0     0     0    0     2     FF FF 
+(1547436301.025493) can0 00000000#FFFF      1     0     0    0     2     FF FF 
+(1547436329.173554) can0 00FFFF00#FFFF     FFFF   0     0    0     2     FF FF 
+(1547436361.597045) can0 00000000#FFFF      0     0     0    0     2     FF FF 
+(1547436375.627521) can0 00000100#FFFF      0     0     1    0     2     FF FF 
+(1547436386.361845) can0 0000FF00#FFFF      0     0    FF    0     2     FF FF 
+(1547436402.795436) can0 18000000#FFFF      0     0     0    6     2     FF FF 
+(1547437430.292867) can0 1CFFFF00#FFFF    FFFF   0    FF    7     2     FF FF
+(1547437676.507149) can0 1CFFFF00#FFFF    FFFF   0     0    7     2     FF FF
+(1547437681.987418) can0 1CFFFF00#FFFF    FFFF   0    80    7     2     FF FF
