@@ -2,9 +2,11 @@ can-utils
 polycan/secret.json
 README~
 *~
+polycan/__pycache__
 setup.py~
 polycan/log_handler.py~
 polycan/main.py~
 .gitignore~
+polycan.egg.info/
 polycan.egg_info
 polycan/__pycache__/main.cpython-36.pyc

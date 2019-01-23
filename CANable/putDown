@@ -1,0 +1,4 @@
+#!/bin/bash
+ip link set down can0 
+ifconfig | grep "can0"
+
