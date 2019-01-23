@@ -6,7 +6,7 @@ class Packet:
     def __init__(self):
        pass
     def initFromCanUtils(self,line):
-        print(line)
+        #print(line)
         #This info is not known so put in default
         self.error = 0 
         self.remoteTrRequest = 0 
@@ -20,9 +20,7 @@ class Packet:
         pkt = pkt.split('#')
 
         self.can_id  = int(pkt[0],16)
-        print(pkt[1])
         self.data    = int(pkt[1],16) 
-        print(self.data)
         self.d_len   = int(len(pkt[1])/2) 
 
         self.priority = (self.can_id & 0x1C000000) >> 26 
@@ -34,7 +32,7 @@ class Packet:
             self.pgn     = (self.can_id & 0x3FFFF00) >> 8  
             self.da      = 255
         self.sa      = self.can_id & 0xFF
-        print(self)
+        #print(self)
 
 
     def initFromPkt(self,pkt):
@@ -57,7 +55,7 @@ class Packet:
             self.pgn     = (self.can_id & 0x3FFFF00) >> 8  
             self.da      = 255
         self.sa      = self.can_id & 0xFF
-        print(self)
+        #print(self)
          
     def turnHexToStr(hexV,bytesLen):
         tempV = hexV;
@@ -72,7 +70,7 @@ class Packet:
     def toCSV(self):
         string = str(self.time)
         string += ' , '
-        string = str(self.pgn)
+        string += str(self.pgn)
         string += ' , '
         string += str(self.da)
         string += ' , '
@@ -82,6 +80,7 @@ class Packet:
         string += ' , '
         string += Packet.turnHexToStr(self.data,self.d_len)
         string += "\n"
+        return string
 
     def __str__(self):
         string =  "Packet:\n"
@@ -128,12 +127,15 @@ if(len(sys.argv)==1):
 
 #given command argument convert the candump file to csv
 for file in sys.argv[1:]:
-   lines = list()
+   inlines = list()
+   outlines = list()
    with open(file) as f:
-      lines = f.readlines()
-   for line in lines:
+      inlines = f.readlines()
+   for line in inlines:
       p = Packet()
       p.initFromCanUtils(line)
-      print(p.toCSV())
-
+      outlines.append(p.toCSV())
+   with open(file.replace('.log','.csv'),"w+") as f:
+       for line in outlines:
+           f.write(line)
 
