@@ -136,7 +136,7 @@ for file in sys.argv[1:]:
       p.initFromCanUtils(line)
       outlines.append(p.toCSV())
    with open(file.replace('.log','.csv'),"w+") as f:
-       f.write("Time , PGN , Source Adress , Destionation Address , Prioirty , Data\n")
+       f.write("Time , PGN , DA , SA , Prioirty , Data\n")
        for line in outlines:
            f.write(line)
 
