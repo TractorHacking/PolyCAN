@@ -64,9 +64,9 @@ class Packet:
         string = ''
         for i in range(bytesLen):
             val = hexV & 0xFF
-            hexV >> 8
-            string += format(val,'02X') + ' '
-        return string
+            hexV >>= 8
+            string = (format(val,'02X') + ' ') + string
+        return string 
 
 
     def toCSV(self):
@@ -80,7 +80,7 @@ class Packet:
         string += ' , '
         string += str(self.priority)
         string += ' , '
-        string += Packet.turnHexToStr(self.da,self.d_len)
+        string += Packet.turnHexToStr(self.data,self.d_len)
         string += "\n"
 
     def __str__(self):
@@ -105,7 +105,7 @@ class Packet:
         string += "\npriority:\t\t"
         string += str(self.priority)
         string += "\nData(" + str(self.d_len)+"):\t\t"
-        string += str(self.data)
+        string += Packet.turnHexToStr(self.data,self.d_len)
         string += "\n"
         return string 
 
