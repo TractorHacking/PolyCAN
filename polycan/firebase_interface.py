@@ -69,7 +69,7 @@ def get_known():
         params = collection_ref.document(doc.id).collection(u'parameters').get()
         for param in params:
             param_dict = param.to_dict()
-            params_list.append(param_dict)
+            params_list.append(PgnParameter.from_dict(param_dict))
         pgn_object.parameters = params_list
         known[pgn_object.pgn] = pgn_object
     return known

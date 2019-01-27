@@ -38,7 +38,7 @@ def main_menu():
     uploaded_logs = []
     current_log = None
     while(1):
-        print("\nMain Menu\n 1. Find Log\n 2. Find PGN\n 3. Import Log 4. Analyze Logs\
+        print("\nMain Menu\n 1. Find Log\n 2. Find PGN\n 3. Import Log\n 4. Analyze Logs\
             \n 5. Exit\n")
         choice = input('')
         if (choice == "1"):

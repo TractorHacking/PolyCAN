@@ -2,7 +2,6 @@ import collections
 from tqdm import tqdm
 from tabulate import tabulate
 
-
 class PgnParameter:
     def __init__(self, start_pos='', length='', description='', spn=0, value=0):
         self.__start_pos = start_pos
@@ -43,7 +42,7 @@ class PgnParameter:
 
     @staticmethod
     def from_dict(d):
-        res = PgnParameter(d['start_pos'], d['length'], d['description'])
+        res = PgnParameter(d['start_pos'], d['length'], d['param_name'])
         return res
     def compute_value(self):
         res = 0
@@ -92,7 +91,6 @@ class Pgn:
     @property
     def parameters(self):
         return self.__parameters
-
     @data_length.setter
     def data_length(self, data_length):
         self.__data_length = data_length
@@ -120,7 +118,6 @@ class Pgn:
     @parameters.setter
     def parameters(self, parameters):
         self.__parameters = parameters
-
     @staticmethod
     def from_dict(d):
         res = Pgn(d['pgn'], d['data_length'], d['default_priority'], \
@@ -188,13 +185,19 @@ class LogEntry:
         Src: {0.source!r} Dest: {0.dest!r} Data: {0.data!r}" \
         .format(self)
 
+    def __eq__(self, other):
+        assert isinstance(other, LogEntry)
+        return self.pgn == other.pgn and self.prty == other.prty \
+            and self.src == other.src and self.dest== \
+                other.dest and self.data == other.data
+
     def to_dict(self):
         res = {}
         res['time'] = self.time
         res['pgn'] = self.pgn
-        res['priority'] = self.priority
-        res['source'] = self.source
-        res['destination'] = self.destination
+        res['priority'] = self.prty
+        res['source'] = self.src
+        res['destination'] = self.dest
         res['data'] = self.data
         return res
 
@@ -208,8 +211,6 @@ class Log:
     def __init__(self, name, model, data=None, sortkey=None, filterkey=None):
         self.__sortkey = sortkey
         self.__filtkey = filterkey
-        #assert hasattr(self.__key, "__call__")
-        #assert hasattr(self.__filt, "__call__")
 
         self.name = name
         self.model = model
@@ -252,6 +253,7 @@ class Log:
     def filtkey(self, filt):
         assert hasattr(filt, "__call__")
         self.__filtkey = filt
+
     @name.setter
     def name(self, x):
         self.__name = x
@@ -294,13 +296,34 @@ class Log:
         self.sortkey = sortkey
         self.sort_by()
 
-    def filter_log(self, filterkey):
+    def apply_filter(self, filterkey):
         self.filtkey = filterkey
         for x in self:
             if not filterkey(x):
                 x.filtered = True
                 if not (x in self.filtered_data):
                     self.filtered_data.append(x);                
+
+    def filter_by_pgn(self, pgn):
+        self.apply_filter(lambda x: x.pgn == pgn)
+    def filter_by_time(self, start, end):
+        self.apply_filter(lambda x: x.time >= start and x.time <= end)
+    def filter_by_src(self, src):
+        self.apply_filter(lambda x: x.src ==src)
+    def filter_by_dest(self, dest):
+        self.apply_filter(lambda x: x.dest == dest)
+    def filter_unique_entries(self):
+        uniq_dict = {}
+        for e in self:
+            if not e.filtered:
+                if not e.pgn in uniq_dict:
+                    uniq_dict[e.pgn] = []
+                    uniq_dict[e.pgn].append(e)
+                elif not e in uniq_dict[e.pgn]:
+                    uniq_dict[e.pgn].append(e)  
+                else:
+                    e.filtered = True
+                    self.filtered_data.append(e);                
 
     def remove_filters(self):
         for x in self.__filtered_data:

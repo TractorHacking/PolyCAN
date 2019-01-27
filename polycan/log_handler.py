@@ -15,10 +15,9 @@ def param_values(data, length, params):
     byte_list.insert(0, 0)
     # byte_list[8] - MSB, [1] - LSB
     for value in params:
-        start_pos = value['start_pos']
-        field_len = int(value['length'][:-1])
-        param_name = value['param_name']
-
+        start_pos = value.start_pos
+        field_len = int(value.length[:-1])
+        param_name = value.description
         values[param_name] = 0
 
         boundaries = start_pos.split("-")
@@ -84,31 +83,31 @@ def detail_view(known, log=None):
             if option < 0 or option >= len(log):
                 print("Number out of bounds")
                 continue
-            if not option in known:
-                print("Unknown PGN")
+            if not log[option].pgn in known:
+                print("Unknown PGN {}".format(option))
                 continue
             else:
                 break
         get_pgn(known, log[option].pgn, log[option].data)
     return
 
-def get_pgn(known, pgn = '', data = ''):
-    if pgn == '':
+def get_pgn(known, pgn = -1, data = ''):
+    if pgn == -1:
         while(1):
             choice = input("Please enter PGN or q to quit: ")
             if choice == 'q':
                 return
             try:
-                option = int(choice)
+                pgn = int(choice)
             except:
                 print("Invalid input")
                 continue
-            if not option in known:
+            if not pgn in known:
                 print("Unknown PGN")
                 continue
             else: 
                 break
-    print_pgn(known[option], data)
+    print_pgn(known[pgn], data)
 
 def print_pgn(pgn_object, data):
     print('\n-----------------------------------------')
@@ -127,15 +126,15 @@ def print_pgn(pgn_object, data):
 
     if data != '':
         print('\tValue')
-        pdata = param_values(data, pgn_object.data_length, params)
+        pdata = param_values(data, pgn_object.data_length, pgn_object.parameters)
     else:
         print()
 
     for item in pgn_object.parameters:
-        print("%-*s %-*s %s" % (15, item['start_pos'], 7, item['length'], item['param_name']), \
+        print("%-*s %-*s %s" % (15, item.start_pos, 7, item.length, item.description), \
         end = '')
         if data != '':
-            print(10*' ' + "%d" % (pdata[item['param_name']]), end='')
+            print(10*' ' + "%d" % (pdata[item.description]), end='')
         print()
 
 def find_log(uploaded_logs):
@@ -166,16 +165,6 @@ def find_log(uploaded_logs):
     log = get_log(names[option])
     uploaded_logs.append(log)
     return log
-
-def filter_by_pgn(current_log):
-    choice = input("Please enter PGN: ")
-    try:
-        option = int(choice)
-    except:
-        print("Please enter an integer")
-        return filter_by_pgn(current_log, known)
-    current_log.filter_log(lambda x: x.pgn == option)
-    return
 
 def filter_by_time(current_log):
     starttime = 0.0
@@ -210,7 +199,7 @@ def filter_by_dest(current_log):
  
     current_log.filter_log(lambda x: x.dest == option)
     return
-
+    
 def filter_menu(current_log, known):
     while(1):
         print("Filter Menu\n")
@@ -218,8 +207,9 @@ def filter_menu(current_log, known):
         print("2. By time")
         print("3. By Source")
         print("4. By Destination")
-        print("5. Remove filters")
-        print("6. Return")
+        print("5. Unique entries")
+        print("6. Remove filters")
+        print("7. Return")
         choice = input("")
         try:
             option = int(choice)
@@ -227,16 +217,39 @@ def filter_menu(current_log, known):
             print("Please enter an integer for menu entry")
             continue
         if option == 1:
-            filter_by_pgn(current_log)
+            try:
+                pgn = int(input("Please enter PGN: "))
+                current_log.filter_by_pgn(pgn)
+            except:
+                print("Must be an integer")
+                continue
         elif option == 2:
-            filter_by_time(current_log)
+            try:
+                start = float(input("Start time: "))
+                end = float(input("End time: "))
+                current_log.filter_by_time(start, end)
+            except:
+                print("Invalid time")
+                continue
         elif option == 3:
-            filter_by_src(current_log)
+            try:
+                source = int(input("Please enter source address: "))
+                current_log.filter_by_src(source)
+            except:
+                print("Invalid source")
+                continue
         elif option == 4:
-            filter_by_dest(current_log)
+            try:
+                dest = int(input("Please enter destination address: "))
+                current_log.filter_by_dest(dest)
+            except:
+                print("Invalid source")
+                continue
         elif option == 5:
-            current_log.remove_filters()
+            current_log.filter_unique_entries()
         elif option == 6:
+            current_log.remove_filters()
+        elif option == 7:
             break
         else:
             print("Please enter an integer for menu entry")
