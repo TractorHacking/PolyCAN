@@ -241,41 +241,27 @@ def filter_menu(current_log, known):
             print(current_log.query(filters).drop_duplicates(uniq_tags))
         elif option == 7:
             sorted_by_pgn = current_log.sort_values(by='pgn')
-            print(sorted_by_pgn)
             uniq_df = current_log.drop_duplicates(['pgn', 'data'])
-            uniq_ddf = pd.DataFrame(uniq_df, columns=['pgn','data','frequency'])
-            #print(uniq_df['data'])            
-            #print(sorted_by_pgn.query('data == "22FFFF3CFFFFFFFF"'))
-            for y in uniq_df['data']:
-                arr = sorted_by_pgn.query(('data == "{}"').format(y))
-                #arr = np.array(sorted_by_pgn.query(('data == {}').format(y)))
-                #.sort_values(by='time')['time'])
-                print(arr)
-            """
-            uniq_ddf['frequency'] = [np.mean(np.diff(arr)) if len(arr)>1 
-                else "unique" for arr in
-                    [np.array(sorted_by_pgn.query(
-                        ('pgn == {} & data == {}').format(y,z)) \
+            uniq_ddf = pd.DataFrame(uniq_df, columns=['pgn','data','frequency', 'count']
+            uniq_ddf['frequency'] = [np.mean(np.diff(arr)) if len(arr) > 1 \
+                else "unique" for arr in \
+                    [np.array(sorted_by_pgn.query( \
+                        ('pgn == {} & data == "{}"').format(y,z)) \
                 .sort_values(by='time')['time']) \
                 for y,z in zip(uniq_df['pgn'],uniq_df['data'])]]
+            uniq_ddf['count'] = [len(sorted_by_pgn.query('pgn == {} & data == "{}"'.format(y,z))) \
+                for y,z in zip(uniq_df['pgn'], uniq_df['data'])]
             print(uniq_ddf)
-            """
         elif option == 8:
             sorted_by_pgn = current_log.sort_values(by='pgn')
             uniq_df = current_log.drop_duplicates(['pgn'])
-            uniq_ddf = pd.DataFrame(uniq_df, columns = ['pgn', 'frequency'])
-            """
-            for y in uniq_df['pgn']:
-                arr = np.array(sorted_by_pgn.query(('pgn == {}').format(y)) \
-                .sort_values(by='time')['time'])
-                print(arr)
-                print(np.diff(arr))
-            """
-            uniq_ddf['frequency'] = [np.mean(np.diff(arr)) if len(arr)>1 
-                else "unique" for arr in
+            uniq_ddf = pd.DataFrame(uniq_df, columns = ['pgn', 'frequency', 'count'])
+            uniq_ddf['frequency'] = [np.mean(np.diff(arr)) if len(arr)>1 \
+                else "unique" for arr in \
                 [np.array(sorted_by_pgn.query(('pgn == {}').format(y)) \
                 .sort_values(by='time')['time']) \
                 for y in uniq_df['pgn']]]
+            uniq_ddf['count'] = [len(sorted_by_pgn.query('pgn == {}'.format(y))) for y in uniq_df['pgn']]
             print(uniq_ddf)
         elif option == 9:
             break
