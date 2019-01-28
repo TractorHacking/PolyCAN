@@ -2,6 +2,8 @@ from polycan.log import *
 from polycan.firebase_interface import *
 from tqdm import tqdm
 from tabulate import tabulate
+import numpy as np
+import pandas as pd
 import csv
 import sys
 import collections
@@ -15,6 +17,7 @@ def param_values(data, length, params):
     byte_list.insert(0, 0)
     # byte_list[8] - MSB, [1] - LSB
     for value in params:
+        
         start_pos = value.start_pos
         field_len = int(value.length[:-1])
         param_name = value.description
@@ -83,12 +86,12 @@ def detail_view(known, log=None):
             if option < 0 or option >= len(log):
                 print("Number out of bounds")
                 continue
-            if not log[option].pgn in known:
+            if not log['pgn'][option] in known:
                 print("Unknown PGN {}".format(option))
                 continue
             else:
                 break
-        get_pgn(known, log[option].pgn, log[option].data)
+        get_pgn(known, log['pgn'][option], log['data'][option])
     return
 
 def get_pgn(known, pgn = -1, data = ''):
@@ -159,48 +162,17 @@ def find_log(uploaded_logs):
             continue
         else:
             break
-    for x in uploaded_logs:
-        if x.name == names[option]:
-            return x
+    if names[option] in uploaded_logs:
+        return uploaded_logs[names[option]]
     log = get_log(names[option])
-    uploaded_logs.append(log)
+    uploaded_logs[names[option]] = log
     return log
-
-def filter_by_time(current_log):
-    starttime = 0.0
-    endtime = 0.0
-    try:
-        starttime = float(input("Start time: "))
-        endtime = float(input("End time: "))
-    except:
-        print("Please enter valid time")
-        return filter_by_time(current_log)
-    current_log.filter_log(lambda x: x.time >= starttime and x.time <= endtime)
-    return
-
-def filter_by_src(current_log):
-    choice = input("Please enter source address: ")
-    try:
-        option = int(choice)
-    except:
-        print("Please enter an integer")
-        return filter_by_src(current_log)
- 
-    current_log.filter_log(lambda x: x.src == option)
-    return
-
-def filter_by_dest(current_log):
-    choice = input("Please enter destination address: ")
-    try:
-        option = int(choice)
-    except:
-        print("Please enter an integer")
-        return filter_by_dest(current_log)
- 
-    current_log.filter_log(lambda x: x.dest == option)
-    return
     
+#def analyze_menu(log, known):
+#def learn_menu(log):
+
 def filter_menu(current_log, known):
+    df = None
     while(1):
         print("Filter Menu\n")
         print("1. By PGN")
@@ -208,8 +180,10 @@ def filter_menu(current_log, known):
         print("3. By Source")
         print("4. By Destination")
         print("5. Unique entries")
-        print("6. Remove filters")
-        print("7. Return")
+        print("6. Custom filter")
+        print("7. Data Frequency")
+        print("8. PGN Frequency")
+        print("9. Return")
         choice = input("")
         try:
             option = int(choice)
@@ -219,7 +193,8 @@ def filter_menu(current_log, known):
         if option == 1:
             try:
                 pgn = int(input("Please enter PGN: "))
-                current_log.filter_by_pgn(pgn)
+                df = current_log.query('pgn == {}'.format(pgn))
+                print(current_log.query('pgn == {}'.format(pgn)))
             except:
                 print("Must be an integer")
                 continue
@@ -227,33 +202,133 @@ def filter_menu(current_log, known):
             try:
                 start = float(input("Start time: "))
                 end = float(input("End time: "))
-                current_log.filter_by_time(start, end)
+                df =current_log.query('time >= {} & time <= {}'.format(start, end))
+                print(current_log.query('time >= {} & time <= {}'.format(start, end)))
             except:
                 print("Invalid time")
                 continue
         elif option == 3:
             try:
                 source = int(input("Please enter source address: "))
-                current_log.filter_by_src(source)
+                df = current_log.query('source == {}'.format(source))
+                print(current_log.query('source == {}'.format(source)))
             except:
                 print("Invalid source")
                 continue
         elif option == 4:
             try:
                 dest = int(input("Please enter destination address: "))
-                current_log.filter_by_dest(dest)
+                df = current_log.query('destination == {}'.format(dest))
+                print(current_log.query('destination == {}'.format(dest)))
             except:
                 print("Invalid source")
                 continue
         elif option == 5:
-            current_log.filter_unique_entries()
+            print("Please enter unique columns (example: pgn,data,source,destination): ")
+            columns = input("").split(",")
+            df = current_log.drop_duplicates(columns)
+            print(current_log.drop_duplicates(columns))
         elif option == 6:
-            current_log.remove_filters()
+            print("Please enter filters (example: pgn==331,time>=50.1,time<=50.5,src==52,dest==45): ")
+            choice = input("")
+            filters = choice.replace(",", "&")
+            df = current_log.query(filters)
+            print(current_log.query(filters))
+            print("Unique? (example: pgn,data)")
+            choice = input("")
+            uniq_tags = choice.split(",")
+            df = current_log.query(filters).drop_duplicates(uniq_tags)
+            print(current_log.query(filters).drop_duplicates(uniq_tags))
         elif option == 7:
+            sorted_by_pgn = current_log.sort_values(by='pgn')
+            print(sorted_by_pgn)
+            uniq_df = current_log.drop_duplicates(['pgn', 'data'])
+            uniq_ddf = pd.DataFrame(uniq_df, columns=['pgn','data','frequency'])
+            #print(uniq_df['data'])            
+            #print(sorted_by_pgn.query('data == "22FFFF3CFFFFFFFF"'))
+            for y in uniq_df['data']:
+                arr = sorted_by_pgn.query(('data == "{}"').format(y))
+                #arr = np.array(sorted_by_pgn.query(('data == {}').format(y)))
+                #.sort_values(by='time')['time'])
+                print(arr)
+            """
+            uniq_ddf['frequency'] = [np.mean(np.diff(arr)) if len(arr)>1 
+                else "unique" for arr in
+                    [np.array(sorted_by_pgn.query(
+                        ('pgn == {} & data == {}').format(y,z)) \
+                .sort_values(by='time')['time']) \
+                for y,z in zip(uniq_df['pgn'],uniq_df['data'])]]
+            print(uniq_ddf)
+            """
+        elif option == 8:
+            sorted_by_pgn = current_log.sort_values(by='pgn')
+            uniq_df = current_log.drop_duplicates(['pgn'])
+            uniq_ddf = pd.DataFrame(uniq_df, columns = ['pgn', 'frequency'])
+            """
+            for y in uniq_df['pgn']:
+                arr = np.array(sorted_by_pgn.query(('pgn == {}').format(y)) \
+                .sort_values(by='time')['time'])
+                print(arr)
+                print(np.diff(arr))
+            """
+            uniq_ddf['frequency'] = [np.mean(np.diff(arr)) if len(arr)>1 
+                else "unique" for arr in
+                [np.array(sorted_by_pgn.query(('pgn == {}').format(y)) \
+                .sort_values(by='time')['time']) \
+                for y in uniq_df['pgn']]]
+            print(uniq_ddf)
+        elif option == 9:
             break
         else:
             print("Please enter an integer for menu entry")
             continue
+def log_menu(log, known):
+    while(1):
+        print("Log Menu")
+        print("0. Display Log")
+        print("1. Filter Log")
+        print("2. Sort Log")
+        print("3. Analyze single entry")
+        print("4. Analyze PGN")
+        print("5. Learn")
+        print("6. Return")
+        choice = input("")
+        try:
+            option = int(choice)
+        except:
+            print("Please enter an integer for menu entry")
+            continue
+        if option == 0:
+            print(log)
+        elif option == 1:
+            filter_menu(log, known)
+        elif option == 2:
+            sort_menu(log, known)
+        elif option == 3:
+            detail_view(known,log)
+        elif option == 4:
+            analyze_menu(log, known)
+        elif option == 5:
+            learn_menu(log)
+        elif option == 6:
+            return
+        else:
+            print("Please enter an integer for menu entry")
+def compare_logs(uploaded_logs, known):
+    pass
+    """
+    if len(uploaded_logs) < 2:
+        print("Upload more logs")
+        return
+    name1 = input("Please enter first log name: ")
+    name2 = input("Please enter second log name: ")
+    log1_sorted_by_pgn = uploaded_logs[name1].sort_values[by='pgn']
+    log2_sorted_by_pgn = uploaded_logs[name1].sort_values[by='pgn']
+    pgn = int(input("Please enter PGN: "))
+    num_entries = int(input("Please enter number of entries: "))
+    df1 = log1_sorted_by_pgn.query('pgn == {}'.format(pgn)).head(num_entries)
+    df2 = log1_sorted_by_pgn.query('pgn == {}'.format(pgn)).head(num_entries)
+    """
 
 def sort_menu(current_log, known):
     while(1):
@@ -270,13 +345,13 @@ def sort_menu(current_log, known):
             print("Please enter an integer for menu entry")
             continue
         if option == 1:
-            current_log.sort(lambda x: x.pgn)
+            print(current_log.sort_values(by='pgn'))
         elif option == 2:
-            current_log.sort(lambda x: x.time)
+            print(current_log.sort_values(by='time'))
         elif option == 3:
-            current_log.sort(lambda x: x.src)
+            print(current_log.sort_values(by='source'))
         elif option == 4:
-            current_log.sort(lambda x: x.dest)
+            print(current_log.sort_values(by='destination'))
         elif option == 5:
             return
         else:
