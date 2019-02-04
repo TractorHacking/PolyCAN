@@ -12,8 +12,6 @@ def get_log(log_name):
     collection = collection_ref.get()
     model_name = log_document.get().to_dict()['model']
     list_of_dicts = [x.to_dict() for x in collection]
-    for x in list_of_dicts:
-        x['data'] = ''.join(x['data'].split(" "))
     return pd.DataFrame(list_of_dicts)
 
 def get_lognames():

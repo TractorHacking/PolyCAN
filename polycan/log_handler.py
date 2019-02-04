@@ -4,9 +4,24 @@ from tqdm import tqdm
 from tabulate import tabulate
 import numpy as np
 import pandas as pd
+import sklearn.model_selection as ms
+from sklearn import neighbors
+from sklearn.model_selection import GridSearchCV
+from sklearn.metrics import confusion_matrix
+from sklearn.metrics import classification_report
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn import naive_bayes
 import csv
 import sys
 import collections
+def numerize_data(data):
+    bytestring = data.replace(" ", '')
+    return int(bytestring, 16)
+def break_data(data):
+    byte_list = data[1:-1].split(" ")
+    for i in range(0, len(byte_list)):
+        byte_list[i] = int(byte_list[i], 16)
+    return byte_list
 
 def param_values(data, length, params):
     values = {}
@@ -168,9 +183,6 @@ def find_log(uploaded_logs):
     uploaded_logs[names[option]] = log
     return log
     
-#def analyze_menu(log, known):
-#def learn_menu(log):
-
 def filter_menu(current_log, known):
     df = None
     while(1):
@@ -242,32 +254,88 @@ def filter_menu(current_log, known):
         elif option == 7:
             sorted_by_pgn = current_log.sort_values(by='pgn')
             uniq_df = current_log.drop_duplicates(['pgn', 'data'])
-            uniq_ddf = pd.DataFrame(uniq_df, columns=['pgn','data','frequency', 'count']
+            uniq_ddf = pd.DataFrame(uniq_df, columns=['pgn','data','frequency', 'count'])
             uniq_ddf['frequency'] = [np.mean(np.diff(arr)) if len(arr) > 1 \
-                else "unique" for arr in \
+                else 0 for arr in \
                     [np.array(sorted_by_pgn.query( \
                         ('pgn == {} & data == "{}"').format(y,z)) \
                 .sort_values(by='time')['time']) \
                 for y,z in zip(uniq_df['pgn'],uniq_df['data'])]]
             uniq_ddf['count'] = [len(sorted_by_pgn.query('pgn == {} & data == "{}"'.format(y,z))) \
                 for y,z in zip(uniq_df['pgn'], uniq_df['data'])]
-            print(uniq_ddf)
+            print(uniq_ddf.to_string())
         elif option == 8:
             sorted_by_pgn = current_log.sort_values(by='pgn')
             uniq_df = current_log.drop_duplicates(['pgn'])
             uniq_ddf = pd.DataFrame(uniq_df, columns = ['pgn', 'frequency', 'count'])
             uniq_ddf['frequency'] = [np.mean(np.diff(arr)) if len(arr)>1 \
-                else "unique" for arr in \
+                else 0 for arr in \
                 [np.array(sorted_by_pgn.query(('pgn == {}').format(y)) \
                 .sort_values(by='time')['time']) \
                 for y in uniq_df['pgn']]]
             uniq_ddf['count'] = [len(sorted_by_pgn.query('pgn == {}'.format(y))) for y in uniq_df['pgn']]
-            print(uniq_ddf)
+            print(uniq_ddf.to_string())
         elif option == 9:
             break
         else:
             print("Please enter an integer for menu entry")
             continue
+def learn(current_log):
+    #take only 8-byte data
+    criterion = current_log['data'].map(lambda x: len(x) == 25)
+    fixed = current_log[criterion]
+    X = pd.DataFrame([numerize_data(x) for x in fixed.data])
+    Y = pd.DataFrame(fixed.pgn)
+    unique_pgns = len(current_log.drop_duplicates(['pgn']))
+
+    #KNN classification
+    XTrain, XTest, YTrain, YTest = ms.train_test_split(X,Y,test_size=0.3, random_state=7) 
+    k_neigh = list(range(1,unique_pgns,2))
+    n_grid = [{'n_neighbors':k_neigh}]
+    model = neighbors.KNeighborsClassifier()
+    cv_knn = GridSearchCV(estimator=model, param_grid = n_grid, cv=ms.KFold(n_splits=10))
+    cv_knn.fit(XTrain, YTrain)
+    best_k = cv_knn.best_params_['n_neighbors']
+    knnclf = neighbors.KNeighborsClassifier(n_neighbors=best_k)
+    knnclf.fit(XTrain, YTrain)
+    y_pred = knnclf.predict(XTest)
+    print("K Nearest Neighbors, best k = %d" % best_k)
+    print(classification_report(YTest, y_pred))
+
+    #Naive Bayes
+    X = pd.DataFrame([break_data(x) for x in fixed.data])
+    X_train, X_test, Y_train, Y_test = ms.train_test_split(X, Y, test_size=0.3, random_state=7)
+    model = naive_bayes.MultinomialNB().fit(X_train, Y_train)
+    confusion_matrix(Y_train, model.predict(X_train))
+    y_pred = model.predict(X_test)
+    pred_probs = model.predict_proba(X_test)
+    print(pred_probs)
+    print(confusion_matrix(Y_test, y_pred))
+    print(classification_report(Y_test, y_pred))
+    
+    
+    """
+    print(np.array([numerize_data(x) for x in sorted_by_pgn['data']]))
+    X = pd.DataFrame([numerize_data(x) for x in sorted_by_pgn['data']],
+        columns=['1','2','3','4','5','6','7','8'])
+    Y = pd.DataFrame([x for x in sorted_by_pgn['pgn']])
+    print(X)
+    print(Y)
+    XTrain, XTest, YTrain, YTest = \
+        ms.train_test_split(X.values, Y.values, test_size = 0.3, random_state = 7)
+    k_neighbours = list(range(1, 250, 2))
+    n_grid = [{'n_neighbors':k_neighbours}]
+    model = neighbors.KNeighborsClassifier()
+    cv_knn = GridSearchCV(estimator=model, \
+        param_grid = n_grid, \
+        cv = ms.KFold(n_splits=10))    
+    cv_knn.fit(XTrain, YTrain)
+    best_k = cv_knn.best_params_['n_neighbors']
+    print("Best k = %d" % best_k)
+    print("Best params:")
+    print(cv_knn.best_params_)
+    """
+    
 def log_menu(log, known):
     while(1):
         print("Log Menu")
@@ -295,7 +363,7 @@ def log_menu(log, known):
         elif option == 4:
             analyze_menu(log, known)
         elif option == 5:
-            learn_menu(log)
+            learn(log)
         elif option == 6:
             return
         else:
