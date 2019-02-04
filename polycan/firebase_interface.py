@@ -4,20 +4,15 @@ from tqdm import tqdm
 import csv
 import sys
 import collections
+import pandas as pd
 
 def get_log(log_name):
     log_document = db.collection(u'logs').document(log_name)
     collection_ref = log_document.collection('log')
     collection = collection_ref.get()
     model_name = log_document.get().to_dict()['model']
-
-    log = Log(log_name, model_name)
-    for doc in collection:
-        doc_dict = doc.to_dict()
-        log_entry = LogEntry.from_dict(doc_dict)
-        log.add(log_entry)
- 
-    return log    
+    list_of_dicts = [x.to_dict() for x in collection]
+    return pd.DataFrame(list_of_dicts)
 
 def get_lognames():
     logs = db.collection(u'logs').get()
@@ -69,7 +64,7 @@ def get_known():
         params = collection_ref.document(doc.id).collection(u'parameters').get()
         for param in params:
             param_dict = param.to_dict()
-            params_list.append(param_dict)
+            params_list.append(PgnParameter.from_dict(param_dict))
         pgn_object.parameters = params_list
         known[pgn_object.pgn] = pgn_object
     return known
