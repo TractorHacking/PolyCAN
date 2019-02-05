@@ -40,6 +40,7 @@ class Packet:
 
 
     def initFromPkt(self,pkt):
+        print(pkt)
         d = int.from_bytes(pkt,byteorder='big')
         self.time = time.time() - StartTime
         self.can_id  = int.from_bytes(pkt[0:4],byteorder='little')
@@ -49,7 +50,9 @@ class Packet:
         self.d_len = pkt[4]
         self.flags     = pkt[5]
         self.padding     = int.from_bytes(pkt[6:8],byteorder='little')
+        
         self.data    = pkt[8:8+self.d_len]
+        print(self.data)
         self.priority = (self.can_id & 0x1C000000) >> 26 
         self.pf      = (self.can_id & 0xFF0000)  >> 16  
         if(self.pf <= 239):
@@ -117,14 +120,16 @@ def listenForPkts():
    sock = socket.socket(socket.PF_CAN, socket.SOCK_RAW, socket.CAN_RAW)
    sock.bind(("can0",))
 
-   while(1):
-      p = sock.recv(1024)
-      d = int.from_bytes(p,byteorder='big')
-      pkt = Packet(p)
-
-   data = d & 0x00FFFFFFFFFFFFFFFF
-   len = d  & 0x0F0000000000000000000000
-
+   with open("outPutFile.csv","w+") as f:
+       f.write("Time,PGN,DA,SA,Priority,Data\n")
+       while(1):
+           p = sock.recv(1024)
+           pkt = Packet()
+           pkt.initFromPkt(p);
+           if(pkt.valid):
+               f.write(pkt.toCSV());
+               print(pkt.toCSV());
+            
 
 if(len(sys.argv)==1):
    #no argumnets so listen for packets
