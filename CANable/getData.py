@@ -13,26 +13,30 @@ class Packet:
         self.frameFormat = 1
         self.flags     =  0
         self.padding     = 0
+        try:
 
-        spline = line.split()
-        self.time = float(spline[0][1:-1])
-        pkt = spline[2]
-        pkt = pkt.split('#')
+            spline = line.split()
+            self.time = float(spline[0][1:-1])
+            pkt = spline[2]
+            pkt = pkt.split('#')
 
-        self.can_id  = int(pkt[0],16)
-        self.data    = int(pkt[1],16) 
-        self.d_len   = int(len(pkt[1])/2) 
+            self.can_id  = int(pkt[0],16)
+            self.data    = int(pkt[1],16) 
+            self.d_len   = int(len(pkt[1])/2) 
 
-        self.priority = (self.can_id & 0x1C000000) >> 26 
-        self.pf      = (self.can_id & 0xFF0000)  >> 16  
-        if(self.pf <= 239):
-            self.pgn     = (self.can_id & 0x3FF0000) >> 8  
-            self.da      = (self.can_id & 0xFF00)    >> 8
-        else:
-            self.pgn     = (self.can_id & 0x3FFFF00) >> 8  
-            self.da      = 255
-        self.sa      = self.can_id & 0xFF
-        #print(self)
+            self.priority = (self.can_id & 0x1C000000) >> 26 
+            self.pf      = (self.can_id & 0xFF0000)  >> 16  
+            if(self.pf <= 239):
+                self.pgn     = (self.can_id & 0x3FF0000) >> 8  
+                self.da      = (self.can_id & 0xFF00)    >> 8
+            else:
+                self.pgn     = (self.can_id & 0x3FFFF00) >> 8  
+                self.da      = 255
+            self.sa      = self.can_id & 0xFF
+            self.valid = True
+            #print(self)
+        except(ValueError):
+            self.valid = False
 
 
     def initFromPkt(self,pkt):
@@ -55,6 +59,7 @@ class Packet:
             self.pgn     = (self.can_id & 0x3FFFF00) >> 8  
             self.da      = 255
         self.sa      = self.can_id & 0xFF
+        self.valid = True
         #print(self)
          
     def turnHexToStr(hexV,bytesLen):
@@ -134,7 +139,8 @@ for file in sys.argv[1:]:
    for line in inlines:
       p = Packet()
       p.initFromCanUtils(line)
-      outlines.append(p.toCSV())
+      if(p.valid):
+        outlines.append(p.toCSV())
    with open(file.replace('.log','.csv'),"w+") as f:
        f.write("Time,PGN,DA,SA,Priority,Data\n")
        for line in outlines:
