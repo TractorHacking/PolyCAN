@@ -43,6 +43,32 @@ class Packet:
             print(line)
             self.valid = False
 
+    def initFromCSV(self,line):
+        #print(line)
+        #This info is not known so put in default
+        self.error = 0 
+        self.remoteTrRequest = 0 
+        self.frameFormat = 1
+        self.flags     =  0
+        self.padding     = 0
+        if(True):
+            spline = line.split(',')
+            self.time = float(spline[0])
+            self.pgn = int(spline[1])
+            self.da  = int(spline[2])
+            self.sa  = int(spline[3])
+            print(spline)
+            self.priority = int(spline[4])
+            d = spline[5].replace(" ","")
+            self.d_len = int(len(d)/2);
+            self.data = int(d,16);
+            self.valid = True
+            #print(self)
+        #except(ValueError):
+            #print("INVALID")
+            #print(line)
+            #self.valid = False
+
 
     def initFromPkt(self,pkt):
         d = int.from_bytes(pkt,byteorder='big')
@@ -69,6 +95,34 @@ class Packet:
         self.valid = True
         #print(self)
          
+    def toPkt(self):
+        pkt = bytearray()
+        for i in range(16):
+            pkt.append(0)
+        self.pf = self.pgn>>8
+        if(self.pf <= 239):
+            self.can_id  = (self.pgn << 8) & (self.da << 8)
+        else:
+            self.can_id  = (self.pgn << 8) 
+        self.can_id |= self.error << 29
+        self.can_id |= self.remoteTrRequest << 30
+        self.can_id |= self.frameFormat << 31
+        self.can_id |= self.priority << 26
+        self.can_id |= self.pf << 16
+        self.can_id |= self.sa 
+
+
+        pkt[0:4] = self.can_id.to_bytes(4,byteorder='little')
+        pkt[4] = self.d_len
+        pkt[5] = self.flags
+        pkt[6:8] = self.padding.to_bytes(2,byteorder='big')
+        pkt[8:8+self.d_len] = self.data.to_bytes(self.d_len,byteorder='big')
+        
+        pkt = bytes(pkt)
+        self.valid = True
+        return pkt
+        #print(self)
+ 
     def turnHexToStr(hexV,bytesLen):
         tempV = hexV;
         string = ''
@@ -80,11 +134,12 @@ class Packet:
 
 
     def toCSV(self):
+        string = ""
         string = str(self.time)
         string += ','
         string += str(self.pgn)
         string += ','
-        string += str(self.da)
+        string += str(self.da) 
         string += ','
         string += str(self.sa)
         string += ','
@@ -146,11 +201,21 @@ for file in sys.argv[1:]:
    inlines = list()
    outlines = list()
    with open(file) as f:
+      f.readline()
       inlines = f.readlines()
    for line in inlines:
       p = Packet()
-      p.initFromCanUtils(line)
+      if(True):
+         p.initFromCSV(line)
+         if(False and p.valid):
+            PT = Packet()
+            PT.initFromPkt(p.toPkt())
+            print(PT.toCSV())
+            p = PT
+      else:
+         p.initFromCanUtils(line)
       if(p.valid):
+        p.time = 0
         outlines.append(p.toCSV())
    with open(file.replace('.log','.csv'),"w+") as f:
        f.write("Time,PGN,DA,SA,Priority,Data\n")
