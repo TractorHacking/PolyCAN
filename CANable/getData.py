@@ -14,15 +14,18 @@ class Packet:
         self.flags     =  0
         self.padding     = 0
         try:
-
             spline = line.split()
             self.time = float(spline[0][1:-1])
             pkt = spline[2]
             pkt = pkt.split('#')
 
             self.can_id  = int(pkt[0],16)
-            self.data    = int(pkt[1],16) 
-            self.d_len   = int(len(pkt[1])/2) 
+            if(len(pkt[1])>1):
+                self.data    = int(pkt[1],16) 
+                self.d_len   = int(len(pkt[1])/2) 
+            else:
+                self.data = 0;
+                self.d_len = 0;
 
             self.priority = (self.can_id & 0x1C000000) >> 26 
             self.pf      = (self.can_id & 0xFF0000)  >> 16  
@@ -36,11 +39,12 @@ class Packet:
             self.valid = True
             #print(self)
         except(ValueError):
+            print("INVALID")
+            print(line)
             self.valid = False
 
 
     def initFromPkt(self,pkt):
-        print(pkt)
         d = int.from_bytes(pkt,byteorder='big')
         self.time = time.time() - StartTime
         self.can_id  = int.from_bytes(pkt[0:4],byteorder='little')
@@ -52,7 +56,7 @@ class Packet:
         self.padding     = int.from_bytes(pkt[6:8],byteorder='little')
         
         self.data    = pkt[8:8+self.d_len]
-        print(self.data)
+        self.data = int.from_bytes(self.data,byteorder = 'big')
         self.priority = (self.can_id & 0x1C000000) >> 26 
         self.pf      = (self.can_id & 0xFF0000)  >> 16  
         if(self.pf <= 239):
@@ -119,16 +123,18 @@ class Packet:
 def listenForPkts():
    sock = socket.socket(socket.PF_CAN, socket.SOCK_RAW, socket.CAN_RAW)
    sock.bind(("can0",))
+   count = 0;
 
    with open("outPutFile.csv","w+") as f:
        f.write("Time,PGN,DA,SA,Priority,Data\n")
        while(1):
+           count += 1
            p = sock.recv(1024)
            pkt = Packet()
            pkt.initFromPkt(p);
            if(pkt.valid):
                f.write(pkt.toCSV());
-               print(pkt.toCSV());
+               print(count);
             
 
 if(len(sys.argv)==1):
