@@ -13,3 +13,4 @@ polycan/main.py~
 polycan.egg.info/
 polycan.egg_info
 polycan/__pycache__/
+polycan/__pycache__/log_handler.cpython-36.pyc
