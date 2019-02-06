@@ -5,6 +5,52 @@ import csv
 import sys
 import collections
 import pandas as pd
+import glob
+
+def import_known(path):
+    x = 0
+    batch = db.batch()
+    unique = []
+    for filename in tqdm(glob.glob(path+'*.md')):
+        with open(filename, newline='') as myFile:
+            pcount = 1
+            title = str(int(filename[len(path) + 2:-5], 16))
+            if title in unique:
+                continue
+            unique.append(title)
+            data = {}
+            docref = db.collection(u'known_test').document(title)
+            for line in myFile:
+                if (line[0:13] == "description: "):
+                    data['name'] = line[13:].strip()
+                    data['description'] = line[13:].strip()
+                elif (line[0:7] == "* PGN: "):
+                    data['pgn'] = int(line[7:].strip())
+#                    print("PGN: " + line[7:].strip())
+                elif (line[0:19] == "* PDU Format (PF): "):
+                    data['pdu_format'] = int(line[19:].strip(), 16)
+#                    print("PDU Format (PF):", int(line[19:].strip(), 16))
+                elif (line[0:13] == "* Data Page: "):
+                    data['data_length'] = len(line[13:].strip())
+#                    print("Data Page:", len(line[13:].strip()))
+                elif (line[0:12] == "* Priority: "):
+                    data['default_priority'] = int(line[12:].strip())
+#                    print("Priority: " + line[12:-1])
+                elif (line[0:2] == "| " and line != "| Name | Size | Byte Offset |\n" and line != "| ---- | ---- | ----------- |\n"):
+                    tokens = line[2:-3].split(" | ")
+                    data['dp'] = 0
+                    data['edp'] = 0
+                    data['pdu_specific'] = 0
+                    batch.set(docref, data)
+                    batch.set(docref.collection(u'parameters').document(), {u'length' : tokens[1],
+                                                                            u'param_name' : tokens[0],
+                                                                            u'start_pos' : tokens[2].split('-')[0]})
+                    x+=2
+                if x % 500 == 0:
+                    batch.commit()
+ #           print("Uploaded" + filename)
+    batch.commit()
+    return    
 
 def get_log(log_name):
     log_document = db.collection(u'logs').document(log_name)
@@ -49,22 +95,24 @@ def import_log():
             print("Uploaded", x-2, "lines.")
     except FileNotFoundError:
         print("Error. File not found.")
+    batch.commit()
     return    
 
 def get_known():
     known = {}
-    collection_ref = db.collection(u'known')
-    collection = db.collection(u'known').get()
+    collection_ref = db.collection(u'known_test')
+    collection = db.collection(u'known_test').get()
 
     for doc in collection:
         doc_dict = doc.to_dict()
         pgn_object = Pgn.from_dict(doc_dict)
 
         params_list = []
-        params = collection_ref.document(doc.id).collection(u'parameters').get()
+        params = collection_ref.document(doc.id).collection(u'parameters').order_by(u'start_pos').get()
         for param in params:
             param_dict = param.to_dict()
             params_list.append(PgnParameter.from_dict(param_dict))
         pgn_object.parameters = params_list
         known[pgn_object.pgn] = pgn_object
     return known
+

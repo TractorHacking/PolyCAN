@@ -1,0 +1,3 @@
+[console_scripts]
+polycan = polycan.main:main
+

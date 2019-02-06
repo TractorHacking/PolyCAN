@@ -338,7 +338,7 @@ def learn(current_log):
     
 def log_menu(log, known):
     while(1):
-        print("Log Menu")
+        print("\nLog Menu")
         print("0. Display Log")
         print("1. Filter Log")
         print("2. Sort Log")

@@ -1,0 +1,9 @@
+tqdm
+firebase-admin
+tabulate
+grpcio
+numpy
+scipy
+pandas
+scikit-learn
+PyMySQL

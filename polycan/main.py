@@ -24,6 +24,8 @@ def main_menu():
             import_log()
         elif (choice == "4"):
             compare_logs(uploaded_logs, known)
+        elif (choice == "import"):
+            import_known("_idinfo/")
         elif (choice == "5"):
             sys.exit()
         else:

@@ -115,7 +115,7 @@ class Pgn:
         self.__parameters = parameters
     @staticmethod
     def from_dict(d):
-        res = Pgn(d['pgn'], d['data_length'], d['default_priority'], \
-            d['dp'], d['edp'], d['pdu_format'], d['pdu_specific'], \
+        res = Pgn(d['pgn'], d['data_length'], d['default_priority'], d['pdu_format'], \
+            d['dp'], d['edp'], d['pdu_specific'], \
             d['name'], d['description'])
         return res

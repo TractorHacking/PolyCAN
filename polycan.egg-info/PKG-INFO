@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: polycan
+Version: 0.1
+Summary: A tool to analyze a CAN log.
+Home-page: http://github.com/Morgan-Swanson/polycan
+Author: CPCAN
+Author-email: msswanso@calpoly.edu
+License: Open Source
+Description: UNKNOWN
+Platform: UNKNOWN
