@@ -53,8 +53,8 @@ def import_log():
 
 def get_known():
     known = {}
-    collection_ref = db.collection(u'known')
-    collection = db.collection(u'known').get()
+    collection_ref = db.collection(u'known_test')
+    collection = db.collection(u'known_test').get()
 
     for doc in collection:
         doc_dict = doc.to_dict()
