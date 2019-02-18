@@ -5,7 +5,69 @@ StartTime = time.time()
 class Packet:
     def __init__(self):
        pass
+
     def initFromCanUtils(self,line):
+        self.initFromCanUtils(line)
+        self.checkForSeg()
+
+    def checkForSeg(self):
+        self.pktNum   = 1
+        self.actualPGN = self.pgn
+        self.numPkt   = 1
+        self.numBytes = 0
+        self.actualData = [];
+
+
+        if(self.pgn == 60416):#start of long packet
+            self.allDone = False
+            self.numBytes =   (self.data &   (0x0000FF0000000000)) >> 5*8 
+            self.numBytes <<= 8
+            self.numBytes |=  (self.data &   (0x00FF000000000000)) >> 6*8 
+            
+            self.numPkt =     (self.data &   (0x000000FF00000000)) >> 4*8
+            
+            self.actualPGN =  (self.data &   (0x00000000000000FF)) 
+            self.actualPGN <<= 8
+            self.actualPGN |= (self.data &   (0x000000000000FF00)) >> 1*8
+            self.actualPGN <<= 8
+            self.actualPGN |= (self.data &   (0x0000000000FF0000)) >> 2*8
+            
+            self.pktNum = 1
+            self.actualData = [];
+    def combinePacket(self,pkt):
+        if(pkt.pgn != 60160 or self.pgn != 60416):#the pgn for a new segment of data
+            print("notValid pkt pgn","pkt.pgn",pkt.pgn,"   self.pgn",self.pgn)
+            pkt.valid = False
+            return
+        curPktNum =  (pkt.data &      (0xFF00000000000000) ) >> 7*8
+        if(curPktNum!=self.pktNum):
+            pkt.valid = False
+            print("notValid pkt num, Expected:",self.pktNum,",got:",curPktNum)
+            return
+        self.pktNum += 1
+        for i in range(7):
+            mask = (0x00FF000000000000)
+            mask >>=i*8
+            b = pkt.data & mask
+            b >>= (6-i)*8
+            self.actualData.append(b)
+            self.numBytes -=1
+            if(self.numBytes <= 0):
+                break
+
+       
+        if(self.numBytes <= 0):
+            self.allDone = True
+            self.valid   = True
+            self.data = 0
+            for i in range(len(self.actualData)):
+                self.data <<= 8
+                self.data |= self.actualData[i]
+            self.d_len = len(self.actualData);
+            self.pgn = self.actualPGN
+
+
+    def initFromCanUtilsHelper(self,line):
         #print(line)
         #This info is not known so put in default
         self.error = 0 
@@ -37,13 +99,19 @@ class Packet:
                 self.da      = 255
             self.sa      = self.can_id & 0xFF
             self.valid = True
+            self.allDone = True
             #print(self)
         except(ValueError):
             print("INVALID")
             print(line)
             self.valid = False
+            self.allDone = True
 
     def initFromCSV(self,line):
+        self.initFromCSVHelper(line)
+        self.checkForSeg()
+
+    def initFromCSVHelper(self,line):
         #print(line)
         #This info is not known so put in default
         self.error = 0 
@@ -66,14 +134,20 @@ class Packet:
                 self.d_len = 0
                 self.data  = 0
             self.valid = True
+            self.allDone = True
             #print(self)
         except(ValueError):
             print("INVALID")
             print(line)
             self.valid = False
+            self.allDone = True
 
 
     def initFromPkt(self,pkt):
+        self.initFromPktHelper(pkt)
+        self.checkForSeg()
+
+    def initFromPktHelper(self,pkt):
         d = int.from_bytes(pkt,byteorder='big')
         self.time = time.time() - StartTime
         self.can_id  = int.from_bytes(pkt[0:4],byteorder='little')
@@ -96,6 +170,7 @@ class Packet:
             self.da      = 255
         self.sa      = self.can_id & 0xFF
         self.valid = True
+        self.allDone = True
         #print(self)
          
     def toPkt(self):
@@ -123,6 +198,7 @@ class Packet:
         
         pkt = bytes(pkt)
         self.valid = True
+        self.allDone = True
         return pkt
         #print(self)
  
@@ -177,5 +253,20 @@ class Packet:
         string += Packet.turnHexToStr(self.data,self.d_len)
         string += "\n"
         return string 
+
+
+def getNewPacket(sock):
+    p = sock.recv(1024)
+    pkt = Packet()
+    pkt.initFromPkt(p)
+    if(not(pkt.valid) | pkt.allDone):
+        print("not valid!")
+        return pkt
+    while(not pkt.allDone):
+        p = sock.recv(1024)
+        pktNew = Packet()
+        pktNew.initFromPkt(p)
+        pkt.combinePacket(pktNew)
+    return pkt
 
 

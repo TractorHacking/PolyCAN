@@ -10,10 +10,9 @@ with open("outPutFile.csv","w+") as f:
     f.write("Time,PGN,DA,SA,Priority,Data\n")
     while(1):
         count += 1
-        p = sock.recv(1024)
-        pkt = packet.Packet()
-        pkt.initFromPkt(p);
+        pkt = packet.getNewPacket(sock)
         if(pkt.valid):
+            print(pkt.toCSV());
             f.write(pkt.toCSV());
             print(count);
         
