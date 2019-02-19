@@ -284,6 +284,7 @@ def filter_menu(current_log, known):
         else:
             print("Please enter an integer for menu entry")
             continue
+
 def learn(current_log):
     #take only 8-byte data
     criterion = current_log['data'].map(lambda x: len(x) == 25)
@@ -379,15 +380,63 @@ def log_menu(log, known, uploaded_logs):
         elif option == 6:
             log2_name = find_log()
             if log2_name in uploaded_logs:
-                compare_logs(log, uploaded_logs[log2_name]) 
+                #compare_logs(log, uploaded_logs[log2_name]) 
+                find_patterns(log, uploaded_logs[log2_name])
             else:
                 log2 = get_log(log2_name)
                 uploaded_logs[log2_name] = log2
-                compare_logs(log, log2)
+                #old:
+                #compare_logs(log, log2)
+                #new test:
+                find_patterns(log, log2)
         elif option == 7:
             return
         else:
             print("Please enter an integer for menu entry")
+
+def find_patterns(log1, log2):
+    cols = ['pgn1','data1','pgn2','data2','diff']
+    df = pd.DataFrame(data={'pgn1': log1['pgn'],
+                        'data1':log1['data'],
+                        'pgn2':log2['pgn'],
+                        'data2':log2['data']},
+                        columns = cols)
+    df['diff'] = df['data1'] == df['data2']
+    df.dropna(how = 'any')
+    print(df)
+    #df['pgn2'] = log2['pgn']
+    #df['data2'] = log2['data']
+    #df['diff'] = df['data'] == df['data2']
+    """
+    count = 0
+    patterns = []
+    save_i = 0
+    new_i = 0
+    for i in range(0,len(log1)):
+        queried = log2.query('pgn == {} & data == "{}"'.format(
+            log1.loc[i, 'pgn'],
+            log1.loc[i, 'data']))
+        print(queried) 
+        for j in queried.index:
+            k = j
+            save_i = i
+            while(log2.loc[k, 'pgn'] == log1.loc[i, 'pgn'] and
+                log2.loc[i, 'data'] == log1.loc[i, 'data']):
+                k += 1
+                i += 1
+                count += 1
+            if count > 1:
+                patterns.append(log1[i:save_i-i+1])
+            new_i = i
+            i = save_i
+        i = new_i
+        break
+    for i in range(0, len(patterns)):
+        print('Pattern #{}'.format(i+1))
+        print('Item count = {}'.format(len(patterns[i])))
+        print(patterns[i])
+    """
+        
 def KMP_logs(pattern, log2):
     X = 0
     ret = [0] * len(pattern)
