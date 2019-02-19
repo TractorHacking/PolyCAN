@@ -1,6 +1,7 @@
 import socket
 import sys
 import time
+import math
 StartTime = time.time()
 class Packet:
     def __init__(self):
@@ -15,9 +16,7 @@ class Packet:
         self.actualPGN = self.pgn
         self.numPkt   = 1
         self.numBytes = 0
-        self.actualData = [];
-
-
+        self.actualData = []; 
         if(self.pgn == 60416):#start of long packet
             self.allDone = False
             self.numBytes =   (self.data &   (0x0000FF0000000000)) >> 5*8 
@@ -201,6 +200,74 @@ class Packet:
         self.allDone = True
         return pkt
         #print(self)
+    def sendPacket(self,sock):
+        if(self.d_len <=8):
+            sock.send(self.toPkt())
+            return
+        #need to break up into multiple packets
+        head = Packet()
+        head.error = 0
+        head.remoteTrRequest = 0
+        head.frameFormat = 1
+        head.flags     =  0
+        head.padding     = 0
+        head.priority = self.priority
+        head.pgn = 60416
+        head.d_len = 8
+        head.da = self.da
+        head.sa = self.sa
+
+        head.data   = 32
+        head.data <<= 8 
+        head.data  |= self.d_len & 0xFF
+        head.data <<= 8 
+        head.data  |= (self.d_len & 0xFF00) >> 8
+        head.data <<= 8
+        head.data  |= math.ceil(self.d_len/7)
+        head.data <<= 8
+        head.data  |= 0xFF 
+        head.data <<= 8
+        head.data  |= (self.pgn & 0x0000FF)
+        head.data <<= 8
+        head.data  |= ((self.pgn & 0x00FF00) >> 8)
+        head.data <<= 8
+        head.data  |= ((self.pgn & 0xFF0000) >> 16)
+        sock.send(head.toPkt())
+        bytesLeft = self.d_len
+        pktNum = 1
+        while(bytesLeft > 0):
+            #time.sleep(0.05)
+            mid = Packet()
+            mid.error = 0
+            mid.remoteTrRequest = 0
+            mid.frameFormat = 1
+            mid.flags     =  0
+            mid.padding     = 0
+            mid.priority = self.priority
+            mid.pgn = 60160
+            mid.d_len = 8
+            mid.data = pktNum
+            mid.da = self.da
+            mid.sa = self.sa
+            for i in range(7):
+                if(bytesLeft<=0):
+                    b = 0xFF
+                else:
+                    b = self.getByte(bytesLeft-1,self.data)
+                mid.data <<= 8
+                mid.data |= b
+                bytesLeft -= 1
+
+            sock.send(mid.toPkt())
+            pktNum += 1
+            if(bytesLeft<=0):
+                break
+
+    def getByte(self,index,s):
+       mask = 0xFF << index*8 
+       b = s & mask
+       b >>= index*8
+       return b
  
     def turnHexToStr(hexV,bytesLen):
         tempV = hexV;

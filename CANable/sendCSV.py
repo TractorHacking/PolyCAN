@@ -16,6 +16,6 @@ with open(file) as f:
         p = packet.Packet()
         p.initFromCSV(line)
         if(p.valid):
-            sock.send(p.toPkt())
-            time.sleep(0.02)
+            p.sendPacket(sock)
+            time.sleep(0.05)
 
