@@ -411,3 +411,190 @@ def sort_menu(current_log, known):
         else:
             print("Please enter an integer for menu entry")
             continue
+def compare_log1(uploaded_logs, known, table):
+    log1 = find_log(uploaded_logs)
+    listlog = log1.values.tolist();
+    print(log1.loc[[0]])
+    print(listlog[0])
+def compare_log(uploaded_logs, known, table):
+    bol = False
+    if(table != "ok"):
+        print("\n --select log to compare with--")
+        log2 = find_log(uploaded_logs)
+        log2 = log2.values.tolist()
+        print("\n --log selected, comparing...--")
+        log1 = table
+        bol = True
+    else:
+        print("\n --select first log--")
+        log1 = find_log(uploaded_logs)
+        log1 = log1.values.tolist()
+        print("\n --select second log--")
+        log2 = find_log(uploaded_logs)
+        log2 = log2.values.tolist()
+        print("\n --logs selected, comparing...--")
+        bol = False
+    table = []
+    breakCount = 0;
+    diffCount = 0;
+    pgnCount = 0
+    dataCount = 0
+    shortData = 0
+    len1 = len(log1)
+    len2 = len(log2) - 1
+    printProgressBar(0, len1, prefix = 'Progress:', suffix = 'Complete', length = 50)
+    #while idx1 < len(log1):
+    for idx1, val1 in enumerate(log1):
+        pgnBool = False
+        dataBool = False;
+        printProgressBar(idx1 + 1, len1, prefix = 'Progress:', suffix = 'Complete', length = 50)
+        if bol:
+            pgnStr1 = val1[0]
+            dataStr1 = val1[1]
+        else:
+            if val1[2] in known:
+                pgnName = known[val1[2]].name
+            else:
+                pgnName = "Unknown"
+            dataStr1 = ''.join(val1[0].split())
+            pgnStr1 = str(val1[2])
+        pgnData1 = pgnStr1 + dataStr1
+        if len(dataStr1) < 16:
+            shortData += 1
+        dataDiffShort = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+        for idx2, val2 in enumerate(log2):
+            dataDiffOld = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+            dataDiff = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+            dataStr2 = ''.join(val2[0].split())
+            pgnStr2 = str(val2[2])
+            pgnData2 = pgnStr2 + dataStr2
+            if pgnStr1 == pgnStr2:
+                pgnBool = True
+                idxCount = 0
+                if len(dataStr1) == 16 and len(dataStr2) == 16:
+                    for idxChar in dataDiff:
+                        char1 = dataStr1[idxChar]
+                        char2 = dataStr2[idxChar]
+                        if char1 == char2:
+                            del dataDiffOld[idxCount]
+                            idxCount -= 1
+                        idxCount += 1
+                    if len(dataDiffOld) < len(dataDiffShort):
+                        dataDiffShort = dataDiffOld
+            if dataStr1 == dataStr2:
+                dataBool = True
+            if pgnData1 == pgnData2:
+                breakCount += 1
+                break
+            elif idx2 == len2:
+                diffCount += 1
+                dataDiffAmount = len(dataDiffShort)
+                xCode = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+                if len(dataStr1) == 16:
+                    for idx5, val5 in enumerate(dataStr1):
+                        for idx6, val6 in enumerate(dataDiffShort):
+                            if val6 == idx5:
+                                xCode[idx5] = val5
+                                break
+                            else:
+                                xCode[idx5] = 'x'
+                    xCode = ''.join(xCode)
+                if bol:
+                    table_entry = [log1[idx1][0], log1[idx1][1], log1[idx1][2], log1[idx1][3], log1[idx1][4], log1[idx1][5], dataDiffAmount, xCode]
+                else:
+                    table_entry = [pgnStr1, dataStr1, dataDiffAmount, dataDiffShort, pgnName, xCode]
+                table.append(table_entry)
+                if not pgnBool:
+                    pgnCount += 1
+                if not dataBool:
+                    dataCount += 1 
+    
+    print(tabulate(table,
+        headers= ["index", "pgn1","data", "amount diff bytes", "index diff bytes", "pgn Name", "data x"], \
+                  showindex = True,
+                 # tablefmt = "pipe"
+                  ))
+
+    printCodeResults(len1, breakCount, diffCount, pgnCount, dataCount, shortData, 0)
+    
+    while(1):
+        print("\n 1. Delete identical data codes \n 2. Compare to an other log")
+        choice = input('')
+        print("")
+        if choice == "1":
+            delSame(table, len1, breakCount, diffCount, pgnCount, dataCount, shortData)
+        elif choice == "2":
+            compare_log(uploaded_logs, known, table)
+            
+            
+            
+#    while(2):
+ #       print("\n 1. Sort by amount of data byte changes")
+  #      print("\n 2. Sort by pgn than by amount of data byte changes")
+
+        
+def delSame(table, len1, breakCount, diffCount, pgnCount, dataCount, shortData):
+    table2 = []
+    len3 = len(table)
+    printProgressBar(0, len3, prefix = 'Progress:', suffix = 'Complete', length = 50)
+    for idx3, val3 in enumerate(table):
+        data1 = val3[1]
+        idx4 = 0
+        len4 = len(table)
+        printProgressBar(idx3 + 1, len4, prefix = 'Progress:', suffix = 'Complete', length = 50)
+        while idx4 < len4:
+            data2 = table[idx4][1]
+            if data1 == data2:
+                if idx4 > idx3:
+                    del table[idx4]
+                    len4 = len(table)
+                    idx4 += 0
+                    continue
+            idx4 += 1
+                        
+                    
+    print(tabulate(table,
+        headers= ["index", "pgn", "data", "amount diff bytes", "index diff bytes", "pgn Name"], \
+        showindex = True,
+        #tablefmt = "pipe"
+                  ))
+    
+    printCodeResults(len1, breakCount, diffCount, pgnCount, dataCount, shortData, table)
+    len5 = len(table) - 1
+    
+def printCodeResults(len1, breakCount, diffCount, pgnCount, dataCount, shortData, table):
+    print("Total codes") 
+    print(len1)
+    print("Total matches")
+    print(breakCount)
+    print("Total differences")
+    print(diffCount)
+    print("Total pgn differences")
+    print(pgnCount)
+    print("Total data differences")
+    print(dataCount)
+    print("Short Data")
+    print(shortData)
+    if(table != 0):
+        print("Unique codes")
+        print(len(table))
+    
+def printProgressBar (iteration, total, prefix = '', suffix = '', decimals = 1, length = 100, fill = '█'):
+    """
+    Call in a loop to create terminal progress bar
+    @params:
+        iteration   - Required  : current iteration (Int)
+        total       - Required  : total iterations (Int)
+        prefix      - Optional  : prefix string (Str)
+        suffix      - Optional  : suffix string (Str)
+        decimals    - Optional  : positive number of decimals in percent complete (Int)
+        length      - Optional  : character length of bar (Int)
+        fill        - Optional  : bar fill character (Str)
+    """
+    percent = ("{0:." + str(decimals) + "f}").format(100 * (iteration / float(total)))
+    filledLength = int(length * iteration // total)
+    bar = fill * filledLength + '-' * (length - filledLength)
+    print('\r%s |%s| %s%% %s' % (prefix, bar, percent, suffix), end = '\r')
+    # Print New Line on Complete
+    if iteration == total: 
+        print()    

@@ -75,7 +75,7 @@ def import_log():
         return
     x = 0 
     try:
-        with open("logs/"+path, newline='') as csvfile:
+        with open("CANable/logs/"+path, newline='') as csvfile:
             log = csv.DictReader(csvfile)
             doc_ref = db.collection(u'logs').document(path[:-4]).collection('log')
             db.collection(u'logs').document(path[:-4]).set({u'model': '5055E'})
