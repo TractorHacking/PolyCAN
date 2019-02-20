@@ -23,7 +23,7 @@ def main_menu():
             if log_name in uploaded_logs:
                 log_menu(uploaded_logs[log_name], known, uploaded_logs)
             else:
-                log = get_log(log_name)
+                log = get_log(log_name, known)
                 uploaded_logs[log_name] = log
                 log_menu(log, known, uploaded_logs)
         elif (choice == "2"):

@@ -6,13 +6,15 @@ import sys
 import collections
 import pandas as pd
 
-def get_log(log_name):
+def get_log(log_name, known):
     log_document = db.collection(u'logs').document(log_name)
     collection_ref = log_document.collection('log')
     collection = collection_ref.get()
     model_name = log_document.get().to_dict()['model']
     list_of_dicts = [x.to_dict() for x in collection]
-    return pd.DataFrame(list_of_dicts)
+    res = pd.DataFrame(columns=['data', 'destination', 'pgn', 'priority', 'source', 'time', 'description'],data=list_of_dicts)
+    res['description'] = ["Unknown" if not x in known else known[x] for x in res['pgn']]
+    return res
 
 def get_lognames():
     logs = db.collection(u'logs').get()

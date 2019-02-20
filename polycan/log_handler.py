@@ -447,7 +447,7 @@ def find_patterns(log1, log2):
                 i += 1
                 count += 1
             if count > 1:
-                patterns.append(log1[save_i:i])
+                patterns.append(log2[save_i:i])
             i = save_i
             count = 0
 
