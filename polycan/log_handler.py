@@ -23,7 +23,8 @@ def numerize_data(data):
     bytestring = data.replace(" ", '')
     return int(bytestring, 16)
 def break_data(data):
-    byte_list = data[1:-1].split(" ")
+    byte_list = data.rstrip(' ')
+    byte_list = data.lstrip(' ')
     for i in range(0, len(byte_list)):
         byte_list[i] = int(byte_list[i], 16)
     return byte_list
@@ -358,7 +359,8 @@ def log_menu(log, known, uploaded_logs):
         print("4. Analyze PGN")
         print("5. Learn")
         print("6. Pattern Matching")
-        print("7. Return")
+        print("7. Plot PGN")
+        print("8. Return")
         choice = input("")
         try:
             option = int(choice)
@@ -390,11 +392,22 @@ def log_menu(log, known, uploaded_logs):
                 #new test:
                 find_patterns(log, log2)
         elif option == 7:
+            plot_pgn(log)
+        elif option == 8:
             return
         else:
             print("Please enter an integer for menu entry")
 
+def plot_pgn(log):
+    pgn = int(input("Please enter PGN to plot: "))
+    time_axis = log.query('pgn == {}'.format(pgn))['time'].as_matrix()
+    data_axis = log.query('pgn == {}'.format(pgn))['data'].as_matrix()
+    num_data = np.array([numerize_data(x) for x in data_axis])
+    plt.plot(time_axis, num_data)
+    plt.show()
+
 def find_patterns(log1, log2):
+    """
     cols = ['pgn1','data1','pgn2','data2','diff']
     df = pd.DataFrame(data={'pgn1': log1['pgn'],
                         'data1':log1['data'],
@@ -402,7 +415,7 @@ def find_patterns(log1, log2):
                         'data2':log2['data']},
                         columns = cols)
     df['diff'] = df['data1'] == df['data2']
-    df.dropna(how = 'any')
+    df.dropna(how = 'all')
     print(df)
     #df['pgn2'] = log2['pgn']
     #df['data2'] = log2['data']
@@ -411,32 +424,38 @@ def find_patterns(log1, log2):
     count = 0
     patterns = []
     save_i = 0
-    new_i = 0
-    for i in range(0,len(log1)):
+    max_patern_length = 0
+    min_size = min(len(log1), len(log2))
+    log1=log1.truncate(after=min_size-1)
+    log2=log2.truncate(after=min_size-1)
+
+    uniq_idx_log1 = log1.drop_duplicates(['pgn', 'data']).index
+    for i in uniq_idx_log1:
         queried = log2.query('pgn == {} & data == "{}"'.format(
             log1.loc[i, 'pgn'],
             log1.loc[i, 'data']))
-        print(queried) 
+        if(len(queried) == 0):
+            continue
+        save_i = i
         for j in queried.index:
             k = j
-            save_i = i
-            while(log2.loc[k, 'pgn'] == log1.loc[i, 'pgn'] and
-                log2.loc[i, 'data'] == log1.loc[i, 'data']):
+            print("i: {} k: {}".format(i,k))
+            while(k < min_size and i < min_size and
+                log2.loc[k, 'pgn'] == log1.loc[i, 'pgn'] and
+                log2.loc[k, 'data'] == log1.loc[i, 'data']):
                 k += 1
                 i += 1
                 count += 1
             if count > 1:
-                patterns.append(log1[i:save_i-i+1])
-            new_i = i
+                patterns.append(log1[save_i:i])
             i = save_i
-        i = new_i
-        break
-    for i in range(0, len(patterns)):
-        print('Pattern #{}'.format(i+1))
-        print('Item count = {}'.format(len(patterns[i])))
-        print(patterns[i])
-    """
-        
+            count = 0
+
+    for l in range(0, len(patterns)):
+        print('Pattern #{}'.format(l+1))
+        print('Item count = {}'.format(len(patterns[l])))
+        print(patterns[l])
+
 def KMP_logs(pattern, log2):
     X = 0
     ret = [0] * len(pattern)

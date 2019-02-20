@@ -24,7 +24,6 @@ def get_lognames():
 def import_log():
     batch = db.batch()
     path = input("\nEnter file path: ")
-    filename = path.rpartition('/')
     if len(path) <= 4:
         print("Error, Invalid File Name")
         return
@@ -35,6 +34,7 @@ def import_log():
     try:
         with open(path, newline='') as csvfile:
             log = csv.DictReader(csvfile)
+            filename = path.rpartition('/')
             doc_ref = db.collection(u'logs').document(filename[:-4]).collection('log')
             db.collection(u'logs').document(filename[:-4]).set({u'model': '5055E'})
             print("\nUploading " + filename + "...") 
