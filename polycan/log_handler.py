@@ -11,6 +11,11 @@ from sklearn.metrics import confusion_matrix
 from sklearn.metrics import classification_report
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn import naive_bayes
+from scipy.cluster.hierarchy import linkage
+from scipy.cluster.hierarchy import dendrogram
+from scipy.spatial.distance import pdist
+from scipy.cluster.hierarchy import cophenet
+import matplotlib.pyplot as plt
 import csv
 import sys
 import collections
@@ -18,7 +23,8 @@ def numerize_data(data):
     bytestring = data.replace(" ", '')
     return int(bytestring, 16)
 def break_data(data):
-    byte_list = data[1:-1].split(" ")
+    byte_list = data.rstrip(' ')
+    byte_list = data.lstrip(' ')
     for i in range(0, len(byte_list)):
         byte_list[i] = int(byte_list[i], 16)
     return byte_list
@@ -31,6 +37,7 @@ def param_values(data, length, params):
     byte_list.reverse()
     byte_list.insert(0, 0)
     # byte_list[8] - MSB, [1] - LSB
+    print(byte_list)
     for value in params:
         
         start_pos = value.start_pos
@@ -85,47 +92,43 @@ def param_values(data, length, params):
                 ~(255 << remaining)) << 8-int(start[1])+1
     return values
 
-def detail_view(known, log=None):
-    if log == None:
-        get_pgn(known)
-    else:
-        while(1):
-            choice = input("Please enter line number or q to quit: ")
-            if choice == 'q':
-                return
-            try:
-                option = int(choice)
-            except:
-                print("Invalid input")
-                continue
-            if option < 0 or option >= len(log):
-                print("Number out of bounds")
-                continue
-            if not log['pgn'][option] in known:
-                print("Unknown PGN {}".format(option))
-                continue
-            else:
-                break
-        get_pgn(known, log['pgn'][option], log['data'][option])
+def detail_view(known, log):
+    while(1):
+        choice = input("Please enter line number or q to quit: ")
+        if choice == 'q':
+            return
+        try:
+            option = int(choice)
+        except:
+            print("Invalid input")
+            continue
+        if option < 0 or option >= len(log):
+            print("Number out of bounds")
+            continue
+        if not log.at[option, 'pgn'] in known:
+            print("Unknown PGN {}".format(option))
+            continue
+        else:
+            break
+    print_pgn(known[log.at[option, 'pgn']], log.at[option, 'data'])
     return
 
-def get_pgn(known, pgn = -1, data = ''):
-    if pgn == -1:
-        while(1):
-            choice = input("Please enter PGN or q to quit: ")
-            if choice == 'q':
-                return
-            try:
-                pgn = int(choice)
-            except:
-                print("Invalid input")
-                continue
-            if not pgn in known:
-                print("Unknown PGN")
-                continue
-            else: 
-                break
-    print_pgn(known[pgn], data)
+def get_pgn(known):
+    while(1):
+        choice = input("Please enter PGN or q to quit: ")
+        if choice == 'q':
+            return
+        try:
+            pgn = int(choice)
+        except:
+            print("Invalid input")
+            continue
+        if not pgn in known:
+            print("Unknown PGN")
+            continue
+        else: 
+            break
+    print_pgn(known[pgn], '')
 
 def print_pgn(pgn_object, data):
     print('\n-----------------------------------------')
@@ -155,7 +158,7 @@ def print_pgn(pgn_object, data):
             print(10*' ' + "%d" % (pdata[item.description]), end='')
         print()
 
-def find_log(uploaded_logs):
+def find_log():
     names = get_lognames()
     if len(names) == 0:
         print("No logs found")
@@ -177,11 +180,13 @@ def find_log(uploaded_logs):
             continue
         else:
             break
+    """
     if names[option] in uploaded_logs:
         return uploaded_logs[names[option]]
     log = get_log(names[option])
     uploaded_logs[names[option]] = log
-    return log
+    """
+    return names[option]
     
 def filter_menu(current_log, known):
     df = None
@@ -280,6 +285,7 @@ def filter_menu(current_log, known):
         else:
             print("Please enter an integer for menu entry")
             continue
+
 def learn(current_log):
     #take only 8-byte data
     criterion = current_log['data'].map(lambda x: len(x) == 25)
@@ -313,7 +319,14 @@ def learn(current_log):
     print(confusion_matrix(Y_test, y_pred))
     print(classification_report(Y_test, y_pred))
     
-    
+    #Hierarchy clustering
+    X = pd.DataFrame([numerize_data(x) for x in fixed.data])
+    X_dist = pdist(X)
+    X_link = linkage(X, method='ward')
+    coph_cor, coph_dist = cophenet(X_link, X_dist)
+    print(coph_cor)
+    dendrogram(X_link, truncate_mode='lastp', p=15, show_contracted=True)
+    plt.show()
     """
     print(np.array([numerize_data(x) for x in sorted_by_pgn['data']]))
     X = pd.DataFrame([numerize_data(x) for x in sorted_by_pgn['data']],
@@ -336,7 +349,7 @@ def learn(current_log):
     print(cv_knn.best_params_)
     """
     
-def log_menu(log, known):
+def log_menu(log, known, uploaded_logs):
     while(1):
         print("\nLog Menu")
         print("0. Display Log")
@@ -345,7 +358,9 @@ def log_menu(log, known):
         print("3. Analyze single entry")
         print("4. Analyze PGN")
         print("5. Learn")
-        print("6. Return")
+        print("6. Pattern Matching")
+        print("7. Plot PGN")
+        print("8. Return")
         choice = input("")
         try:
             option = int(choice)
@@ -365,10 +380,117 @@ def log_menu(log, known):
         elif option == 5:
             learn(log)
         elif option == 6:
+            log2_name = find_log()
+            if log2_name in uploaded_logs:
+                #compare_logs(log, uploaded_logs[log2_name]) 
+                find_patterns(log, uploaded_logs[log2_name])
+            else:
+                log2 = get_log(log2_name)
+                uploaded_logs[log2_name] = log2
+                #old:
+                #compare_logs(log, log2)
+                #new test:
+                find_patterns(log, log2)
+        elif option == 7:
+            plot_pgn(log)
+        elif option == 8:
             return
         else:
             print("Please enter an integer for menu entry")
-def compare_logs(uploaded_logs, known):
+
+def plot_pgn(log):
+    pgn = int(input("Please enter PGN to plot: "))
+    time_axis = log.query('pgn == {}'.format(pgn))['time'].as_matrix()
+    data_axis = log.query('pgn == {}'.format(pgn))['data'].as_matrix()
+    num_data = np.array([numerize_data(x) for x in data_axis])
+    plt.plot(time_axis, num_data)
+    plt.show()
+
+def find_patterns(log1, log2):
+    """
+    cols = ['pgn1','data1','pgn2','data2','diff']
+    df = pd.DataFrame(data={'pgn1': log1['pgn'],
+                        'data1':log1['data'],
+                        'pgn2':log2['pgn'],
+                        'data2':log2['data']},
+                        columns = cols)
+    df['diff'] = df['data1'] == df['data2']
+    df.dropna(how = 'all')
+    print(df)
+    #df['pgn2'] = log2['pgn']
+    #df['data2'] = log2['data']
+    #df['diff'] = df['data'] == df['data2']
+    """
+    count = 0
+    patterns = []
+    save_i = 0
+    max_patern_length = 0
+    min_size = min(len(log1), len(log2))
+    log1=log1.truncate(after=min_size-1)
+    log2=log2.truncate(after=min_size-1)
+
+    uniq_idx_log1 = log1.drop_duplicates(['pgn', 'data']).index
+    for i in uniq_idx_log1:
+        queried = log2.query('pgn == {} & data == "{}"'.format(
+            log1.loc[i, 'pgn'],
+            log1.loc[i, 'data']))
+        if(len(queried) == 0):
+            continue
+        save_i = i
+        for j in queried.index:
+            k = j
+            print("i: {} k: {}".format(i,k))
+            while(k < min_size and i < min_size and
+                log2.loc[k, 'pgn'] == log1.loc[i, 'pgn'] and
+                log2.loc[k, 'data'] == log1.loc[i, 'data']):
+                k += 1
+                i += 1
+                count += 1
+            if count > 1:
+                patterns.append(log1[save_i:i])
+            i = save_i
+            count = 0
+
+    for l in range(0, len(patterns)):
+        print('Pattern #{}'.format(l+1))
+        print('Item count = {}'.format(len(patterns[l])))
+        print(patterns[l])
+
+def KMP_logs(pattern, log2):
+    X = 0
+    ret = [0] * len(pattern)
+    for j in range(1,len(pattern)):
+        if pattern.iat[j,0] ==  pattern.iat[X,0] and \
+            pattern.iat[j,1] == pattern.iat[X,1]:
+            ret[j] = ret[X]
+            X += 1
+        else:
+            ret[j] = X
+            X = ret[X]
+    i = 0
+    j = 0
+    print(ret)
+    while(i < len(log2)):
+        if j == len(pattern):
+            print("Found pattern:")
+            print(log2.iloc[i-len(pattern):i])
+            j = ret[j-1]
+        elif pattern.iat[j,0] ==  log2.iat[i,0] and \
+            pattern.iat[j,1] == log2.iat[i,1]:
+            i += 1
+            j += 1
+        else:
+            if j != 0:
+                j = ret[j]
+            i += 1
+
+def compare_logs(log1, log2):
+    print(log1)
+    pattern = input("Please choose a pattern to search in log2 (ex. 1-52): ")
+    ptrn = log1[['pgn','data','time']].iloc[int(pattern.split("-")[0]):int(pattern.split("-")[1])+1]
+    txt = log2[['pgn','data','time']]
+    print(ptrn)
+    KMP_logs(ptrn ,txt) 
     pass
     """
     if len(uploaded_logs) < 2:

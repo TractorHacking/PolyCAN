@@ -73,22 +73,35 @@ def import_log():
     if len(path) <= 4:
         print("Error, Invalid File Name")
         return
+    if path[-4:] != ".csv":
+        print("Not a csv file")
+        return
     x = 0 
     try:
-        with open("CANable/logs/"+path, newline='') as csvfile:
-            log = csv.DictReader(csvfile)
-            doc_ref = db.collection(u'logs').document(path[:-4]).collection('log')
-            db.collection(u'logs').document(path[:-4]).set({u'model': '5055E'})
-            print("\nUploading " + path[:-4] + "...") 
+        with open("CANable/logs/"+path, newline='') as csvfile:            log = csv.DictReader(csvfile)
+            filename = path.rpartition('/')
+            doc_ref = db.collection(u'logs').document(filename[:-4]).collection('log')
+            db.collection(u'logs').document(filename[:-4]).set({u'model': '5055E'})
+            print("\nUploading " + filename + "...") 
             for line in tqdm(log):
-                line_ref = doc_ref.document(line['Time'])
-                batch.set(line_ref,{ u'pgn': int(line['PGN'], 16),
-                                     u'destination': int(line['DA'], 16),
-                                     u'source': int(line['SA'], 16),
-                                     u'priority': int(line['Priority'], 16),
+				if(filename[:6] == "2018-01" or filename[:6] == "2018-02"):
+                    line_ref = doc_ref.document(line['Time'])
+                    batch.set(line_ref,{ u'pgn': int(line['ID'], 16),
+                                     u'destination': 255,
+                                     u'source': 255,
+                                     u'priority': 255,
                                      u'time': float(line['Time']),
-                                     u'data': line['Data']
+                                     u'data': line['Data']                                     })  
+                else:
+                    line_ref = doc_ref.document(line['Time'])
+                    batch.set(line_ref,{ u'pgn': int(line['Pgn'], 10),
+                                     u'destination': int(line['DA'], 10),
+                                     u'source': int(line['SA'], 10),
+                                     u'priority': int(line['Priority'], 10),
+                                     u'time': float(line['Time']),
+                                     u'data': (line['Data']).strip()
                                      })  
+
                 x += 1
                 if x % 500 == 0:
                     batch.commit()
