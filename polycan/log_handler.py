@@ -15,9 +15,9 @@ from scipy.cluster.hierarchy import linkage
 from scipy.cluster.hierarchy import dendrogram
 from scipy.spatial.distance import pdist
 from scipy.cluster.hierarchy import cophenet
-import matplotlib.pyplot as plt
 import csv
 import sys
+import matplotlib.pyplot as plt
 import collections
 def numerize_data(data):
     bytestring = data.replace(" ", '')
@@ -533,26 +533,48 @@ def sort_menu(current_log, known):
         else:
             print("Please enter an integer for menu entry")
             continue
-def compare_log1(uploaded_logs, known, table):
-    log1 = find_log(uploaded_logs)
-    listlog = log1.values.tolist();
-    print(log1.loc[[0]])
-    print(listlog[0])
-def compare_log(uploaded_logs, known, table):
+def compare_logs1(uploaded_logs, known, table):
+    log = find_log()
+    #loggo = uploaded_logs[log1]
+    if log in uploaded_logs:
+        log1 = uploaded_logs[log]
+    else:
+        log1 = get_log(log)
+        uploaded_logs[log] = log1
+    print(log1)
+    #listlog = log1.values.tolist();
+    #print(log1.loc[[0]])
+    #print(listlog[0])
+def compare_logs(uploaded_logs, known, table):
     bol = False
     if(table != "ok"):
         print("\n --select log to compare with--")
-        log2 = find_log(uploaded_logs)
+        log2_Name = find_log()
+        if log2_Name in uploaded_logs:
+            log2 = uploaded_logs[log2_Name]
+        else:
+            log2 = get_log(log2_Name)
+            uploaded_logs[log2_Name] = log2
         log2 = log2.values.tolist()
         print("\n --log selected, comparing...--")
         log1 = table
         bol = True
     else:
         print("\n --select first log--")
-        log1 = find_log(uploaded_logs)
+        log1_Name = find_log()
+        if log1_Name in uploaded_logs:
+            log1 = uploaded_logs[log1_Name]
+        else:
+            log1 = get_log(log1_Name)
+            uploaded_logs[log1_Name] = log1
         log1 = log1.values.tolist()
         print("\n --select second log--")
-        log2 = find_log(uploaded_logs)
+        log2_Name = find_log()
+        if log2_Name in uploaded_logs:
+            log2 = uploaded_logs[log2_Name]
+        else:
+            log2 = get_log(log2_Name)
+            uploaded_logs[log2_Name] = log2
         log2 = log2.values.tolist()
         print("\n --logs selected, comparing...--")
         bol = False
@@ -646,7 +668,7 @@ def compare_log(uploaded_logs, known, table):
         if choice == "1":
             delSame(table, len1, breakCount, diffCount, pgnCount, dataCount, shortData)
         elif choice == "2":
-            compare_log(uploaded_logs, known, table)
+            compare_logs(uploaded_logs, known, table)
             
             
             

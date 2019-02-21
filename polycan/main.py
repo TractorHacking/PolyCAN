@@ -27,12 +27,13 @@ def main_menu():
                 log_menu(log, known, uploaded_logs)
         elif (choice == "2"):
             get_pgn(known)
-        elif (choice == "3"):
-            import_log()
+        elif (choice == "4"):
+            print("okok")
             helper = "ok"
-            compare_log(uploaded_logs, known, helper)
+            compare_logs(uploaded_logs, known, helper)
+            
         elif (choice == "import"):
-            import_known("_idinfo/"))
+            import_known("_idinfo/")
         elif (choice == "5"):
             sys.exit()
         else:
