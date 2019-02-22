@@ -1,4 +1,4 @@
-This is the files the PolyCAN group has created for there work towards our final goal of understanding the John Deere CAN bus
+This is the files the PolyCAN group has created for their work towards understanding the John Deere CAN bus
 
 Install:
 pip install git+https://github.com/Morgan-Swanson/polycan
@@ -6,5 +6,6 @@ pip install git+https://github.com/Morgan-Swanson/polycan
 Usage:
 polycan
 
-Note: Authentication secret is required. Contact Morgan for more information.
+
+
 
