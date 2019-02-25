@@ -331,16 +331,9 @@ def log_menu(log, known, ):
             learn(log)
         elif option == 6:
             log2_name = find_log()
-            if log2_name in uploaded_logs:
-                #compare_logs(log, uploaded_logs[log2_name]) 
-                find_patterns(log, uploaded_logs[log2_name])
-            else:
-                log2 = get_log(log2_name)
-                uploaded_logs[log2_name] = log2
-                #old:
-                #compare_logs(log, log2)
-                #new test:
-                find_patterns(log, log2)
+            log2 = get_log(log2_name)
+            uploaded_logs[log2_name] = log2
+            find_patterns(log, log2)
         elif option == 7:
             plot_pgn(log)
         elif option == 8:
@@ -513,7 +506,7 @@ def compare_logs(uploaded_logs, known, table):
         if log1_Name in uploaded_logs:
             log1 = uploaded_logs[log1_Name]
         else:
-            log1 = get_log(log1_Name)
+            log1 = get_log(log1_Name, [])
             uploaded_logs[log1_Name] = log1
         log1 = log1.values.tolist()
         print("\n --select second log--")
@@ -617,7 +610,8 @@ def compare_logs(uploaded_logs, known, table):
             delSame(table, len1, breakCount, diffCount, pgnCount, dataCount, shortData)
         elif choice == "2":
             compare_logs(uploaded_logs, known, table)
-            
+
+    input('Press enter to continue...')
             
             
 #    while(2):

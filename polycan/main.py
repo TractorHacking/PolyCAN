@@ -83,7 +83,7 @@ def main_menu():
             if (using_database):
                 choice = launch_menu(["From Database", "From File"])
                 if (choice == 0):
-                    log_name = find_log(uploaded_logs)
+                    log_name = find_log()
                     log = get_log(log_name, known)
                     log_menu(log, known)
                     continue
