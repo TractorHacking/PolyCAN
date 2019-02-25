@@ -27,6 +27,37 @@ def import_log():
     if len(path) <= 4:
         print("Error, Invalid File Name")
         return
+    x = 0 
+    try:
+        with open("CANable/logs/"+path, newline='') as csvfile:
+            log = csv.DictReader(csvfile)
+            doc_ref = db.collection(u'logs').document(path[:-4]).collection('log')
+            db.collection(u'logs').document(path[:-4]).set({u'model': '5055E'})
+            print("\nUploading " + path[:-4] + "...") 
+            for line in tqdm(log):
+                line_ref = doc_ref.document(line['Time'])
+                batch.set(line_ref,{ u'pgn': int(line['PGN'], 10),
+                                     u'destination': int(line['DA'], 10),
+                                     u'source': int(line['SA'], 10),
+                                     u'priority': int(line['Priority'], 10),
+                                     u'time': float(line['Time']),
+                                     u'data': line['Data']
+                                     })  
+                x += 1
+                if x % 500 == 0:
+                    batch.commit()
+            print("Uploaded", x-2, "lines.")
+    except FileNotFoundError:
+        print("Error. File not found.")
+    return    
+
+'''
+def import_log():
+    batch = db.batch()
+    path = input("\nEnter file path: ")
+    if len(path) <= 4:
+        print("Error, Invalid File Name")
+        return
     if path[-4:] != ".csv":
         print("Not a csv file")
         return
@@ -65,7 +96,7 @@ def import_log():
     except FileNotFoundError:
         print("Error. File not found.")
     return    
-
+'''
 def get_known():
     known = {}
     collection_ref = db.collection(u'known_test')

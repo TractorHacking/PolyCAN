@@ -31,9 +31,8 @@ def main_menu():
             print("okok")
             helper = "ok"
             compare_logs(uploaded_logs, known, helper)
-            
-        elif (choice == "import"):
-            import_known("_idinfo/")
+        elif (choice == "3"):
+            import_log()
         elif (choice == "5"):
             sys.exit()
         else:
