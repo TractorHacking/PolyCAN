@@ -53,7 +53,7 @@ def login_menu():
             break
         elif line_select == 2:
             print("Goodbye\n")
-            return
+            sys.exit()
 
 def user_menu():
     items = ["Import Log", "Go Back"]
@@ -111,4 +111,4 @@ def main_menu():
 def main():
     login_menu()
     main_menu()
-    
+
