@@ -1,5 +1,6 @@
 import os
 import csv
+from polycan.canable import *
 import pandas as pd
 from polycan.menu import *
 
@@ -11,6 +12,7 @@ def open_log():
             choice = launch_menu(dirs + logs + ["Go Back"])
             if (choice < len(dirs)):
                 path = path+"/"+dirs[choice]
+                break
             elif(choice < len(dirs)+len(logs)):
                 newpath = path+"/"+logs[choice-len(dirs)]
                 print("Opening " + newpath + "...")
@@ -28,3 +30,13 @@ def open_log():
                     return df
             else:
                 return pd.DataFrame(data={})
+
+def capture_log():
+    path = input('Enter log name: ')
+    path = "../logs/"+path
+    if not(path[-4:] == ".csv"):
+        path = path+".csv"
+    get_csv(path)
+    input('Press Enter to continue...')
+    return
+
