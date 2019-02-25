@@ -381,7 +381,7 @@ def find_patterns(log1, log2):
         save_i = i
         for j in queried.index:
             k = j
-            print("i: {} k: {}".format(i,k))
+            #print("i: {} k: {}".format(i,k))
             while(k < min_size and i < min_size and
                 log2.loc[k, 'pgn'] == log1.loc[i, 'pgn'] and
                 log2.loc[k, 'data'] == log1.loc[i, 'data']):
@@ -399,6 +399,10 @@ def find_patterns(log1, log2):
         print(patterns[l])
 
     input('Press enter to continue...')
+
+
+
+
 def KMP_logs(pattern, log2):
     X = 0
     ret = [0] * len(pattern)

@@ -83,9 +83,10 @@ class db:
         return
 
     def get_log(self, log):
+        #columns=["time","pgn", "priority", "source", "destination", "data"]
         query = 'SELECT time, pgn, priority, source, destination, data FROM `5055E` WHERE `name` = "%s" ORDER BY `time`'
-        df = pd.read_sql((query % log), con=self.connection, index_col="time", columns=["time","pgn"] )
-        print(df)
+        df = pd.read_sql((query % log), con=self.connection)
+       # print(df)
         return df
     
     def close(self):
