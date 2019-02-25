@@ -1,5 +1,6 @@
 Polycan is a CAN bus analysis tool that allows you to record data coming from your John Deere Tractor. You can
-use a variety of analysis tools in order to better understand the commands coming from the ECU. 
+use a variety of analysis tools in order to better understand the commands coming from the ECU. At this point, it 
+is only availible for Linux.
 
 Install:
 pip install git+https://github.com/Morgan-Swanson/polycan
