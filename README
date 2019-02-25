@@ -6,6 +6,5 @@ pip install git+https://github.com/Morgan-Swanson/polycan
 Usage:
 polycan
 
-
-
-
+Logs are stored in /logs folder of install directory. Add logs there to open them using the program. 
+Account access is currently in closed beta. 
