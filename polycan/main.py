@@ -3,6 +3,7 @@ from polycan.log import *
 from polycan.firebase_interface import *
 import collections
 import sys
+from tkinter import *
 
 def warn(*args, **kwargs):
     pass
@@ -39,4 +40,8 @@ def main_menu():
         current_log = None
 
 def main():
+    root = Tk()
+    w = Label(root, text = "Hellow, world!")
+    w.pack()
+    root.mainloop()
     main_menu()
