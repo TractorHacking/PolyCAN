@@ -1,16 +1,8 @@
 can-utils
 polycan/secret.json
-README~
 *~
-<<<<<<< HEAD
-=======
-polycan/__pycache__
->>>>>>> maksim
-setup.py~
-polycan/log_handler.py~
-polycan/main.py~
-.gitignore~
-polycan.egg.info/
+polycan.egg.info/*
 polycan.egg_info
-polycan/__pycache__/
-polycan/__pycache__/log_handler.cpython-36.pyc
+polycan/__pycache__
+polycan/__pycache__/* 
+.DS_Store

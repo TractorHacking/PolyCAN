@@ -1,5 +1,6 @@
+from polycan.menu import *
 from polycan.log import *
-from polycan.firebase_interface import *
+from polycan.sql_interface import *
 from tqdm import tqdm
 from tabulate import tabulate
 import numpy as np
@@ -157,52 +158,15 @@ def print_pgn(pgn_object, data):
 
 def find_log(uploaded_logs):
     names = get_lognames()
-    if len(names) == 0:
-        print("No logs found")
-        return
-    for i in range(0, len(names)):
-        print("%d. %s" % (i, names[i]))
-    while(1):
-        option = 0
-        choice = input("Please enter log number or q to quit: ") 
-        if choice == 'q':
-            return
-        try:
-           option = int(choice) 
-        except:
-            print("Invalid log number")
-            continue
-        if option < 0 or option >= len(names):
-            print("Invalid log number")
-            continue
-        else:
-            break
-    if names[option] in uploaded_logs:
-        return uploaded_logs[names[option]]
-    log = get_log(names[option])
-    uploaded_logs[names[option]] = log
-    return log
+    choice = launch_menu(names)
+    return names[choice]
     
 def filter_menu(current_log, known):
     df = None
     while(1):
-        print("Filter Menu\n")
-        print("1. By PGN")
-        print("2. By time")
-        print("3. By Source")
-        print("4. By Destination")
-        print("5. Unique entries")
-        print("6. Custom filter")
-        print("7. Data Frequency")
-        print("8. PGN Frequency")
-        print("9. Return")
-        choice = input("")
-        try:
-            option = int(choice)
-        except:
-            print("Please enter an integer for menu entry")
-            continue
-        if option == 1:
+        filter_options=["By PGN", "By Time", "By Source", "By Destination", "Unique entries", "Custom filter", "Data Frequency", "PGN Frequency", "Return"]
+        option = launch_menu(filter_options)
+        if option == 0:
             try:
                 pgn = int(input("Please enter PGN: "))
                 df = current_log.query('pgn == {}'.format(pgn))
@@ -210,7 +174,7 @@ def filter_menu(current_log, known):
             except:
                 print("Must be an integer")
                 continue
-        elif option == 2:
+        elif option == 1:
             try:
                 start = float(input("Start time: "))
                 end = float(input("End time: "))
@@ -219,7 +183,7 @@ def filter_menu(current_log, known):
             except:
                 print("Invalid time")
                 continue
-        elif option == 3:
+        elif option == 2:
             try:
                 source = int(input("Please enter source address: "))
                 df = current_log.query('source == {}'.format(source))
@@ -227,7 +191,7 @@ def filter_menu(current_log, known):
             except:
                 print("Invalid source")
                 continue
-        elif option == 4:
+        elif option == 3:
             try:
                 dest = int(input("Please enter destination address: "))
                 df = current_log.query('destination == {}'.format(dest))
@@ -235,12 +199,12 @@ def filter_menu(current_log, known):
             except:
                 print("Invalid source")
                 continue
-        elif option == 5:
+        elif option == 4:
             print("Please enter unique columns (example: pgn,data,source,destination): ")
             columns = input("").split(",")
             df = current_log.drop_duplicates(columns)
             print(current_log.drop_duplicates(columns))
-        elif option == 6:
+        elif option == 5:
             print("Please enter filters (example: pgn==331,time>=50.1,time<=50.5,src==52,dest==45): ")
             choice = input("")
             filters = choice.replace(",", "&")
@@ -251,7 +215,7 @@ def filter_menu(current_log, known):
             uniq_tags = choice.split(",")
             df = current_log.query(filters).drop_duplicates(uniq_tags)
             print(current_log.query(filters).drop_duplicates(uniq_tags))
-        elif option == 7:
+        elif option == 6:
             sorted_by_pgn = current_log.sort_values(by='pgn')
             uniq_df = current_log.drop_duplicates(['pgn', 'data'])
             uniq_ddf = pd.DataFrame(uniq_df, columns=['pgn','data','frequency', 'count'])
@@ -264,7 +228,7 @@ def filter_menu(current_log, known):
             uniq_ddf['count'] = [len(sorted_by_pgn.query('pgn == {} & data == "{}"'.format(y,z))) \
                 for y,z in zip(uniq_df['pgn'], uniq_df['data'])]
             print(uniq_ddf.to_string())
-        elif option == 8:
+        elif option == 7:
             sorted_by_pgn = current_log.sort_values(by='pgn')
             uniq_df = current_log.drop_duplicates(['pgn'])
             uniq_ddf = pd.DataFrame(uniq_df, columns = ['pgn', 'frequency', 'count'])
@@ -275,11 +239,12 @@ def filter_menu(current_log, known):
                 for y in uniq_df['pgn']]]
             uniq_ddf['count'] = [len(sorted_by_pgn.query('pgn == {}'.format(y))) for y in uniq_df['pgn']]
             print(uniq_ddf.to_string())
-        elif option == 9:
-            break
+        elif option == 8:
+            return
         else:
             print("Please enter an integer for menu entry")
             continue
+        input('Press enter to continue...')
 def learn(current_log):
     #take only 8-byte data
     criterion = current_log['data'].map(lambda x: len(x) == 25)
@@ -336,24 +301,14 @@ def learn(current_log):
     print(cv_knn.best_params_)
     """
     
-def log_menu(log, known):
+def log_menu(log, known, ):
     while(1):
-        print("\nLog Menu")
-        print("0. Display Log")
-        print("1. Filter Log")
-        print("2. Sort Log")
-        print("3. Analyze single entry")
-        print("4. Analyze PGN")
-        print("5. Learn")
-        print("6. Return")
-        choice = input("")
-        try:
-            option = int(choice)
-        except:
-            print("Please enter an integer for menu entry")
-            continue
+        options = ["Display Log", "Filter Log", "Sort Log", "Analyze single entry", "Analyze PGN", "Learn", "Pattern Matching", "Plot PGN", "Return"]
+        option = launch_menu(options)
         if option == 0:
             print(log)
+            input("Press any key to continue...")
+
         elif option == 1:
             filter_menu(log, known)
         elif option == 2:
@@ -364,11 +319,104 @@ def log_menu(log, known):
             analyze_menu(log, known)
         elif option == 5:
             learn(log)
-        elif option == 6:
+        elif option == 8:
             return
         else:
             print("Please enter an integer for menu entry")
-def compare_logs(uploaded_logs, known):
+
+def plot_pgn(log):
+    pgn = int(input("Please enter PGN to plot: "))
+    time_axis = log.query('pgn == {}'.format(pgn))['time'].as_matrix()
+    data_axis = log.query('pgn == {}'.format(pgn))['data'].as_matrix()
+    num_data = np.array([numerize_data(x) for x in data_axis])
+    plt.plot(time_axis, num_data)
+    plt.show()
+
+def find_patterns(log1, log2):
+    """
+    cols = ['pgn1','data1','pgn2','data2','diff']
+    df = pd.DataFrame(data={'pgn1': log1['pgn'],
+                        'data1':log1['data'],
+                        'pgn2':log2['pgn'],
+                        'data2':log2['data']},
+                        columns = cols)
+    df['diff'] = df['data1'] == df['data2']
+    df.dropna(how = 'all')
+    print(df)
+    #df['pgn2'] = log2['pgn']
+    #df['data2'] = log2['data']
+    #df['diff'] = df['data'] == df['data2']
+    """
+    count = 0
+    patterns = []
+    save_i = 0
+    max_patern_length = 0
+    min_size = min(len(log1), len(log2))
+    log1=log1.truncate(after=min_size-1)
+    log2=log2.truncate(after=min_size-1)
+
+    uniq_idx_log1 = log1.drop_duplicates(['pgn', 'data']).index
+    for i in uniq_idx_log1:
+        queried = log2.query('pgn == {} & data == "{}"'.format(
+            log1.loc[i, 'pgn'],
+            log1.loc[i, 'data']))
+        if(len(queried) == 0):
+            continue
+        save_i = i
+        for j in queried.index:
+            k = j
+            print("i: {} k: {}".format(i,k))
+            while(k < min_size and i < min_size and
+                log2.loc[k, 'pgn'] == log1.loc[i, 'pgn'] and
+                log2.loc[k, 'data'] == log1.loc[i, 'data']):
+                k += 1
+                i += 1
+                count += 1
+            if count > 1:
+                patterns.append(log2[save_i:i])
+            i = save_i
+            count = 0
+
+    for l in range(0, len(patterns)):
+        print('Pattern #{}'.format(l+1))
+        print('Item count = {}'.format(len(patterns[l])))
+        print(patterns[l])
+
+def KMP_logs(pattern, log2):
+    X = 0
+    ret = [0] * len(pattern)
+    for j in range(1,len(pattern)):
+        if pattern.iat[j,0] ==  pattern.iat[X,0] and \
+            pattern.iat[j,1] == pattern.iat[X,1]:
+            ret[j] = ret[X]
+            X += 1
+        else:
+            ret[j] = X
+            X = ret[X]
+    i = 0
+    j = 0
+    print(ret)
+    while(i < len(log2)):
+        if j == len(pattern):
+            print("Found pattern:")
+            print(log2.iloc[i-len(pattern):i])
+            j = ret[j-1]
+        elif pattern.iat[j,0] ==  log2.iat[i,0] and \
+            pattern.iat[j,1] == log2.iat[i,1]:
+            i += 1
+            j += 1
+        else:
+            if j != 0:
+                j = ret[j]
+            i += 1
+
+def compare_logs(log1, log2):
+    print(log1)
+    pattern = input("Please choose a pattern to search in log2 (ex. 1-52): ")
+    ptrn = log1[['pgn','data','time']].iloc[int(pattern.split("-")[0]):int(pattern.split("-")[1])+1]
+    txt = log2[['pgn','data','time']]
+    print(ptrn)
+    KMP_logs(ptrn ,txt) 
     pass
     """
     if len(uploaded_logs) < 2:
