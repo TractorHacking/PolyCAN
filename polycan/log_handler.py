@@ -20,6 +20,8 @@ import csv
 import sys
 import matplotlib.pyplot as plt
 import collections
+
+
 def numerize_data(data):
     bytestring = data.replace(" ", '')
     return int(bytestring, 16)
@@ -331,8 +333,7 @@ def log_menu(log, known, ):
             learn(log)
         elif option == 6:
             log2_name = find_log()
-            log2 = get_log(log2_name)
-            uploaded_logs[log2_name] = log2
+            log2 = get_log(log2_name, [])
             find_patterns(log, log2)
         elif option == 7:
             plot_pgn(log)
@@ -397,6 +398,7 @@ def find_patterns(log1, log2):
         print('Item count = {}'.format(len(patterns[l])))
         print(patterns[l])
 
+    input('Press enter to continue...')
 def KMP_logs(pattern, log2):
     X = 0
     ret = [0] * len(pattern)
