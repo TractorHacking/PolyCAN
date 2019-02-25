@@ -3,6 +3,7 @@ polycan/secret.json
 *~
 polycan.egg.info/*
 polycan.egg_info
-polycan/__pycache__
+polycan/__pycache__/
 polycan/__pycache__/* 
+/__pycache__/
 .DS_Store

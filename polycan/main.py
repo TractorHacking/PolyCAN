@@ -9,7 +9,6 @@ import sys, os
 import termios, fcntl
 import select
 
-
 global using_database
 
 splash = ("   ___       __     ________   _  __\n"
@@ -17,7 +16,6 @@ splash = ("   ___       __     ________   _  __\n"
           +" / ___/ _ \/ / // / /__/ __ |/    / \n"
           +"/_/   \___/_/\_, /\___/_/ |_/_/|_/  \n"
           +"            /___/                   \n")
-
 
 def warn(*args, **kwargs):
     pass
@@ -62,13 +60,13 @@ def user_menu():
         import_logs()
     else:
         return
-        
+
 def main_menu():
     global using_database
  
     uploaded_logs = {}
     current_log = None
-    pd.option_context('display.max_rows', None, 'display.max_columns', None)
+    #pd.option_context('display.max_rows', None, 'display.max_columns', None)
     while(1):
         if (using_database):
             option_four = "Account Settings"
@@ -96,8 +94,8 @@ def main_menu():
         elif (choice == 1):
             capture_log()
         elif (choice == 2):
-            #compare_logs(uploaded_logs, known)
-            pass
+            helper = "ok"
+            compare_logs(uploaded_logs, known, helper)
         elif (choice == 3):
             get_pgn(known)
         elif (choice == 4):
@@ -108,8 +106,6 @@ def main_menu():
         elif (choice == 5):
             sys.exit()
         current_log = None
-
-
 def main():
     login_menu()
     main_menu()
