@@ -2,6 +2,7 @@ import socket
 import sys
 import time
 import math
+print('in packet!')
 StartTime = time.time()
 class Packet:
     def __init__(self):

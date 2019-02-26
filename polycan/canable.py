@@ -1,6 +1,8 @@
 from polycan.menu import *
 import time
 import socket
+import sys
+import select
 from polycan.packet import *
 
 def get_csv(path):
@@ -21,6 +23,36 @@ def get_csv(path):
                 
 
 
+def sendCSVWhileRead(pathR,pathW):
+    sock = socket.socket(socket.PF_CAN, socket.SOCK_RAW, socket.CAN_RAW)
+    sock.bind(("can0",))
+    countIn = 0;
+    countOut = 0;
+    waitToDump = True
+
+    with open(pathW,"w+") as f:
+       with open(pathR,'r+') as outF:
+        outF.readline()
+        f.write("Time,PGN,DA,SA,Priority,Data\n")
+        clear_screen()
+        while(1):
+            count += 1
+            ifdata = select.select([sys.stdin],[],[],0)[0]
+            if(ifdata[0] == sys.stdin):
+               waitToDump = False;
+            if(not waitToDump):
+               line = outF.readline()
+               p = packet.Packet()
+               p.initFromCSV(line)
+               if(p.valid):
+                   p.sendPacket(sock)
+               f.write('-'+pkt.toCSV)
+            pkt = packet.getNewPacket(sock)
+            if(pkt.valid):
+                print(pkt.toCSV())
+                f.write(pkt.toCSV())
+                print(count)
+ 
 
 def send_csv(path):
     sock = socket.socket(socket.PF_CAN, socket.SOCK_RAW, socket.CAN_RAW)
