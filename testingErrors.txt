@@ -1,2 +1,3 @@
 Issue 1:
+
    when ploting pgn I did not enter a valid pgn i just hit an arrow key and then enter and causing the program to crash
