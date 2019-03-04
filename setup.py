@@ -8,7 +8,10 @@ setup(name='polycan',
       author_email='msswanso@calpoly.edu',
       license='Open Source',
       packages=['polycan'],
-      install_requires=['tqdm','firebase-admin', 'tabulate', 'grpcio', 'numpy', 'scipy', 'pandas', 'scikit-learn', 'PyMySQL', 'mysql-connector-python'],
+      install_requires=['tqdm','firebase-admin', 'tabulate',
+                        'grpcio', 'numpy', 'scipy', 'pandas',
+                        'scikit-learn', 'PyMySQL', 'mysql-connector-python',
+                        'matplotlib'],
       zip_safe=False,
       entry_points={
         'console_scripts': [
