@@ -2,7 +2,10 @@ import socket
 import sys
 import time
 import math
+<<<<<<< HEAD
 print('in packet!')
+=======
+>>>>>>> master
 StartTime = time.time()
 class Packet:
     def __init__(self):

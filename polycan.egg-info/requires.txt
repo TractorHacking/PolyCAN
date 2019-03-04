@@ -7,3 +7,5 @@ scipy
 pandas
 scikit-learn
 PyMySQL
+mysql-connector-python
+matplotlib
