@@ -13,3 +13,7 @@ polycan
 
 Logs are stored in /logs folder of install directory. Add logs there to open them using the program. 
 Account access is currently in closed beta. 
+
+To setup development enviorment:
+1) Clone Repo
+2) run pip3 install -e path/to/repo/
