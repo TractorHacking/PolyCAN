@@ -5,6 +5,9 @@ is only availible for Linux.
 Install:
 pip install git+https://github.com/Morgan-Swanson/polycan
 
+Update:
+pip install git+https://github.com/Morgan-Swanson/polycan --upgrade
+
 Usage:
 polycan
 
