@@ -1,11 +1,11 @@
-tqdm
+PyMySQL
 firebase-admin
-tabulate
 grpcio
+matplotlib
+mysql-connector-python
 numpy
-scipy
 pandas
 scikit-learn
-PyMySQL
-mysql-connector-python
-matplotlib
+scipy
+tabulate
+tqdm
