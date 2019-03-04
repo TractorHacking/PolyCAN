@@ -4,8 +4,13 @@ import socket
 from polycan.packet import *
 
 def get_csv(path):
-    sock = socket.socket(socket.PF_CAN, socket.SOCK_RAW, socket.CAN_RAW)
-    sock.bind(("can0",))
+    try:
+        sock = socket.socket(socket.PF_CAN, socket.SOCK_RAW, socket.CAN_RAW)
+        sock.bind(("can0",))
+    except OSError:
+        print('Looks like there is no CANable board setup to this computer. First estable can0 device first and try again');
+        return
+
     count = 0;
 
     with open(path,"w+") as f:
@@ -23,8 +28,12 @@ def get_csv(path):
 
 
 def send_csv(path):
-    sock = socket.socket(socket.PF_CAN, socket.SOCK_RAW, socket.CAN_RAW)
-    sock.bind(("can0",))
+    try:
+        sock = socket.socket(socket.PF_CAN, socket.SOCK_RAW, socket.CAN_RAW)
+        sock.bind(("can0",))
+    except OSError:
+        print('Looks like there is no CANable board setup to this computer. First estable can0 device first and try again');
+        return
     if(len(sys.argv) !=2):
         print("Usage:sendCSV file.csv")
         sys.exit()
