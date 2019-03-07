@@ -335,7 +335,12 @@ def getNewPacket(sock):
         print("not valid!")
         return pkt
     while(not pkt.allDone):
-        p = sock.recv(1024)
+        try:
+            p = sock.recv(1024)
+        except socket.timeout:
+            pkt = Packet()
+            pkt.valid = False
+            return pkt
         pktNew = Packet()
         pktNew.initFromPkt(p)
         pkt.combinePacket(pktNew)
