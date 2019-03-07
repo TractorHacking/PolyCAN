@@ -9,6 +9,7 @@ if(len(sys.argv) !=2):
     sys.exit()
 file = sys.argv[1]
 inlines = list()
+count =0
 with open(file) as f:
     f.readline()
     inlines = f.readlines()
@@ -18,4 +19,6 @@ with open(file) as f:
         if(p.valid):
             p.sendPacket(sock)
             time.sleep(0.05)
+            print(count)
+            count += 1
 
