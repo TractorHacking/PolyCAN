@@ -18,7 +18,7 @@ def get_csv(path):
         clear_screen()
         while(1):
             count += 1
-            pkt = packet.getNewPacket(sock)
+            pkt = getNewPacket(sock)
             if(pkt.valid):
                 print(pkt.toCSV());
                 f.write(pkt.toCSV());
@@ -42,7 +42,7 @@ def send_csv(path):
             f.readline()
             inlines = f.readlines()
             for line in inlines:
-                p = packet.Packet()
+                p = Packet()
                 p.initFromCSV(line)
                 if(p.valid):
                     p.sendPacket(sock)
