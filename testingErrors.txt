@@ -1,3 +1,12 @@
 Issue 1:
 
    when ploting pgn I did not enter a valid pgn i just hit an arrow key and then enter and causing the program to crash
+Issue 2:
+   Installing issues:
+	needed to run to get tinker
+		sudo apt-get install ptython3-tk
+  	needed to get protobuf
+		pip3 install protobuf	
+	needed to get net-tools
+		sudo apt-get install net-tools
+
