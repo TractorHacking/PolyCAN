@@ -35,10 +35,12 @@ def get_csv(path):
 def sendCSVWhileRead(pathR,pathW):
     sock = socket.socket(socket.PF_CAN, socket.SOCK_RAW, socket.CAN_RAW)
     sock.bind(("can0",))
+    sock.settimeout(.005)
     recv = 0;
     sent = 0;
     waitToDump = True
     doneWriting = False
+    change = True
 
     with open(pathW,"w+") as f:
        with open(pathR,'r+') as outF:
@@ -56,21 +58,26 @@ def sendCSVWhileRead(pathR,pathW):
                     return
             if(not waitToDump):
                line = outF.readline()
-               if(len(line) ==0):
+               if(not doneWriting and len(line) ==0):
+                   print("Sent the entire CSV!")
                    doneWriting = True
-               else:
+               elif(len(line)>0):
                    p = Packet()
                    p.initFromCSV(line)
                    if(p.valid):
                        p.sendPacket(sock)
                        sent +=1
-                   f.write('-'+pkt.toCSV)
+                       f.write('-'+p.toCSV())
+                   change = True
             pkt = getNewPacket(sock)
             if(pkt.valid):
                 recv += 1
                 print(pkt.toCSV())
                 f.write(pkt.toCSV())
-            print('Sent: ',sent,'\tRecv: ',recv)
+                change = True
+            if(change):
+                print('Sent: ',sent,'\tRecv: ',recv)
+                change = False
  
 
 def send_csv(path):

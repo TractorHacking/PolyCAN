@@ -27,3 +27,5 @@ Issue 3:
     return database.list_logs()
    NameError: name 'database' is not defined 
 
+Issue 4:
+   when sending or capturing logs. it depends on what directory you are in when you runt he poly command as the path structure is realtive

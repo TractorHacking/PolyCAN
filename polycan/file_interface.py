@@ -38,6 +38,8 @@ def sendAndCapture_log():
         pathOut = pathOut+".csv"
     pathIn = input('Enter log file you want to send: ')
     pathIn = "../logs/"+pathIn
+    if not(pathIn[-4:] == ".csv"):
+        pathIn = pathIn+".csv"
     sendCSVWhileRead(pathIn,pathOut)
     input('Press Enter to continue...')
     return
