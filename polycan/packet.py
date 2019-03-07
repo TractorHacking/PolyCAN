@@ -323,7 +323,12 @@ class Packet:
 
 
 def getNewPacket(sock):
-    p = sock.recv(1024)
+    try:
+        p = sock.recv(1024)
+    except socket.timeout:
+        pkt = Packet()
+        pkt.valid = False
+        return pkt
     pkt = Packet()
     pkt.initFromPkt(p)
     if(not(pkt.valid) | pkt.allDone):

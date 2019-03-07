@@ -31,6 +31,17 @@ def open_log():
             else:
                 return pd.DataFrame(data={})
 
+def sendAndCapture_log():
+    pathOut = input('Enter log name to log to: ')
+    pathOut = "../logs/"+pathOut
+    if not(pathOut[-4:] == ".csv"):
+        pathOut = pathOut+".csv"
+    pathIn = input('Enter log file you want to send: ')
+    pathIn = "../logs/"+pathIn
+    sendCSVWhileRead(pathIn,pathOut)
+    input('Press Enter to continue...')
+    return
+
 def capture_log():
     path = input('Enter log name: ')
     path = "../logs/"+path

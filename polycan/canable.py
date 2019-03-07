@@ -9,6 +9,7 @@ def get_csv(path):
     try:
         sock = socket.socket(socket.PF_CAN, socket.SOCK_RAW, socket.CAN_RAW)
         sock.bind(("can0",))
+        sock.settimeout(3)
     except OSError:
         print('Looks like there is no CANable board setup to this computer. First estable can0 device first and try again');
         return
@@ -25,38 +26,51 @@ def get_csv(path):
                 print(pkt.toCSV());
                 f.write(pkt.toCSV());
                 print(count);
+            ifdata = select.select([sys.stdin],[],[],0)[0]
+            if(len(ifdata) > 0 and ifdata[0] == sys.stdin):
+                return
                 
 
 
 def sendCSVWhileRead(pathR,pathW):
     sock = socket.socket(socket.PF_CAN, socket.SOCK_RAW, socket.CAN_RAW)
     sock.bind(("can0",))
-    countIn = 0;
-    countOut = 0;
+    recv = 0;
+    sent = 0;
     waitToDump = True
+    doneWriting = False
 
     with open(pathW,"w+") as f:
        with open(pathR,'r+') as outF:
         outF.readline()
         f.write("Time,PGN,DA,SA,Priority,Data\n")
         clear_screen()
+        print("Hit Enter when you are ready to transmit!\nOnce done transmiting hit enter again to exit!")
         while(1):
-            count += 1
             ifdata = select.select([sys.stdin],[],[],0)[0]
-            if(ifdata[0] == sys.stdin):
-               waitToDump = False;
+            if(len(ifdata) > 0  and ifdata[0] == sys.stdin):
+                sys.stdin.readline()
+                if(waitToDump == True):
+                    waitToDump = False;
+                elif(doneWriting):
+                    return
             if(not waitToDump):
                line = outF.readline()
-               p = packet.Packet()
-               p.initFromCSV(line)
-               if(p.valid):
-                   p.sendPacket(sock)
-               f.write('-'+pkt.toCSV)
-            pkt = packet.getNewPacket(sock)
+               if(len(line) ==0):
+                   doneWriting = True
+               else:
+                   p = Packet()
+                   p.initFromCSV(line)
+                   if(p.valid):
+                       p.sendPacket(sock)
+                       sent +=1
+                   f.write('-'+pkt.toCSV)
+            pkt = getNewPacket(sock)
             if(pkt.valid):
+                recv += 1
                 print(pkt.toCSV())
                 f.write(pkt.toCSV())
-                print(count)
+            print('Sent: ',sent,'\tRecv: ',recv)
  
 
 def send_csv(path):

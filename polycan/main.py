@@ -72,7 +72,7 @@ def main_menu():
             option_four = "Account Settings"
         else:
             option_four = "Login"
-        main_text = ["Open Log", "Capture Log", "Compare Logs", "Lookup PGN", option_four, "Exit"]
+        main_text = ["Open Log", "Capture Log", "Send While Capturing Data","Compare Logs", "Lookup PGN", option_four, "Exit"]
         if(using_database):
             known = get_known()
         else:
@@ -94,16 +94,18 @@ def main_menu():
         elif (choice == 1):
             capture_log()
         elif (choice == 2):
+            sendAndCapture_log()
+        elif (choice == 3):
             helper = "ok"
             compare_logs(uploaded_logs, known, helper)
-        elif (choice == 3):
-            get_pgn(known)
         elif (choice == 4):
+            get_pgn(known)
+        elif (choice == 5):
             if(using_database):
                 user_menu()
             else:
                 login_menu()
-        elif (choice == 5):
+        elif (choice == 6):
             sys.exit()
         current_log = None
 def main():
