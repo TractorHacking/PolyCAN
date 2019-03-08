@@ -15,7 +15,7 @@ def main_menu():
     current_log = None
     #pd.option_context('display.max_rows', None, 'display.max_columns', None)
     while(1):
-        print("\nMain Menu\n 1. Find Log\n 2. Find PGN\n 3. Import Log\n 4. Cooaaauuuuoompare Logs\n 5. Exit\n")
+        print("\nMain Menu\n 1. Find Log\n 2. Find PGN\n 3. Import Log\n 4. Campare Logs\n 5. Exit\n")
         choice = input('')
         if (choice == "1"):
             log_name = find_log()
@@ -28,7 +28,6 @@ def main_menu():
         elif (choice == "2"):
             get_pgn(known)
         elif (choice == "4"):
-            print("okok")
             helper = "ok"
             compare_logs(uploaded_logs, known, helper)
         elif (choice == "3"):
