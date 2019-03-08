@@ -26,6 +26,11 @@ def clear_screen():
     sp.call('clear',shell=True)
     print(splash)
     return
+def export_logs():
+    known = []
+    log_name = find_log()
+    log = get_log(log_name, known)
+    save_log(log_name, log)
 
 def login_menu():
     global using_database
@@ -38,7 +43,7 @@ def login_menu():
             username = input("Enter Username: ")
             password = input("Enter Password: ")
             try: 
-                init_db(password)
+                init_db(username,password)
                 using_database = True
             except:
                 using_database = False
@@ -54,30 +59,26 @@ def login_menu():
             sys.exit()
 
 def user_menu():
-    items = ["Import Log", "Go Back"]
+    items = ["Import Log", "Export Log", "Go Back"]
     choice = launch_menu(items)
+    
     if (choice == 0):
         import_logs()
-    else:
-        return
+    elif (choice == 1):
+        export_logs()
+    
+    return
 
 def main_menu():
     global using_database
  
-    uploaded_logs = {}
-    current_log = None
-    #pd.option_context('display.max_rows', None, 'display.max_columns', None)
     while(1):
         if (using_database):
             option_four = "Account Settings"
+            known = get_known()
         else:
             option_four = "Login"
         main_text = ["Open Log", "Capture Log", "Send While Capturing Data","Compare Logs", "Lookup PGN", option_four, "Exit"]
-        if(using_database):
-            known = get_known()
-        else:
-            known = []
-        
         choice = launch_menu(main_text)
         if (choice == 0):
             if (using_database):
@@ -99,7 +100,10 @@ def main_menu():
             helper = "ok"
             compare_logs(uploaded_logs, known, helper)
         elif (choice == 4):
-            get_pgn(known)
+            if (using_database):
+                get_pgn(known)
+            else:
+                input("You must log in to use this feature...")
         elif (choice == 5):
             if(using_database):
                 user_menu()
@@ -107,7 +111,6 @@ def main_menu():
                 login_menu()
         elif (choice == 6):
             sys.exit()
-        current_log = None
 def main():
     login_menu()
     main_menu()
