@@ -203,5 +203,5 @@ def export_known():
 def get_lognames():
     return database.list_logs()
 def get_known():
-    database.get_known()
-    return
+    return database.get_known()
+

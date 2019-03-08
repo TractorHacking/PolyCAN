@@ -98,7 +98,7 @@ def main_menu():
             sendAndCapture_log()
         elif (choice == 3):
             helper = "ok"
-            compare_logs(uploaded_logs, known, helper)
+            compare_logs({}, known, helper)
         elif (choice == 4):
             if (using_database):
                 get_pgn(known)

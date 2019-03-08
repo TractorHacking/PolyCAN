@@ -16,6 +16,7 @@ from scipy.cluster.hierarchy import linkage
 from scipy.cluster.hierarchy import dendrogram
 from scipy.spatial.distance import pdist
 from scipy.cluster.hierarchy import cophenet
+from operator import itemgetter
 import csv
 import sys
 import matplotlib.pyplot as plt
@@ -160,6 +161,7 @@ def print_pgn(pgn_object, data):
         if data != '':
             print(10*' ' + "%d" % (pdata[item.description]), end='')
         print()
+    input('Press enter to continue...')
 
 def find_log():
     names = get_lognames()
@@ -480,47 +482,41 @@ def sort_menu(current_log, known):
         else:
             print("Please enter an integer for menu entry")
             continue
-def compare_logs1(uploaded_logs, known, table):
-    log = find_log()
-    #loggo = uploaded_logs[log1]
-    if log in uploaded_logs:
-        log1 = uploaded_logs[log]
-    else:
-        log1 = get_log(log)
-        uploaded_logs[log] = log1
-    print(log1)
-    #listlog = log1.values.tolist();
-    #print(log1.loc[[0]])
-    #print(listlog[0])
+            
+#@des creates a list with entries from a choosen logfile, generated from the result of comparing entry by entry of two logs. If entry is not in both logs, it looks for the lowest amount of different bytes for the data and adds the amount and index of the different bytes to the entry of the new list, (eg. xxx98xxxt6xxx4xx). After comparison is done, you can delete identical codes in the new list, sort the list by pgn letter or compare that list to an other logfile
+#@param {dataframe} uploaded_logs Stored logfiles in database
+#@param {int} known Stored known pgns in database
+#@param {string/list} table Within first use string to define first use, after recall of function list
+#@required itemgetter
 def compare_logs(uploaded_logs, known, table):
     bol = False
     if(table != "ok"):
-        print("\n --select log to compare with--")
+        input("\n --selecting log to compare with--")
         log2_Name = find_log()
         if log2_Name in uploaded_logs:
             log2 = uploaded_logs[log2_Name]
         else:
-            log2 = get_log(log2_Name)
+            log2 = get_log(log2_Name, known)
             uploaded_logs[log2_Name] = log2
         log2 = log2.values.tolist()
         print("\n --log selected, comparing...--")
         log1 = table
         bol = True
     else:
-        print("\n --select first log--")
+        input("\n --selecting first log--")
         log1_Name = find_log()
         if log1_Name in uploaded_logs:
             log1 = uploaded_logs[log1_Name]
         else:
-            log1 = get_log(log1_Name, [])
+            log1 = get_log(log1_Name, known)
             uploaded_logs[log1_Name] = log1
         log1 = log1.values.tolist()
-        print("\n --select second log--")
+        input("\n --selecting second log--")
         log2_Name = find_log()
         if log2_Name in uploaded_logs:
             log2 = uploaded_logs[log2_Name]
         else:
-            log2 = get_log(log2_Name)
+            log2 = get_log(log2_Name, known)
             uploaded_logs[log2_Name] = log2
         log2 = log2.values.tolist()
         print("\n --logs selected, comparing...--")
@@ -534,7 +530,6 @@ def compare_logs(uploaded_logs, known, table):
     len1 = len(log1)
     len2 = len(log2) - 1
     printProgressBar(0, len1, prefix = 'Progress:', suffix = 'Complete', length = 50)
-    #while idx1 < len(log1):
     for idx1, val1 in enumerate(log1):
         pgnBool = False
         dataBool = False;
@@ -543,12 +538,12 @@ def compare_logs(uploaded_logs, known, table):
             pgnStr1 = val1[0]
             dataStr1 = val1[1]
         else:
-            if val1[2] in known:
-                pgnName = known[val1[2]].name
+            if val1[1] in known.keys():
+                pgnName = known[val1[1]].name
             else:
                 pgnName = "Unknown"
-            dataStr1 = ''.join(val1[0].split())
-            pgnStr1 = str(val1[2])
+            dataStr1 = ''.join(val1[5].split())
+            pgnStr1 = str(val1[1])
         pgnData1 = pgnStr1 + dataStr1
         if len(dataStr1) < 16:
             shortData += 1
@@ -556,8 +551,8 @@ def compare_logs(uploaded_logs, known, table):
         for idx2, val2 in enumerate(log2):
             dataDiffOld = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
             dataDiff = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
-            dataStr2 = ''.join(val2[0].split())
-            pgnStr2 = str(val2[2])
+            dataStr2 = ''.join(val2[5].split())
+            pgnStr2 = str(val2[1])
             pgnData2 = pgnStr2 + dataStr2
             if pgnStr1 == pgnStr2:
                 pgnBool = True
@@ -599,32 +594,34 @@ def compare_logs(uploaded_logs, known, table):
                     pgnCount += 1
                 if not dataBool:
                     dataCount += 1 
-    
-    print(tabulate(table,
-        headers= ["index", "pgn1","data", "amount diff bytes", "index diff bytes", "pgn Name", "data x"], \
-                  showindex = True,
-                 # tablefmt = "pipe"
-                  ))
-
+                    
+    printTable(table)
     printCodeResults(len1, breakCount, diffCount, pgnCount, dataCount, shortData, 0)
-    
-    while(1):
-        print("\n 1. Delete identical data codes \n 2. Compare to an other log")
-        choice = input('')
-        print("")
-        if choice == "1":
-            delSame(table, len1, breakCount, diffCount, pgnCount, dataCount, shortData)
-        elif choice == "2":
-            compare_logs(uploaded_logs, known, table)
-
     input('Press enter to continue...')
-            
-            
-#    while(2):
- #       print("\n 1. Sort by amount of data byte changes")
-  #      print("\n 2. Sort by pgn than by amount of data byte changes")
 
-        
+    while(1):
+        options = ["Delete identical data codes", "Sort list", "Compare to an other log", "Done comparing logs"]
+        choice = launch_menu(options)
+        if choice == 0:
+            delSame(table, len1, breakCount, diffCount, pgnCount, dataCount, shortData)
+            input('Press enter to continue...')
+        elif choice == 1:
+            table = sorted(table, key=itemgetter(4))
+            printTable(table)
+            input('Press enter to continue...')
+        elif choice == 2:
+            return compare_logs(uploaded_logs, known, table)
+        else:
+            return
+            
+#@des deletes identical codes in newly created list by compare_logs function above
+#@param {list} table list of all entries which are found in on log but not in the other
+#@param {int} len1 number of entries of log1
+#@param {int} breakCount number of entries found in log1 and log2
+#@param {int} diffCount number of entries found in log1 but not in log2
+#@param {int} pgnCount number of unique pngs found in log1
+#@param {int} dataCount number of data entries found in log1 but not in log2
+#@param {int} shortData number of data entries with less 16
 def delSame(table, len1, breakCount, diffCount, pgnCount, dataCount, shortData):
     table2 = []
     len3 = len(table)
@@ -645,15 +642,29 @@ def delSame(table, len1, breakCount, diffCount, pgnCount, dataCount, shortData):
             idx4 += 1
                         
                     
-    print(tabulate(table,
-        headers= ["index", "pgn", "data", "amount diff bytes", "index diff bytes", "pgn Name"], \
-        showindex = True,
-        #tablefmt = "pipe"
-                  ))
+    printTable(table)
     
     printCodeResults(len1, breakCount, diffCount, pgnCount, dataCount, shortData, table)
     len5 = len(table) - 1
     
+    
+#@des prints newly created list by compare_logs function above
+#@param {list} table list of all entries which are found in on log but not in the other    
+def printTable(table):
+    print(tabulate(table,
+            headers= ["index", "pgn","data", "amount diff bytes", "index diff bytes", "pgn Name", "data x", "amount diff bytes", "data x", "amount diff bytes", "data x"], \
+                      showindex = True,
+                     # tablefmt = "pipe"
+                      ))
+
+#@des prints results from comparision by compare_logs function above
+#@param {int} len1 number of entries of log1
+#@param {int} breakCount number of entries found in log1 and log2
+#@param {int} diffCount number of entries found in log1 but not in log2
+#@param {int} pgnCount number of unique pngs found in log1
+#@param {int} dataCount number of data entries found in log1 but not in log2
+#@param {int} shortData number of data entries with less 16    
+#@param {list} table list of all entries which are found in on log but not in the other
 def printCodeResults(len1, breakCount, diffCount, pgnCount, dataCount, shortData, table):
     print("Total codes") 
     print(len1)
@@ -671,18 +682,15 @@ def printCodeResults(len1, breakCount, diffCount, pgnCount, dataCount, shortData
         print("Unique codes")
         print(len(table))
     
+#@des Call in a loop to create terminal progress bar
+#@param {int} iteration corrent iteration
+#@param {int} total total iterations
+#@param {string} prefix prefix string
+#@param {string} suffix suffix string
+#@param {int} decimals positive number of decimals in percent complete
+#@param {int} length character length of bar
+#@param {string} fill bar fill character
 def printProgressBar (iteration, total, prefix = '', suffix = '', decimals = 1, length = 100, fill = '█'):
-    """
-    Call in a loop to create terminal progress bar
-    @params:
-        iteration   - Required  : current iteration (Int)
-        total       - Required  : total iterations (Int)
-        prefix      - Optional  : prefix string (Str)
-        suffix      - Optional  : suffix string (Str)
-        decimals    - Optional  : positive number of decimals in percent complete (Int)
-        length      - Optional  : character length of bar (Int)
-        fill        - Optional  : bar fill character (Str)
-    """
     percent = ("{0:." + str(decimals) + "f}").format(100 * (iteration / float(total)))
     filledLength = int(length * iteration // total)
     bar = fill * filledLength + '-' * (length - filledLength)
