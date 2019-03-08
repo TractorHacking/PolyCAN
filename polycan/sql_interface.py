@@ -65,7 +65,7 @@ class db:
                     elif (line[0:19] == "* PDU Format (PF): "):
                         data['pdu_format'] = int(line[19:].strip(), 16)
                     elif (line[0:13] == "* Data Page: "):
-                        data['data_length'] = len(line[13:].strip())
+                        data['data_length'] = 8
                     elif (line[0:12] == "* Priority: "):
                         data['default_priority'] = int(line[12:].strip())
                     elif (line[0:2] == "| " and line != "| Name | Size | Byte Offset |\n" and line != "| ---- | ---- | ----------- |\n"):
@@ -124,15 +124,22 @@ class db:
                     log = csv.DictReader(csvfile)                    
                     sql_insert_query = "INSERT INTO `5055E` (`name`, `pgn`, `destination`, `source`, `priority`, `time`, `data`) VALUES (%s,%s,%s,%s,%s,%s,%s)"
                     records = []
+                    init_time=None
                     for line in log:
+                        if (init_time==None):
+                            init_time=float(line['Time'])
                         data = (ntpath.basename(file)[:-4], 
                                 int(line['PGN'], 10),
                                 int(line['DA'], 10),  
                                 int(line['SA'], 10), 
                                 int(line['Priority'], 10), 
-                                float(line['Time']), 
+                                (float(line['Time'])-init_time)*1000, 
                                 line['Data']) 
                         records.append(data)
+                    
+                    
+                    result = self.cursor.executemany(sql_insert_query, records)
+                    self.connection.commit() 
             except FileNotFoundError:
                 print("Error. File not found.")
                 continue
@@ -140,8 +147,6 @@ class db:
             print("Uploading Logs...\n")
         for line in end_messages:
             print(line)
-        result  = self.cursor.executemany(sql_insert_query, records)
-        self.connection.commit() 
         return
 
     def get_log(self, log):
@@ -193,6 +198,7 @@ def close_db():
 
 def import_logs():
     database.import_logs()
+    return
 
 def import_known():
     database.import_known()
@@ -205,3 +211,6 @@ def get_lognames():
 def get_known():
     return database.get_known()
 
+def import_known_old_group():
+    database.import_known_old_group()
+    return

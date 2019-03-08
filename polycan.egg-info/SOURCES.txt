@@ -10,6 +10,7 @@ polycan/log.py
 polycan/log_handler.py
 polycan/main.py
 polycan/menu.py
+polycan/newmain.py
 polycan/packet.py
 polycan/sql_interface.py
 polycan.egg-info/PKG-INFO
