@@ -27,7 +27,7 @@ def main_menu():
                 log_menu(log, known, uploaded_logs)
         elif (choice == "2"):
             get_pgn(known)
-        elif (choice == "4"):
+        elif (choice == "4"): 
             helper = "ok"
             compare_logs(uploaded_logs, known, helper)
         elif (choice == "3"):

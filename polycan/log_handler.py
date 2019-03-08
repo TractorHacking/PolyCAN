@@ -649,7 +649,7 @@ def compare_logs(uploaded_logs, known, table):
                     
     printTable(table)
     printCodeResults(len1, breakCount, diffCount, pgnCount, dataCount, shortData, 0)
-    
+     
     while(1):
         print("\n 1. Delete identical data codes \n 2. Sort list \n 3. Compare to an other log")
         choice = input('')
