@@ -149,11 +149,14 @@ class db:
             print(line)
         return
 
-    def get_log(self, log):
+    def get_log(self, log, known):
         #columns=["time","pgn", "priority", "source", "destination", "data"]
         query = 'SELECT time, pgn, priority, source, destination, data FROM `5055E` WHERE `name` = "%s" ORDER BY `time`'
         df = pd.read_sql((query % log), con=self.connection)
-       # print(df)
+        dat2 = pd.DataFrame({'description': []})
+        df.join(dat2)
+        df['description'] = ["Unknown" if df.at[x,'pgn'] not in known else known[df.at[x,'pgn']].description for x in range(0,len(df))]
+        
         return df
     
     def get_known(self):
@@ -191,7 +194,7 @@ def init_db(username, password):
     return
 
 def get_log(log, known):
-    return database.get_log(log)
+    return database.get_log(log, known)
     
 def close_db():
     database.close()
