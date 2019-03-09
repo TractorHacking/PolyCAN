@@ -22,7 +22,8 @@ import sys
 import matplotlib.pyplot as plt
 import collections
 
-
+def display_log(log):
+    display_pages(log)
 def numerize_data(data):
     bytestring = data.replace(" ", '')
     return int(bytestring, 16)
@@ -110,7 +111,7 @@ def detail_view(known, log):
             print("Number out of bounds")
             continue
         if not log.at[option, 'pgn'] in known:
-            print("Unknown PGN {}".format(option))
+            print("Unknown PGN {}".format(log.at[option,'pgn']))
             continue
         else:
             break
@@ -165,6 +166,8 @@ def print_pgn(pgn_object, data):
 
 def find_log():
     names = get_lognames()
+    if len(names) == 0:
+        return ''
     choice = launch_menu(names)
     return names[choice]
     
@@ -177,7 +180,7 @@ def filter_menu(current_log, known):
             try:
                 pgn = int(input("Please enter PGN: "))
                 df = current_log.query('pgn == {}'.format(pgn))
-                print(current_log.query('pgn == {}'.format(pgn)))
+                display_log(current_log.query('pgn == {}'.format(pgn)))
             except:
                 print("Must be an integer")
                 continue
@@ -186,7 +189,7 @@ def filter_menu(current_log, known):
                 start = float(input("Start time: "))
                 end = float(input("End time: "))
                 df =current_log.query('time >= {} & time <= {}'.format(start, end))
-                print(current_log.query('time >= {} & time <= {}'.format(start, end)))
+                display_log(current_log.query('time >= {} & time <= {}'.format(start, end)))
             except:
                 print("Invalid time")
                 continue
@@ -194,7 +197,7 @@ def filter_menu(current_log, known):
             try:
                 source = int(input("Please enter source address: "))
                 df = current_log.query('source == {}'.format(source))
-                print(current_log.query('source == {}'.format(source)))
+                display_log(current_log.query('source == {}'.format(source)))
             except:
                 print("Invalid source")
                 continue
@@ -202,7 +205,7 @@ def filter_menu(current_log, known):
             try:
                 dest = int(input("Please enter destination address: "))
                 df = current_log.query('destination == {}'.format(dest))
-                print(current_log.query('destination == {}'.format(dest)))
+                display_log(current_log.query('destination == {}'.format(dest)))
             except:
                 print("Invalid source")
                 continue
@@ -210,18 +213,20 @@ def filter_menu(current_log, known):
             print("Please enter unique columns (example: pgn,data,source,destination): ")
             columns = input("").split(",")
             df = current_log.drop_duplicates(columns)
-            print(current_log.drop_duplicates(columns))
+            display_log(current_log.drop_duplicates(columns))
         elif option == 5:
             print("Please enter filters (example: pgn==331,time>=50.1,time<=50.5,src==52,dest==45): ")
             choice = input("")
             filters = choice.replace(",", "&")
-            df = current_log.query(filters)
-            print(current_log.query(filters))
             print("Unique? (example: pgn,data)")
-            choice = input("")
+            uniq_choice = input("")
             uniq_tags = choice.split(",")
-            df = current_log.query(filters).drop_duplicates(uniq_tags)
-            print(current_log.query(filters).drop_duplicates(uniq_tags))
+            if(uniq_tags == []):
+                df = current_log.query(filters)
+                display_log(current_log.query(filters))
+            else:
+                df = current_log.query(filters).drop_duplicates(uniq_tags)
+                display_log(current_log.query(filters).drop_duplicates(uniq_tags))
         elif option == 6:
             sorted_by_pgn = current_log.sort_values(by='pgn')
             uniq_df = current_log.drop_duplicates(['pgn', 'data'])
@@ -234,7 +239,7 @@ def filter_menu(current_log, known):
                 for y,z in zip(uniq_df['pgn'],uniq_df['data'])]]
             uniq_ddf['count'] = [len(sorted_by_pgn.query('pgn == {} & data == "{}"'.format(y,z))) \
                 for y,z in zip(uniq_df['pgn'], uniq_df['data'])]
-            print(uniq_ddf.to_string())
+            display_log(uniq_ddf.to_string())
         elif option == 7:
             sorted_by_pgn = current_log.sort_values(by='pgn')
             uniq_df = current_log.drop_duplicates(['pgn'])
@@ -245,7 +250,7 @@ def filter_menu(current_log, known):
                 .sort_values(by='time')['time']) \
                 for y in uniq_df['pgn']]]
             uniq_ddf['count'] = [len(sorted_by_pgn.query('pgn == {}'.format(y))) for y in uniq_df['pgn']]
-            print(uniq_ddf.to_string())
+            display_log(uniq_ddf.to_string())
         elif option == 8:
             return
         else:
@@ -293,36 +298,13 @@ def learn(current_log):
     print(coph_cor)
     dendrogram(X_link, truncate_mode='lastp', p=15, show_contracted=True)
     plt.show()
-    """
-    print(np.array([numerize_data(x) for x in sorted_by_pgn['data']]))
-    X = pd.DataFrame([numerize_data(x) for x in sorted_by_pgn['data']],
-        columns=['1','2','3','4','5','6','7','8'])
-    Y = pd.DataFrame([x for x in sorted_by_pgn['pgn']])
-    print(X)
-    print(Y)
-    XTrain, XTest, YTrain, YTest = \
-        ms.train_test_split(X.values, Y.values, test_size = 0.3, random_state = 7)
-    k_neighbours = list(range(1, 250, 2))
-    n_grid = [{'n_neighbors':k_neighbours}]
-    model = neighbors.KNeighborsClassifier()
-    cv_knn = GridSearchCV(estimator=model, \
-        param_grid = n_grid, \
-        cv = ms.KFold(n_splits=10))    
-    cv_knn.fit(XTrain, YTrain)
-    best_k = cv_knn.best_params_['n_neighbors']
-    print("Best k = %d" % best_k)
-    print("Best params:")
-    print(cv_knn.best_params_)
-    """
-    
-def log_menu(log, known, ):
+         
+def log_menu(log, known):
     while(1):
         options = ["Display Log", "Filter Log", "Sort Log", "Analyze single entry", "Analyze PGN", "Learn", "Pattern Matching", "Plot PGN", "Return"]
         option = launch_menu(options)
         if option == 0:
-            print(log)
-            input("Press any key to continue...")
-
+            display_log(log)
         elif option == 1:
             filter_menu(log, known)
         elif option == 2:
@@ -330,7 +312,7 @@ def log_menu(log, known, ):
         elif option == 3:
             detail_view(known,log)
         elif option == 4:
-            analyze_menu(log, known)
+            get_pgn(known)
         elif option == 5:
             learn(log)
         elif option == 6:
@@ -402,9 +384,6 @@ def find_patterns(log1, log2):
 
     input('Press enter to continue...')
 
-
-
-
 def KMP_logs(pattern, log2):
     X = 0
     ret = [0] * len(pattern)
@@ -441,19 +420,6 @@ def compare_logs(log1, log2):
     print(ptrn)
     KMP_logs(ptrn ,txt) 
     pass
-    """
-    if len(uploaded_logs) < 2:
-        print("Upload more logs")
-        return
-    name1 = input("Please enter first log name: ")
-    name2 = input("Please enter second log name: ")
-    log1_sorted_by_pgn = uploaded_logs[name1].sort_values[by='pgn']
-    log2_sorted_by_pgn = uploaded_logs[name1].sort_values[by='pgn']
-    pgn = int(input("Please enter PGN: "))
-    num_entries = int(input("Please enter number of entries: "))
-    df1 = log1_sorted_by_pgn.query('pgn == {}'.format(pgn)).head(num_entries)
-    df2 = log1_sorted_by_pgn.query('pgn == {}'.format(pgn)).head(num_entries)
-    """
 
 def sort_menu(current_log, known):
     while(1):
@@ -622,6 +588,7 @@ def compare_logs(uploaded_logs, known, table):
 #@param {int} pgnCount number of unique pngs found in log1
 #@param {int} dataCount number of data entries found in log1 but not in log2
 #@param {int} shortData number of data entries with less 16
+
 def delSame(table, len1, breakCount, diffCount, pgnCount, dataCount, shortData):
     table2 = []
     len3 = len(table)

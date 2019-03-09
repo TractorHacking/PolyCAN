@@ -12,17 +12,56 @@ splash = ("   ___       __     ________   _  __\n"
          +"            /___/                   \n")
 down = chr(27) + chr(91) + chr(66)
 up = chr(27) + chr(91) + chr(65)
+right = chr(27) + chr(91) + chr(67)
+left = chr(27) + chr(91) + chr(68)
+quit = chr(113)
 enter = chr(10)
-
 
 def clear_screen():
     sp.call('clear',shell=True)
     print(splash)
     return
 
+def display_pages(log):
+    page = 0
+    fr = 0
+    to = 20
+    page_max = len(log)//20
+    while(1):
+        clear_screen() 
+        print(log[fr:to])
+        print('Page {} out of {}'.format(page+1, page_max))
+        keyreader = kr.KeyReader()
+        inp, outp, err = select.select([sys.stdin], [], [])
+        entry = keyreader.getch()
+        if (entry == left):
+            if (page == 0):
+                pass
+            else:
+                page -= 1
+                fr = 0 + page*20
+                to = 20 + page*20
+        elif (entry == right):
+            if (page+1 == page_max):
+                if(len(log)%20 != 0):
+                    fr = page*20
+                    to = page*20 + len(log)%20
+                    page += 1
+            elif page+1 > page_max:
+                pass
+            else:
+                page += 1
+                fr = 0 + page*20
+                to = 20 + page*20
+        elif (entry == chr(10) or entry == quit):
+            return
+        del keyreader
+
 def launch_menu(options):
     line_select = 0
     line_max = len(options)-1
+    if line_max < 1:
+        return 0
     keyreader = kr.KeyReader()
     while(1):
         clear_screen()

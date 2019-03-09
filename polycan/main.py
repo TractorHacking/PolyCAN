@@ -26,6 +26,7 @@ def clear_screen():
     sp.call('clear',shell=True)
     print(splash)
     return
+
 def export_logs():
     known = []
     log_name = find_log()
