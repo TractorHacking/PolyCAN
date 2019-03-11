@@ -15,7 +15,7 @@ def main_menu():
     current_log = None
     #pd.option_context('display.max_rows', None, 'display.max_columns', None)
     while(1):
-        print("\nMain Menu\n 1. Find Log\n 2. Find PGN\n 3. Import Log\n 4. Campare Logs\n 5. Exit\n")
+        print("\nMain Menu\n 1. Find Log\n 2. Find PGN\n 3. Import Log\n 4. Campare Logs\n 5. Manipulate logs\n 6. Exit\n")
         choice = input('')
         if (choice == "1"):
             log_name = find_log()
@@ -33,6 +33,8 @@ def main_menu():
         elif (choice == "3"):
             import_log()
         elif (choice == "5"):
+            manipulate_logs(uploaded_logs)
+        elif (choice == "6"):
             sys.exit()
         else:
             print("Error. Enter an integer between 1 and 5")
