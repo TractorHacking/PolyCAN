@@ -750,7 +750,6 @@ def printProgressBar (iteration, total, prefix = '', suffix = '', decimals = 1, 
         
 #@des able to change data bytes in logfile and store it so it can be send to tractor
 #@param {dataframe} uploaded_logs Stored logfiles in database
-
 def manipulate_logs(uploaded_logs):
     print("\n --select log which you want to clone and manipulate--")
     log_Name = find_log()
@@ -771,16 +770,16 @@ def manipulate_logs(uploaded_logs):
             pgnIndexArray.append(idx)
     arrayLen = len(pgnIndexArray)
     print(str(arrayLen) + " pgn matches")
-    print("from " + str(pgnIndexArray[0]) + " to " + str(pgnIndexArray[arrayLen - 1]))
+    print("from index " + str(pgnIndexArray[0]) + " to index " + str(pgnIndexArray[arrayLen - 1]))
     print("In how many sectors do you want to split log:")
     sectorAmount = input('')
     sectorAmount = int(sectorAmount)
     sectorArray = []
     for x in range(sectorAmount):
-        print("Choose sector " + str(x + 1) + " start:")
+        print("Choose sector index " + str(x + 1) + " start:")
         sectorStart = input('')
         sectorStart = int(sectorStart)
-        print("Choose sector " + str(x + 1) + " end:")
+        print("Choose sector index " + str(x + 1) + " end:")
         sectorEnd = input('')
         sectorEnd = int(sectorEnd)
         sectors = [sectorStart, sectorEnd]
