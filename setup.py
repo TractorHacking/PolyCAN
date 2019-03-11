@@ -11,7 +11,7 @@ setup(name='polycan',
       install_requires=['tqdm','firebase-admin', 'tabulate',
                         'grpcio', 'numpy', 'scipy', 'pandas',
                         'scikit-learn', 'PyMySQL', 'mysql-connector-python',
-                        'matplotlib'],
+                        'matplotlib', 'protobuf'],
       zip_safe=False,
       entry_points={
         'console_scripts': [

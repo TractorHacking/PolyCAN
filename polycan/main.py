@@ -79,7 +79,7 @@ def main_menu():
             known = get_known()
         else:
             option_four = "Login"
-        main_text = ["Open Log", "Capture Log", "Send While Capturing Data","Compare Logs", "Lookup PGN", option_four, "Exit"]
+        main_text = ["Open Log", "Capture Log", "Send While Capturing Data","Compare Logs", "Lookup PGN", "Manipulate Log", option_four, "Exit"]
         choice = launch_menu(main_text)
         if (choice == 0):
             if (using_database):
@@ -106,11 +106,13 @@ def main_menu():
             else:
                 input("You must log in to use this feature...")
         elif (choice == 5):
+            manipulate_logs(known)
+        elif (choice == 6):
             if(using_database):
                 user_menu()
             else:
                 login_menu()
-        elif (choice == 6):
+        elif (choice == 7):
             sys.exit()
 def main():
     login_menu()

@@ -30,9 +30,6 @@ class db:
         sp.call('clear',shell=True)
         return
 
-    def get_known(self):
-        return []
-
     def list_logs(self):
         query = "SELECT name FROM `5055E` GROUP BY name"
         names = [] 

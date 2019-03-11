@@ -664,4 +664,88 @@ def printProgressBar (iteration, total, prefix = '', suffix = '', decimals = 1, 
     print('\r%s |%s| %s%% %s' % (prefix, bar, percent, suffix), end = '\r')
     # Print New Line on Complete
     if iteration == total: 
-        print()    
+        print()
+        
+#@des able to change data bytes in logfile and store it so it can be send to tractor
+#@param {dataframe} uploaded_logs Stored logfiles in database
+def manipulate_logs(known):
+    print("\n --select log which you want to clone and manipulate--")
+    log_Name = find_log()
+    log = get_log(log_Name, known)
+    log = log.values.tolist()
+    print("choose pgn you want to manipulate (eg: RPM = 61444)")
+    choosenPgn = input('')
+    for i in range(0, 10):
+        if(len(choosenPgn) == 5):
+            break
+        else:
+            print("Pgn must contain 5 digits long. Insert pgn")
+            choosenPgn = input('')
+    choosenPgn = int(choosenPgn)
+    pgnIndexArray = []
+    for idx, val in enumerate(log):
+        if(val[2] == choosenPgn):
+            pgnIndexArray.append(idx)
+    arrayLen = len(pgnIndexArray)
+    print(str(arrayLen) + " pgn matches")
+    print("from index " + str(pgnIndexArray[0]) + " to index " + str(pgnIndexArray[arrayLen - 1]))
+    print("In how many sectors do you want to split log:")
+    sectorAmount = input('')
+    sectorAmount = int(sectorAmount)
+    sectorArray = []
+    for x in range(sectorAmount):
+        print("Choose sector index " + str(x + 1) + " start:")
+        sectorStart = input('')
+        sectorStart = int(sectorStart)
+        print("Choose sector index " + str(x + 1) + " end:")
+        sectorEnd = input('')
+        sectorEnd = int(sectorEnd)
+        sectors = [sectorStart, sectorEnd]
+        sectorArray.append(sectors)
+    for y in range(len(sectorArray)):
+        for z in range(len(sectorArray[y])):
+            closest = min(pgnIndexArray, key=lambda x:abs(x-sectorArray[y][z]))
+            index = pgnIndexArray.index(closest)
+            sectorArray[y][z] = index
+    digitRangeArray = []
+    print("choose digits range start in data you want to change (eg. RPM = 6-9 so type 6)")
+    digitStart = input('')
+    digitStart = int(digitStart)
+    digitRangeArray.append(digitStart)
+    print("choose digits range end in data you want to change (eg. RPM = 6-9, so type 9)")
+    digitEnd = input('')
+    digitEnd = int(digitEnd)
+    digitRangeArray.append(digitEnd)
+    valueArray = []
+    for h in range(sectorAmount):
+        print("choose value you want to replace sector " + str(h + 1) + " with: (eg: 1000rpm = 401F, 2000rpm = 803E, 3000rpm = C05D)")
+        value = input('')
+        value = str(value)
+        value = list(value)
+        valueArray.append(value)
+    for u in range(len(sectorArray)):
+        for k in range(sectorArray[u][0], sectorArray[u][1]+1):
+            log[pgnIndexArray[k]][0] = list(''.join(log[pgnIndexArray[k]][0].split()))
+            #for idx1, val1 in enumerate(digitRangeArray):
+            wHelp = 0
+            for w in range(digitRangeArray[0], digitRangeArray[1]+1):
+                log[pgnIndexArray[k]][0][w] = valueArray[u][wHelp]
+                wHelp += 1
+            log[pgnIndexArray[k]][0] = ''.join(log[pgnIndexArray[k]][0])
+            log[pgnIndexArray[k]][0] = ' '.join([log[pgnIndexArray[k]][0][s:s+2] for s in range(0, len(log[pgnIndexArray[k]][0]), 2)])
+    manipulatedLog = []
+    for q in range(len(log)):
+        mylist = log[q]
+        myorder = [5, 2, 1, 4, 3, 0]
+        mylist = [mylist[i] for i in myorder]
+        manipulatedLog.append(mylist)
+    for r in range(len(manipulatedLog)):
+        print(manipulatedLog[r])
+    print("Name log (eg. manipulatedLog.csv)")
+    logName = input('')
+    csvfile = logName
+    with open(csvfile, "w") as output:
+        writer = csv.writer(output, lineterminator='\n')
+        writer.writerows(manipulatedLog)
+    print("your log has been stored with name " + logName)
+        
