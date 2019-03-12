@@ -667,7 +667,7 @@ def manipulate_logs(known):
     log_Name = find_log()
     log = get_log(log_Name, known)
     log = log.values.tolist()
-    print("choose pgn you want to manipulate (eg: RPM = 61444)")
+    print("choose pgn you want to manipulate (eg: 61444 for RPM)")
     choosenPgn = input('')
     for i in range(0, 10):
         if(len(choosenPgn) == 5):
@@ -678,20 +678,22 @@ def manipulate_logs(known):
     choosenPgn = int(choosenPgn)
     pgnIndexArray = []
     for idx, val in enumerate(log):
-        if(val[2] == choosenPgn):
+        if(val[1] == choosenPgn):
             pgnIndexArray.append(idx)
     arrayLen = len(pgnIndexArray)
     print(str(arrayLen) + " pgn matches")
+    if(arrayLen == 0):
+        return
     print("from index " + str(pgnIndexArray[0]) + " to index " + str(pgnIndexArray[arrayLen - 1]))
     print("In how many sectors do you want to split log:")
     sectorAmount = input('')
     sectorAmount = int(sectorAmount)
     sectorArray = []
     for x in range(sectorAmount):
-        print("Choose sector index " + str(x + 1) + " start:")
+        print("Choose sector  " + str(x + 1) + " index start:")
         sectorStart = input('')
         sectorStart = int(sectorStart)
-        print("Choose sector index " + str(x + 1) + " end:")
+        print("Choose sector " + str(x + 1) + " index end:")
         sectorEnd = input('')
         sectorEnd = int(sectorEnd)
         sectors = [sectorStart, sectorEnd]
@@ -719,18 +721,18 @@ def manipulate_logs(known):
         valueArray.append(value)
     for u in range(len(sectorArray)):
         for k in range(sectorArray[u][0], sectorArray[u][1]+1):
-            log[pgnIndexArray[k]][0] = list(''.join(log[pgnIndexArray[k]][0].split()))
+            log[pgnIndexArray[k]][5] = list(''.join(log[pgnIndexArray[k]][5].split()))
             #for idx1, val1 in enumerate(digitRangeArray):
             wHelp = 0
             for w in range(digitRangeArray[0], digitRangeArray[1]+1):
-                log[pgnIndexArray[k]][0][w] = valueArray[u][wHelp]
+                log[pgnIndexArray[k]][5][w] = valueArray[u][wHelp]
                 wHelp += 1
-            log[pgnIndexArray[k]][0] = ''.join(log[pgnIndexArray[k]][0])
-            log[pgnIndexArray[k]][0] = ' '.join([log[pgnIndexArray[k]][0][s:s+2] for s in range(0, len(log[pgnIndexArray[k]][0]), 2)])
+            log[pgnIndexArray[k]][5] = ''.join(log[pgnIndexArray[k]][5])
+            log[pgnIndexArray[k]][5] = ' '.join([log[pgnIndexArray[k]][5][s:s+2] for s in range(0, len(log[pgnIndexArray[k]][5]), 2)])
     manipulatedLog = []
     for q in range(len(log)):
         mylist = log[q]
-        myorder = [5, 2, 1, 4, 3, 0]
+        myorder = [0, 1, 4, 3, 2, 5]
         mylist = [mylist[i] for i in myorder]
         manipulatedLog.append(mylist)
     for r in range(len(manipulatedLog)):
