@@ -47,29 +47,34 @@ def sendAndCapture_log():
 
 def save_log(name, log_frame):
     path = "../logs"
+    log_frame.to_csv((path+"/"+name+".csv"))
+    global line_offset
+    input(line_offset+"Saved log to "+path+"/"+name+".csv")
+    '''
     while(1):
         for root, dirs, files in os.walk(path):
             logs = list(filter(lambda x: x[-4:] == ".csv", files))
-            choice = launch_menu(["..."] + dirs + logs + ["Save"] + ["Cancel"])
+            choice = display_log_pages(["Cancel"] + dirs + logs)
             if (choice == 0):
+                return
+                
                 if (len(path) > 7):
                     k = path.rfind("/")
                     path = path[:k]
                 else:
                     return save_log(name, log_frame)
+    
+
+
             elif (choice <= len(dirs) ):
                 path = path+"/"+dirs[choice-1]
-                input('a')
                 break
             elif(choice <= len(dirs)+len(logs)):
-                input('b')
                 log_frame.to_csv((path+"/"+name+".csv"))
-            elif(choice == len(dirs) + len(logs) + 2):
-                return
             else:
                 return 
 
-
+'''
 def capture_log():
     path = input('Enter log name: ')
     path = "../logs/"+path

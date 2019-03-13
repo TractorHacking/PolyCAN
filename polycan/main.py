@@ -10,13 +10,6 @@ import termios, fcntl
 import select
 
 global using_database
-
-splash = ("   ___       __     ________   _  __\n"
-          +"  / _ \___  / /_ __/ ___/ _ | / |/ /\n"
-          +" / ___/ _ \/ / // / /__/ __ |/    / \n"
-          +"/_/   \___/_/\_, /\___/_/ |_/_/|_/  \n"
-          +"            /___/                   \n")
-
 def warn(*args, **kwargs):
     pass
 import warnings
@@ -35,14 +28,15 @@ def export_logs():
 
 def login_menu():
     global using_database
+    global line_offset
     using_databse = False
     login_text = ["Login","Continue as Guest", "Quit"]
     while (1):
         line_select = launch_menu(login_text)
         if line_select == 0:
             clear_screen()
-            username = input("Enter Username: ")
-            password = input("Enter Password: ")
+            username = input("\t\t\t\t\t\t\tEnter Username: ")
+            password = input("\t\t\t\t\t\t\tEnter Password: ")
             try: 
                 init_db(username,password)
                 using_database = True
@@ -56,7 +50,7 @@ def login_menu():
             using_database = False
             break
         elif line_select == 2:
-            print("Goodbye\n")
+            print(line_offset+"Goodbye\n")
             sys.exit()
 
 def user_menu():
@@ -104,7 +98,7 @@ def main_menu():
             if (using_database):
                 get_pgn(known)
             else:
-                input("You must log in to use this feature...")
+                input(line_offset+"You must log in to use this feature...")
         elif (choice == 5):
             manipulate_logs(known, using_database)
         elif (choice == 6):

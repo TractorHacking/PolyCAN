@@ -99,20 +99,21 @@ def param_values(data, length, params):
     return values
 
 def detail_view(known, log):
+    global line_offset
     while(1):
-        choice = input("Please enter line number or q to quit: ")
+        choice = input(line_offset+"Please enter line number or q to quit: ")
         if choice == 'q':
             return
         try:
             option = int(choice)
         except:
-            print("Invalid input")
+            print(line_offset+"Invalid input")
             continue
         if option < 0 or option >= len(log):
-            print("Number out of bounds")
+            print(line_offset+"Number out of bounds")
             continue
         if not log.at[option, 'pgn'] in known:
-            print("Unknown PGN {}".format(log.at[option,'pgn']))
+            print(line_offset+"Unknown PGN {}".format(log.at[option,'pgn']))
             continue
         else:
             break
@@ -120,17 +121,18 @@ def detail_view(known, log):
     return
 
 def get_pgn(known):
+    global line_offset
     while(1):
-        choice = input("Please enter PGN or q to quit: ")
+        choice = input(line_offset+"Please enter PGN or q to quit: ")
         if choice == 'q':
             return
         try:
             pgn = int(choice)
         except:
-            print("Invalid input")
+            print(line_offset+"Invalid input")
             continue
         if not pgn in known:
-            print("Unknown PGN")
+            print(line_offset+"Unknown PGN")
             continue
         else: 
             break
@@ -169,10 +171,11 @@ def find_log():
     names = get_lognames()
     if len(names) == 0:
         return ''
-    choice = launch_menu(names)
+    choice = display_log_pages(names)
     return names[choice]
     
 def filter_menu(current_log, known):
+    global line_offset
     df = None
     while(1):
         filter_options=["By PGN", "By Time", "By Source", "By Destination", "Unique entries", "Custom filter", "Data Frequency", "PGN Frequency", "Return"]
@@ -255,9 +258,9 @@ def filter_menu(current_log, known):
         elif option == 8:
             return
         else:
-            print("Please enter an integer for menu entry")
+            print(line_offset+"Please enter an integer for menu entry")
             continue
-        input('Press enter to continue...')
+#        input('Press enter to continue...')
 def learn(current_log):
     #take only 8-byte data
     criterion = current_log['data'].map(lambda x: len(x) == 25)
@@ -326,9 +329,10 @@ def log_menu(log, known):
             return
 
 def plot_pgn(log):
-    pgn = int(input("Please enter PGN to plot: "))
-    time_axis = log.query('pgn == {}'.format(pgn))['time'].as_matrix()
-    data_axis = log.query('pgn == {}'.format(pgn))['data'].as_matrix()
+    global line_offset
+    pgn = int(input(line_offset+"Please enter PGN to plot: "))
+    time_axis = log.query(line_offset+'pgn == {}'.format(pgn))['time'].as_matrix()
+    data_axis = log.query(line_offset+'pgn == {}'.format(pgn))['data'].as_matrix()
     num_data = np.array([numerize_data(x) for x in data_axis])
     plt.plot(time_axis, num_data)
     plt.show()
@@ -424,27 +428,17 @@ def compare_logs(log1, log2):
 
 def sort_menu(current_log, known):
     while(1):
-        print("Sort Menu\n")
-        print("1. By PGN")
-        print("2. By time")
-        print("3. By Source")
-        print("4. By Destination")
-        print("5. Return")
-        choice = input("")
-        try:
-            option = int(choice)
-        except:
-            print("Please enter an integer for menu entry")
-            continue
-        if option == 1:
-            print(current_log.sort_values(by='pgn'))
+        options = ["By PGN", "By time", "By source", "By destination", "Return"]
+        option = launch_menu(options)
+        if option == 0:
+            display_log(current_log.sort_values(by='pgn'))
+        elif option == 1:
+            display_log(current_log.sort_values(by='time'))
         elif option == 2:
-            print(current_log.sort_values(by='time'))
+            display_log(current_log.sort_values(by='source'))
         elif option == 3:
-            print(current_log.sort_values(by='source'))
+            display_log(current_log.sort_values(by='destination'))
         elif option == 4:
-            print(current_log.sort_values(by='destination'))
-        elif option == 5:
             return
         else:
             print("Please enter an integer for menu entry")
