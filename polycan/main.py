@@ -106,7 +106,7 @@ def main_menu():
             else:
                 input("You must log in to use this feature...")
         elif (choice == 5):
-            manipulate_logs(known)
+            manipulate_logs(known, using_database)
         elif (choice == 6):
             if(using_database):
                 user_menu()
