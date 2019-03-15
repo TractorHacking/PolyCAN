@@ -4,8 +4,7 @@ class LogDisplay:
     def __init__(self, log_name, log, resolution, known):
         self.__log = log
         self.__log_name = log_name
-        self.__log_iter = log.index
-        self.__log_rev_iter = log.index.reverse()
+        self.__log_idx = log.index
         self.__known = known
         self.__min_line = 0
         self.__cur_line = 0
