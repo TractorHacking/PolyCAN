@@ -5,6 +5,9 @@ import sys
 import select
 from polycan.packet import *
 
+
+
+
 def get_csv(path):
     try:
         sock = socket.socket(socket.PF_CAN, socket.SOCK_RAW, socket.CAN_RAW)

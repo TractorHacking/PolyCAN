@@ -122,6 +122,7 @@ def display_pages(log):
 
 def launch_menu(options):
     global splash
+    
     line_select = 0
     line_max = len(options)-1
     if line_max < 1:

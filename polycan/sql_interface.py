@@ -190,7 +190,7 @@ def init_db(username, password):
     database = db(username, password)
     return
 
-def get_log(log, known):
+def get_log(log, known=[]):
     return database.get_log(log, known)
     
 def close_db():

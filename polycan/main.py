@@ -21,10 +21,17 @@ def clear_screen():
     return
 
 def export_logs():
-    known = []
-    log_name = find_log()
-    log = get_log(log_name, known)
-    save_log(log_name, log)
+    choice = launch_menu(["Download all logs", "Download specific Log", "Cancel"]);
+    if (choice == 0):
+        logs = get_lognames()
+        for name in logs:
+            save_log(name, get_log(name))
+    elif (choice == 1):
+        known = []
+        log_name = find_log()
+        log = get_log(log_name)
+        save_log(log_name, log)
+    return
 
 def login_menu():
     global using_database
@@ -35,14 +42,14 @@ def login_menu():
         line_select = launch_menu(login_text)
         if line_select == 0:
             clear_screen()
-            username = input("\t\t\t\t\t\t\tEnter Username: ")
-            password = input("\t\t\t\t\t\t\tEnter Password: ")
+            username = input(line_offset+"Enter Username: ")
+            password = input(line_offset+"Enter Password: ")
             try: 
                 init_db(username,password)
                 using_database = True
             except:
                 using_database = False
-                print("Error, invalid login (Press any key to continue)...")
+                print(line_offset+"Error, invalid login (Press any key to continue)...")
                 input('')
             if (using_database):
                 break
@@ -54,7 +61,7 @@ def login_menu():
             sys.exit()
 
 def user_menu():
-    items = ["Import Log", "Export Log", "Go Back"]
+    items = ["Upload Log", "Download Log", "Go Back"]
     choice = launch_menu(items)
     
     if (choice == 0):
