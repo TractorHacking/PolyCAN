@@ -663,7 +663,7 @@ def printProgressBar (iteration, total, prefix = '', suffix = '', decimals = 1, 
         
 #@des able to change data bytes in logfile and store it so it can be send to tractor
 #@param {dataframe} uploaded_logs Stored logfiles in database
-def manipulate_logs(known, using_database):
+def manipulate_logs(using_database, known = []):
     print("\n --select log which you want to clone and manipulate--")
     if (using_database):
         choice = launch_menu(["From Database", "From File"])
