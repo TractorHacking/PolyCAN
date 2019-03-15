@@ -81,11 +81,12 @@ def save_log(name, log_frame):
 
 '''
 def capture_log():
-    path = input('Enter log name: ')
+    global line_offset
+    path = input(line_offset+'Enter log name: ')
     path = "../logs/"+path
     if not(path[-4:] == ".csv"):
         path = path+".csv"
     get_csv(path)
-    input('Press Enter to continue...')
+    input(line_offset+'Press Enter to continue...')
     return
 

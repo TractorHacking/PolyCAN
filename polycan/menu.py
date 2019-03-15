@@ -25,7 +25,7 @@ def clear_screen():
     print(splash)
     return
 
-def display_log_pages(options):
+def display_log_pages(options, header=''):
     global splash
     page = 0
     fr = 0
@@ -39,6 +39,8 @@ def display_log_pages(options):
         return 0
     while(1):
         clear_screen()
+        if (header != ''):
+            print(header+'\n')
 #        print(line_select)
         for i in range(fr, to+1):
             if (i == line_select):
@@ -120,7 +122,7 @@ def display_pages(log):
             return
         del keyreader
 
-def launch_menu(options):
+def launch_menu(options, header=''):
     global splash
     
     line_select = 0
@@ -129,6 +131,8 @@ def launch_menu(options):
         return 0
     while(1):
         clear_screen()
+        if (header != ''):
+            print(header+'\n')
         for i in range(0, line_max+1):
             if (i == line_select):
                 print(line_offset+"> " + options[i])

@@ -49,7 +49,8 @@ def login_menu():
                 using_database = True
             except:
                 using_database = False
-                print(line_offset+"Error, invalid login (Press any key to continue)...")
+                clear_screen()
+                print(line_offset+"Error, invalid login (Press enter to continue)...")
                 input('')
             if (using_database):
                 break
@@ -57,7 +58,8 @@ def login_menu():
             using_database = False
             break
         elif line_select == 2:
-            print(line_offset+"Goodbye\n")
+            clear_screen()
+            print(line_offset+"Goodbye\n") 
             sys.exit()
 
 def user_menu():
@@ -80,6 +82,7 @@ def main_menu():
             known = get_known()
         else:
             option_four = "Login"
+            known = []
         main_text = ["Open Log", "Capture Log", "Send While Capturing Data","Compare Logs", "Lookup PGN", "Manipulate Log", option_four, "Exit"]
         choice = launch_menu(main_text)
         if (choice == 0):
