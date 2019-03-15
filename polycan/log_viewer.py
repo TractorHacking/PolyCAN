@@ -185,14 +185,14 @@ class LogDisplay:
         else:
             pgn = self.log.at[self.cur_line, 'pgn']
             if pgn in self.known:
-                pgn_obj = known[pgn]
+                pgn_obj = self.known[pgn]
                 self.pgn_info = pd.DataFrame(columns={'\t': '\t', 
                     'Data Length':pgn_obj.data_length,
                     'EDP': pgn_obj.edp, 'DP':pgn_obj.dp,
                     'PDU Format': pgn_obj.pdu_format, 
                     'PDU Specific' : pgn_obj.pdu_specific,
                     'Priority': pgn_obj.default_priority})
-                pdata = param_values(data,pgn_object.data_length, pgn_pbject.parameters)
+                pdata = param_values(self.log.at[self.cur_line, 'data'],pgn_obj.data_length, pgn_obj.parameters)
                 self.data_breakdown = pd.DataFrame(pdata)
                 self.detailed_index = self.cur_index
                 self.detailed = True
