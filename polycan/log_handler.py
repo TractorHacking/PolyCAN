@@ -29,9 +29,10 @@ def numerize_data(data):
     bytestring = data.replace(" ", '')
     return int(bytestring, 16)
 def break_data(data):
-    byte_list = data.rstrip(' ')
-    byte_list = data.lstrip(' ')
+    print(data)
+    byte_list = data.strip()
     byte_list = byte_list.split(" ")
+    print(byte_list)
     for i in range(0, len(byte_list)):
         byte_list[i] = int(byte_list[i], 16)
     return byte_list
@@ -95,75 +96,6 @@ def param_values(data, length, params):
                 ~(255 << remaining)) << 8-int(start[1])+1
     return values
 
-def detail_view(known, log):
-    global line_offset
-    while(1):
-        choice = input(line_offset+"Please enter line number or q to quit: ")
-        if choice == 'q':
-            return
-        try:
-            option = int(choice)
-        except:
-            print(line_offset+"Invalid input")
-            continue
-        if option < 0 or option >= len(log):
-            print(line_offset+"Number out of bounds")
-            continue
-        if not log.at[option, 'pgn'] in known:
-            print(line_offset+"Unknown PGN {}".format(log.at[option,'pgn']))
-            continue
-        else:
-            break
-    print_pgn(known[log.at[option, 'pgn']], log.at[option, 'data'])
-    return
-
-def get_pgn(known):
-    global line_offset
-    while(1):
-        choice = input(line_offset+"Please enter PGN or q to quit: ")
-        if choice == 'q':
-            return
-        try:
-            pgn = int(choice)
-        except:
-            print(line_offset+"Invalid input")
-            continue
-        if not pgn in known:
-            print(line_offset+"Unknown PGN")
-            continue
-        else: 
-            break
-    print_pgn(known[pgn], '')
-
-def print_pgn(pgn_object, data):
-    print('\n-----------------------------------------')
-    print('{}'.format(pgn_object.pgn))
-    print('{}'.format(pgn_object.description))
-    print('\tData Length: {0:14d}'.format(pgn_object.data_length))
-    print('\tExtended Data Page: {0:7d}'.format(pgn_object.edp))
-    print('\tData Page: {0:16d}'.format(pgn_object.dp))
-    print('\tPDU Format: {0:15d}'.format(pgn_object.pdu_format))
-    print('\tPDU Specific: {0:13d}'.format(pgn_object.pdu_specific))
-    print('\tDefault Priority: {0:9d}'.format(pgn_object.default_priority))
-
-    if data != '':
-        print('\tData: {0:21s}'.format(data))
-    print('\nStart Position\tLength\tParameter Name\tSPN', end = '')
-
-    if data != '':
-        print('\tValue')
-        pdata = param_values(data, pgn_object.data_length, pgn_object.parameters)
-    else:
-        print()
-
-    for item in pgn_object.parameters:
-        print("%-*s %-*s %s" % (15, item.start_pos, 7, item.length, item.description), \
-        end = '')
-        if data != '':
-            print(10*' ' + "%d" % (pdata[item.description]), end='')
-        print()
-    input('Press enter to continue...')
-
 def open_log(uploaded_logs, known):
     log_name = find_log()
     if log_name == '':
@@ -219,26 +151,34 @@ def filter_menu(current_log, known):
                 print("Invalid source")
                 continue
         elif option == 4:
-            print("Please enter unique columns (example: pgn,data,source,destination): ")
-            columns = input("").split(",")
-            return current_log.drop_duplicates(columns)
+            try:
+                print("Please enter unique columns (example: pgn,data,source,destination): ")
+                columns = input("").split(",")
+                return current_log.drop_duplicates(columns)
+            except:
+                print("Invalid input")
+                continue
         elif option == 5:
-            print("Please enter filters (example: pgn==331,time>=50.1,time<=50.5,src==52,dest==45): ")
-            choice = input("")
-            filters = choice.replace(",", "&")
-            print("Unique? (example: pgn,data)")
-            uniq_choice = input("")
-            uniq_tags = choice.split(",")
-            if(uniq_tags == []):
-                return current_log.query(filters)
-            else:
-                return current_log.query(filters).drop_duplicates(uniq_tags)
+            try: 
+                print("Please enter filters (example: pgn==331,time>=50.1,time<=50.5,src==52,dest==45): ")
+                choice = input("")
+                filters = choice.replace(",", "&")
+                print("Unique? (example: pgn,data)")
+                uniq_choice = input("")
+                uniq_tags = choice.split(",")
+                if(uniq_tags == []):
+                    return current_log.query(filters)
+                else:
+                    return current_log.query(filters).drop_duplicates(uniq_tags)
+            except:
+                print("Invalid input")
+                continue
         else:
             return current_log
 
 def sort_menu(current_log, known):
     sort_options=["By PGN", "By Time", "By Source", "By Destination", "Return"]
-    option = launch_menu(filter_options)
+    option = launch_menu(sort_options)
     if option == 0:
         return current_log.sort_values(by='pgn')
     if option == 1:
@@ -249,39 +189,35 @@ def sort_menu(current_log, known):
         return current_log.sort_values(by='destination')
     else:
         return current_log
-"""
-        elif option == 6:
-            data frequency
-            sorted_by_pgn = current_log.sort_values(by='pgn')
-            uniq_df = current_log.drop_duplicates(['pgn', 'data'])
-            uniq_ddf = pd.DataFrame(uniq_df, columns=['pgn','data','frequency', 'count'])
-            uniq_ddf['frequency'] = [np.mean(np.diff(arr)) if len(arr) > 1 \
-                else 0 for arr in \
-                    [np.array(sorted_by_pgn.query( \
-                        ('pgn == {} & data == "{}"').format(y,z)) \
-                .sort_values(by='time')['time']) \
-                for y,z in zip(uniq_df['pgn'],uniq_df['data'])]]
-            uniq_ddf['count'] = [len(sorted_by_pgn.query('pgn == {} & data == "{}"'.format(y,z))) \
-                for y,z in zip(uniq_df['pgn'], uniq_df['data'])]
-            return uniq_ddf.to_string())
-        elif option == 7:
-            pgn frequency
-            sorted_by_pgn = current_log.sort_values(by='pgn')
-            uniq_df = current_log.drop_duplicates(['pgn'])
-            uniq_ddf = pd.DataFrame(uniq_df, columns = ['pgn', 'frequency', 'count'])
-            uniq_ddf['frequency'] = [np.mean(np.diff(arr)) if len(arr)>1 \
-                else 0 for arr in \
-                [np.array(sorted_by_pgn.query(('pgn == {}').format(y)) \
-                .sort_values(by='time')['time']) \
-                for y in uniq_df['pgn']]]
-            uniq_ddf['count'] = [len(sorted_by_pgn.query('pgn == {}'.format(y))) for y in uniq_df['pgn']]
-            display_log(uniq_ddf.to_string())
-        elif option == 8:
-            return
-        else:
-            print(line_offset+"Please enter an integer for menu entry")
-            continue
-         input('Press enter to continue...')
+def stats_menu(current_log):
+    options = ["Data Frequency", "PGN Count", "Return"]
+    option = launch_menu(options)
+    if option == 0:
+        sorted_by_pgn = current_log.sort_values(by='pgn')
+        uniq_df = current_log.drop_duplicates(['pgn', 'data'])
+        uniq_ddf = pd.DataFrame(uniq_df, columns=['pgn','data','frequency', 'count'])
+        uniq_ddf['frequency'] = [np.mean(np.diff(arr)) if len(arr) > 1 \
+            else 0 for arr in \
+                [np.array(sorted_by_pgn.query( \
+                    ('pgn == {} & data == "{}"').format(y,z)) \
+            .sort_values(by='time')['time']) \
+            for y,z in zip(uniq_df['pgn'],uniq_df['data'])]]
+        uniq_ddf['count'] = [len(sorted_by_pgn.query('pgn == {} & data == "{}"'.format(y,z))) \
+            for y,z in zip(uniq_df['pgn'], uniq_df['data'])]
+        return uniq_ddf
+    elif option == 2:
+        sorted_by_pgn = current_log.sort_values(by='pgn')
+        uniq_df = current_log.drop_duplicates(['pgn'])
+        uniq_ddf = pd.DataFrame(uniq_df, columns = ['pgn', 'frequency', 'count'])
+        uniq_ddf['frequency'] = [np.mean(np.diff(arr)) if len(arr)>1 \
+            else 0 for arr in \
+            [np.array(sorted_by_pgn.query(('pgn == {}').format(y)) \
+            .sort_values(by='time')['time']) \
+            for y in uniq_df['pgn']]]
+        uniq_ddf['count'] = [len(sorted_by_pgn.query('pgn == {}'.format(y))) for y in uniq_df['pgn']]
+        return uniq_ddf
+    else:
+        return current_log
 """
 def learn(current_log):
     #take only 8-byte data
@@ -324,7 +260,7 @@ def learn(current_log):
     print(coph_cor)
     dendrogram(X_link, truncate_mode='lastp', p=15, show_contracted=True)
     plt.show()
-        
+"""        
 def log_menu(log, known):
     options = ["Filter Log", "Sort Log", "Return"]
     option = launch_menu(options)
@@ -334,10 +270,9 @@ def log_menu(log, known):
         return sort_menu(log, known)
     elif option == 2:
         return log
-def plot_pgn(log):
-    global line_offset
-    pgn = int(input(line_offset+"Please enter PGN to plot: "))
-    time_axis = log.query(line_offset+'pgn == {}'.format(pgn))['time'].as_matrix()
+
+def plot_parameter(log, parameter):
+    time_axis = log.query('pgn == {}'.format(___))['time'].as_matrix()
     data_axis = log.query(line_offset+'pgn == {}'.format(pgn))['data'].as_matrix()
     num_data = np.array([numerize_data(x) for x in data_axis])
     plt.plot(time_axis, num_data)

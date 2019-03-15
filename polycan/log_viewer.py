@@ -13,7 +13,6 @@ class LogDisplay:
         self.__active = False
         self.__detailed = False
         self.__modify = False
-        self.__modify_choice = 0
         self.__pgn_info = None
         self.__data_breakdown = None
     @property
@@ -101,13 +100,15 @@ class LogDisplay:
                 if self.detailed == True:
                     df1 = self.log[self.min_line:self.cur_line+1]
                     print(df1)
-                    print(self.pgn_info)
-                    print(self.data_breakdown)
-                    df2 = pd.DataFrame(self.log[self.cur_line+1:self.max_line],
-                        columns=[' ','    ','   ','        ',
-                            '      ','           ','    ','           '])
+                    print(self.pgn_info.replace('\n', '\n\t'))
+                    print('\n\t', end='')
+                    print(self.data_breakdown.replace('\n','\n\t'))
+                    print('\n')
+                    df2 = pd.DataFrame(self.log[self.cur_line+1:self.max_line])
                     if not df2.empty:
-                        print(df2)
+                        lines = df2.to_string().split('\n',1)
+                        print(''.join(lines[1]))
+                        
                 else: 
                     df = self.log[self.min_line:self.max_line]
                     df.at[self.cur_line, ' '] = '>'
@@ -186,15 +187,15 @@ class LogDisplay:
             pgn = self.log.at[self.cur_line, 'pgn']
             if pgn in self.known:
                 pgn_obj = self.known[pgn]
-                self.pgn_info = pd.DataFrame(columns={'\t': '\t', 
-                    'Data Length':pgn_obj.data_length,
-                    'EDP': pgn_obj.edp, 'DP':pgn_obj.dp,
-                    'PDU Format': pgn_obj.pdu_format, 
-                    'PDU Specific' : pgn_obj.pdu_specific,
-                    'Priority': pgn_obj.default_priority})
+                self.pgn_info = pd.DataFrame({ 
+                    'length':pgn_obj.data_length,
+                    'edp': pgn_obj.edp, 'dp':pgn_obj.dp,
+                    'pdu_format': pgn_obj.pdu_format, 
+                    'pdu_specific' : pgn_obj.pdu_specific,
+                    'priority': pgn_obj.default_priority}, index=['']).T.to_string()
                 pdata = param_values(self.log.at[self.cur_line, 'data'],pgn_obj.data_length, pgn_obj.parameters)
-                self.data_breakdown = pd.DataFrame(pdata)
-                self.detailed_index = self.cur_index
+                params = pgn_obj.parameters
+                self.data_breakdown = pd.DataFrame({'start_pos':[item.start_pos for item in params], 'length':[item.length for item in params], 'description':[item.description for item in params], 'value':[v for (k,v) in pdata.items()]}).to_string()
                 self.detailed = True
     def collapse(self):
         if self.detailed == True:
@@ -204,7 +205,7 @@ class LogDisplay:
         else:
             self.expand = False 
 class LogViewer:
-    def __init__(self, log_dict = {}, known = {}, max_display=2, resolution=20):
+    def __init__(self, log_dict = {}, known = {}, max_display=2, resolution=12):
         self.__log_dict = log_dict
         self.__known = known
         self.__log_displays = []
@@ -258,6 +259,7 @@ class LogViewer:
                 else:
                     print("  ", end='')
                     self.log_displays[i].show()
+            print("x-delete|m-log_menu|s-stats|p-patterns|q-quit")
             keyreader = kr.KeyReader()
             inp, outp, err = select.select([sys.stdin], [], [])
             entry = keyreader.getch()
@@ -291,7 +293,7 @@ class LogViewer:
                 if self.log_displays[log_select].active == True:
                     pass
                 else:
-                    del self.log_dict[self.log_displays[log_select].log_name()]
+                    del self.log_dict[self.log_displays[log_select].log_name]
                     del self.log_displays[log_select]
                     if self.log_displays == []:
                         return
@@ -304,10 +306,44 @@ class LogViewer:
                     self.log_displays[log_select] = LogDisplay(
                         self.log_displays[log_select].log_name,
                         newlog, self.resolution, self.known)
-                    
+            elif entry == stats:
+                self.stats_menu(self.log_dict[self.log_displays[log_select].log_name])
             elif entry == quit:
                 return
-
+    def stats_menu(self, current_log):
+        options = ["Data Frequency", "PGN Count", "Return"]
+        option = launch_menu(options)
+        uniq_ddf = None
+        if option == 0:
+            sorted_by_pgn = current_log.sort_values(by='pgn')
+            uniq_df = current_log.drop_duplicates(['pgn', 'data'])
+            uniq_ddf = pd.DataFrame(uniq_df, columns=['pgn','data','frequency', 'count'])
+            uniq_ddf['frequency'] = [np.mean(np.diff(arr)) if len(arr) > 1 \
+                else 0 for arr in \
+                    [np.array(sorted_by_pgn.query( \
+                        ('pgn == {} & data == "{}"').format(y,z)) \
+                .sort_values(by='time')['time']) \
+                for y,z in zip(uniq_df['pgn'],uniq_df['data'])]]
+            uniq_ddf['count'] = [len(sorted_by_pgn.query('pgn == {} & data == "{}"'.format(y,z))) \
+                for y,z in zip(uniq_df['pgn'], uniq_df['data'])]
+        elif option == 1:
+            sorted_by_pgn = current_log.sort_values(by='pgn')
+            uniq_df = current_log.drop_duplicates(['pgn'])
+            uniq_ddf = pd.DataFrame(uniq_df, columns = ['pgn', 'frequency', 'count'])
+            uniq_ddf['frequency'] = [np.mean(np.diff(arr)) if len(arr)>1 \
+                else 0 for arr in \
+                [np.array(sorted_by_pgn.query(('pgn == {}').format(y)) \
+                .sort_values(by='time')['time']) \
+                for y in uniq_df['pgn']]]
+            uniq_ddf['count'] = [len(sorted_by_pgn.query('pgn == {}'.format(y))) for y in uniq_df['pgn']]
+        else:
+            return
+        print(uniq_ddf) 
+        keyreader = kr.KeyReader()
+        inp, outp, err = select.select([sys.stdin], [], [])
+        entry = keyreader.getch()
+        del keyreader     
+        return
     def set_current_log(self, name):
         if name not in self.__logdict:
             pass

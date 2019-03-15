@@ -21,6 +21,7 @@ enter = chr(10)
 delete = chr(120)
 modify = chr(109)
 collapse = chr(99)
+stats = chr(115)
 
 def clear_screen():
     global splash
