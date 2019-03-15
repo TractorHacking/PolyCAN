@@ -1,4 +1,5 @@
 from polycan.menu import *
+from polycan.file_interface import *
 from polycan.log import *
 from polycan.sql_interface import *
 from tqdm import tqdm
@@ -662,10 +663,19 @@ def printProgressBar (iteration, total, prefix = '', suffix = '', decimals = 1, 
 
 #@des able to change data bytes in logfile and store it so it can be send to tractor
 #@param {dataframe} uploaded_logs Stored logfiles in database
-def manipulate_logs(known=[]):
+def manipulate_logs(known, using_database):
     print("\n --select log which you want to clone and manipulate--")
-    log_Name = find_log()
-    log = get_log(log_Name, known)
+    if (using_database):
+        choice = launch_menu(["From Database", "From File"])
+        if (choice == 0):
+            log_name = find_log()
+            log = get_log(log_name, known)
+        else:
+            log = open_log()
+    else:
+            log = open_log()
+    if (log.empty): 
+        return
     log = log.values.tolist()
     print("choose pgn you want to manipulate (eg: 61444 for RPM)")
     choosenPgn = input('')
