@@ -18,6 +18,9 @@ right = chr(27) + chr(91) + chr(67)
 left = chr(27) + chr(91) + chr(68)
 quit = chr(113)
 enter = chr(10)
+delete = chr(120)
+modify = chr(109)
+collapse = chr(99)
 
 def clear_screen():
     global splash
@@ -51,6 +54,7 @@ def display_log_pages(options, header=''):
         keyreader = kr.KeyReader()
         inp, outp, err = select.select([sys.stdin], [], [])
         entry = keyreader.getch()
+        del keyreader
         if (entry == down):
             if (line_select < to):
                 line_select = line_select+1
@@ -72,7 +76,7 @@ def display_log_pages(options, header=''):
                 to = 20 + page*20
                 line_select = line_select - 20
         elif (entry == right):
-            if (page < page_max):
+            if (page < page_max-1):
                 page += 1
                 fr += 20
                 to += 20
@@ -84,8 +88,6 @@ def display_log_pages(options, header=''):
             else:
                 pass
             
-        del keyreader
-
 def display_pages(log):
     global splash
     page = 0
@@ -118,13 +120,12 @@ def display_pages(log):
                 page += 1
                 fr = 0 + page*20
                 to = 20 + page*20
-        elif (entry == chr(10) or entry == quit):
+        elif (entry == quit):
             return
         del keyreader
 
 def launch_menu(options, header=''):
-    global splash
-    
+    global splash    
     line_select = 0
     line_max = len(options)-1
     if line_max < 1:
@@ -137,10 +138,13 @@ def launch_menu(options, header=''):
             if (i == line_select):
                 print(line_offset+"> " + options[i])
             else:
+
                 print(line_offset+"  " + options[i])
+        
         keyreader = kr.KeyReader()
         inp, outp, err = select.select([sys.stdin], [], [])
         entry = keyreader.getch()
+        del keyreader
         if (entry == down):
             if (line_select < line_max):
                 line_select = line_select+1
@@ -153,7 +157,6 @@ def launch_menu(options, header=''):
                 line_select = line_max
         elif (entry == chr(10)):
             return line_select
-        del keyreader
 
 '''
 def launch_advanced_menu(options, suboptions):

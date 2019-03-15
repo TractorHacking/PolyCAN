@@ -3,6 +3,7 @@ from polycan.menu import *
 from polycan.log_handler import *
 from polycan.log import *
 from polycan.sql_interface import *
+from polycan.log_viewer import *
 import polycan.keyreader as kr
 import collections
 import sys, os
@@ -74,8 +75,8 @@ def user_menu():
     return
 
 def main_menu():
-    global using_database
- 
+    global using_database 
+    uploaded_logs = {}
     while(1):
         if (using_database):
             option_four = "Account Settings"
@@ -83,40 +84,42 @@ def main_menu():
         else:
             option_four = "Login"
             known = []
-        main_text = ["Open Log", "Capture Log", "Send While Capturing Data","Compare Logs", "Lookup PGN", "Manipulate Log", option_four, "Exit"]
+        main_text = ["Open Log", "Log Menu", "Capture Log", "Send While Capturing Data","Compare Logs", "Lookup PGN", "Manipulate Log", option_four, "Exit"]
         choice = launch_menu(main_text)
-        if (choice == 0):
-            if (using_database):
-                choice = launch_menu(["From Database", "From File"])
-                if (choice == 0):
-                    log_name = find_log()
-                    log = get_log(log_name, known)
-                    log_menu(log, known)
-                    continue
-            log = open_log()
-            if (log.empty): 
-                continue
-            log_menu(log, known)
-        elif (choice == 1):
-            capture_log()
+        if (choice == 0): 
+#  main_text = ["Open Log", "Log menu", "Capture Log", "Send While Capturing Data","Compare Logs", "Lookup PGN", option_four, "Exit"]
+            if len(uploaded_logs) == 2:
+                clear_screen()
+                print("Too many logs open")
+            else:
+                open_log(uploaded_logs, known)
+        elif choice == 1:
+            if len(uploaded_logs) == 0:
+                clear_screen()
+                print("No logs open")
+            else: 
+                log_viewer = LogViewer(uploaded_logs, known)
+                log_viewer.log_menu()
         elif (choice == 2):
-            sendAndCapture_log()
+            capture_log()
         elif (choice == 3):
+            sendAndCapture_log()
+        elif (choice == 4):
             helper = "ok"
             compare_logs({}, known, helper)
-        elif (choice == 4):
+        elif (choice == 5):
             if (using_database):
                 get_pgn(known)
             else:
                 input(line_offset+"You must log in to use this feature...")
-        elif (choice == 5):
-            manipulate_logs(using_database)
         elif (choice == 6):
+            manipulate_logs(using_database)
+        elif (choice == 7):
             if(using_database):
                 user_menu()
             else:
                 login_menu()
-        elif (choice == 7):
+        elif (choice == 8):
             sys.exit()
 def main():
     login_menu()
