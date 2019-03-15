@@ -659,10 +659,10 @@ def printProgressBar (iteration, total, prefix = '', suffix = '', decimals = 1, 
     # Print New Line on Complete
     if iteration == total: 
         print()
-        
+
 #@des able to change data bytes in logfile and store it so it can be send to tractor
 #@param {dataframe} uploaded_logs Stored logfiles in database
-def manipulate_logs(known):
+def manipulate_logs(known=[]):
     print("\n --select log which you want to clone and manipulate--")
     log_Name = find_log()
     log = get_log(log_Name, known)
