@@ -54,7 +54,7 @@ def save_log(name, log_frame):
     path = "../logs"
     log_frame.to_csv((path+"/"+name+".csv"))
     global line_offset
-    input(line_offset+"Saved log to "+path+"/"+name+".csv")
+    return (line_offset+"Saved log to "+path+"/"+name+".csv")
     '''
     while(1):
         for root, dirs, files in os.walk(path):

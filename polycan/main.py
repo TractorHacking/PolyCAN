@@ -25,13 +25,15 @@ def export_logs():
     choice = launch_menu(["Download all logs", "Download specific Log", "Cancel"]);
     if (choice == 0):
         logs = get_lognames()
+        text_output = []
         for name in logs:
-            save_log(name, get_log(name))
+            print(save_log(name, get_log(name)))
+        input('')
     elif (choice == 1):
         known = []
         log_name = find_log()
         log = get_log(log_name)
-        save_log(log_name, log)
+        input(save_log(log_name, log))
     return
 
 def login_menu():
