@@ -2,15 +2,31 @@ import socket
 import sys
 import time
 import math
+#used as the starting time for the timestamp for all recieved logs
 StartTime = time.time()
+##
+#Class that is used that contains all the components of a j1939 command packet
+#for proper use, create an instance of the class and then call one of the 
+#initliser functions:
+#   initFromCanUtils
+#   initFromCSV
+#   initFromPkt
+#always check if the feild Packet.valid is true before doing operations on the packet
+#no matter what intilizer function you called you can then convert it to either
+#csv log file format or a data packet ready to be sent out
 class Packet:
     def __init__(self):
        pass
 
+    ##given a string of a line from a can-utils log, will turn it into a packet
+    #very useful if for some reason the logging feature is broken still can get data
+    #using can-utils function: candump
     def initFromCanUtils(self,line):
         self.initFromCanUtils(line)
         self.checkForSeg()
 
+    ##function that is only used internally, used in the case that there is a segmented packet
+    #(a packet that is broken into packets)
     def checkForSeg(self):
         self.pktNum   = 1
         self.actualPGN = self.pgn
@@ -33,6 +49,8 @@ class Packet:
             
             self.pktNum = 1
             self.actualData = [];
+    ##function that is used for segmented packet
+    #will combine the calling object with the different Packet object pkt togther, appending pkt onto the calling object
     def combinePacket(self,pkt):
         if(pkt.pgn != 60160 or self.pgn != 60416):#the pgn for a new segment of data
             print("notValid pkt pgn","pkt.pgn",pkt.pgn,"   self.pgn",self.pgn)
@@ -53,8 +71,6 @@ class Packet:
             self.numBytes -=1
             if(self.numBytes <= 0):
                 break
-
-       
         if(self.numBytes <= 0):
             self.allDone = True
             self.valid   = True
@@ -66,14 +82,16 @@ class Packet:
             self.pgn = self.actualPGN
 
 
+    #helper function for converting a canutils line to a packet
+    #does bulk of work
     def initFromCanUtilsHelper(self,line):
-        #print(line)
         #This info is not known so put in default
         self.error = 0 
         self.remoteTrRequest = 0 
         self.frameFormat = 1
         self.flags     =  0
         self.padding     = 0
+
         try:
             spline = line.split()
             self.time = float(spline[0][1:-1])
@@ -99,19 +117,19 @@ class Packet:
             self.sa      = self.can_id & 0xFF
             self.valid = True
             self.allDone = True
-            #print(self)
         except(ValueError):
             print("INVALID")
             print(line)
             self.valid = False
             self.allDone = True
 
+    ##function that convers the strin line into a packet structure
     def initFromCSV(self,line):
         self.initFromCSVHelper(line)
         self.checkForSeg()
 
+    ##function that is a helper to the initfromCSV does bulk of work
     def initFromCSVHelper(self,line):
-        #print(line)
         #This info is not known so put in default
         self.error = 0 
         self.remoteTrRequest = 0 
@@ -134,44 +152,44 @@ class Packet:
                 self.data  = 0
             self.valid = True
             self.allDone = True
-            #print(self)
         except(ValueError):
             print("INVALID")
             print(line)
             self.valid = False
             self.allDone = True
 
-
+    ##function that is used to take data returned from recv function and turn into packet structure
     def initFromPkt(self,pkt):
         self.initFromPktHelper(pkt)
         self.checkForSeg()
 
+    ##helper function for initFromPkt, does bulk of work, only called internally
     def initFromPktHelper(self,pkt):
         d = int.from_bytes(pkt,byteorder='big')
-        self.time = time.time() - StartTime
+        self.time    = time.time() - StartTime
         self.can_id  = int.from_bytes(pkt[0:4],byteorder='little')
-        self.error = (self.can_id & 0x20000000) >> 29
+        self.error   = (self.can_id & 0x20000000) >> 29
         self.remoteTrRequest = (self.can_id & 0x40000000) >> 30
         self.frameFormat = (self.can_id & 0x80000000) >> 31
-        self.d_len = pkt[4]
-        self.flags     = pkt[5]
+        self.d_len       = pkt[4]
+        self.flags       = pkt[5]
         self.padding     = int.from_bytes(pkt[6:8],byteorder='little')
-        
-        self.data    = pkt[8:8+self.d_len]
-        self.data = int.from_bytes(self.data,byteorder = 'big')
-        self.priority = (self.can_id & 0x1C000000) >> 26 
-        self.pf      = (self.can_id & 0xFF0000)  >> 16  
+        self.data        = pkt[8:8+self.d_len]
+        self.data        = int.from_bytes(self.data,byteorder = 'big')
+        self.priority    = (self.can_id & 0x1C000000) >> 26 
+        self.pf          = (self.can_id & 0xFF0000)  >> 16  
         if(self.pf <= 239):
             self.pgn     = (self.can_id & 0x3FF0000) >> 8  
             self.da      = (self.can_id & 0xFF00)    >> 8
         else:
             self.pgn     = (self.can_id & 0x3FFFF00) >> 8  
             self.da      = 255
-        self.sa      = self.can_id & 0xFF
-        self.valid = True
+        self.sa          = self.can_id & 0xFF
+        self.valid   = True
         self.allDone = True
-        #print(self)
          
+    #function that takes operates on the called packet object, it will return a bytearray that can be passed
+    #directly to socket.send to be sent out
     def toPkt(self):
         pkt = bytearray()
         for i in range(16):
@@ -199,7 +217,10 @@ class Packet:
         self.valid = True
         self.allDone = True
         return pkt
-        #print(self)
+
+    ##function that will handle sending a packet out to the socket.
+    #this function is used so that the user does not need to worry about breaking a packet
+    #into multiple chunks in order to actaully send the packet (only 8 data bytes per packet)
     def sendPacket(self,sock):
         if(self.d_len <=8):
             sock.send(self.toPkt())
@@ -236,7 +257,6 @@ class Packet:
         bytesLeft = self.d_len
         pktNum = 1
         while(bytesLeft > 0):
-            #time.sleep(0.05)
             mid = Packet()
             mid.error = 0
             mid.remoteTrRequest = 0
@@ -263,12 +283,14 @@ class Packet:
             if(bytesLeft<=0):
                 break
 
+    #internal function that get gets a speficic byte from a given number
     def getByte(self,index,s):
        mask = 0xFF << index*8 
        b = s & mask
        b >>= index*8
        return b
  
+    #internal function used for displaying data bytes in the csv format
     def turnHexToStr(hexV,bytesLen):
         tempV = hexV;
         string = ''
@@ -279,6 +301,7 @@ class Packet:
         return string 
 
 
+    #returns a string that can be written to a csv log file
     def toCSV(self):
         string = ""
         string = str(self.time)
@@ -295,6 +318,8 @@ class Packet:
         string += "\n"
         return string
 
+
+    #overloading to string function so printing a packet object is helpfull
     def __str__(self):
         string =  "Packet:\n"
         string += "Time:\t\t\t"
@@ -322,6 +347,11 @@ class Packet:
         return string 
 
 
+##function that is used to do all handling of segmented packets recieved
+#will listen on the CAN bus for a packet, then if the packet is a single packet
+#structure will return the packet, otherwise it will wait until it recieves
+#all the packets of that message then returns the combined packet
+#this way the caller does not need to worry about any packets that get segmented
 def getNewPacket(sock):
     try:
         p = sock.recv(1024)
@@ -331,9 +361,10 @@ def getNewPacket(sock):
         return pkt
     pkt = Packet()
     pkt.initFromPkt(p)
-    if(not(pkt.valid) | pkt.allDone):
+    if(not(pkt.valid)):
         print("not valid!")
         return pkt
+    #continue until we find the end of the packet
     while(not pkt.allDone):
         try:
             p = sock.recv(1024)
@@ -341,9 +372,11 @@ def getNewPacket(sock):
             pkt = Packet()
             pkt.valid = False
             return pkt
+        #create a new packet object that will hold the intermediate packets
         pktNew = Packet()
         pktNew.initFromPkt(p)
-        pkt.combinePacket(pktNew)
+        #keep calling combine packet on the first packet object inorder to keep apending
+        #on the packets pkt.combinePacket(pktNew)
     return pkt
 
 
