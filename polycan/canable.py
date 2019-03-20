@@ -91,7 +91,7 @@ def sendCSVWhileRead(pathR,pathW):
                    p.initFromCSV(line)
                    #check if valid, this needs to be always done
                    if(p.valid):
-                       p.sendPacket(sock)
+                       sendPacket(p,sock)
                        sent +=1
                        #write the packet sent to the log file, desgnate that this is a command 
                        #sent by making the timestamp negive
@@ -133,7 +133,7 @@ def send_csv(path):
                 p.initFromCSV(line)
                 #check if valid, this needs to be always done
                 if(p.valid):
-                    p.sendPacket(sock)
+                    sendPacket(p,sock)
                     time.sleep(0.05)
 
 
