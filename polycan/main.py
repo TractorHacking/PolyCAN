@@ -105,6 +105,7 @@ def main_menu():
                 log_viewer = LogViewer(uploaded_logs, known)
                 log_viewer.log_menu()
         elif (choice == 2):
+            clear_screen()
             capture_log()
         elif (choice == 3):
             sendAndCapture_log()
