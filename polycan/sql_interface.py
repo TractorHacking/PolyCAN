@@ -27,7 +27,7 @@ class db:
             self.cursor = self.connection.cursor()
 
     def clear_screen(self):
-        sp.call('clear',shell=True)
+        sp.call('clear', shell=True)
         return
 
     def list_logs(self):
@@ -38,6 +38,8 @@ class db:
             names.append(name[0])
         return names
 
+    # This function parses the github website entries and imports them to the database
+    # it only needed to be run once to initialize the known database 
     def import_known_old_group(self):
         unique = []
         print("Uploading Known...\n")
@@ -196,18 +198,21 @@ def get_log(log, known=[]):
 def close_db():
     database.close()
 
+# This function imports all logs in the logs folder
 def import_logs():
     database.import_logs()
     return
 
+# This function is a dummy for future development
 def import_known():
-    database.import_known()
-
+    input("Error this feature is still in development\nPress ENTER to continue...")
+# This function is a dummy for future development
 def export_known():
     input("Error this feature is still in development\nPress ENTER to continue...")
 
 def get_lognames():
     return database.list_logs()
+
 def get_known():
     return database.get_known()
 

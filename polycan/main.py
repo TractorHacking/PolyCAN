@@ -81,7 +81,7 @@ def main_menu():
     uploaded_logs = {}
     while(1):
         if (using_database):
-            option_four = "Account Settings"
+            option_four = "Storage"
             known = get_known()
         else:
             option_four = "Login"

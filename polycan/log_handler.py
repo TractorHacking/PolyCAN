@@ -25,9 +25,11 @@ import collections
 
 def display_log(log):
     display_pages(log)
+
 def numerize_data(data):
     bytestring = data.replace(" ", '')
     return int(bytestring, 16)
+
 def break_data(data):
     print(data)
     byte_list = data.strip()
@@ -96,6 +98,7 @@ def param_values(data, length, params):
                 ~(255 << remaining)) << 8-int(start[1])+1
     return values
 
+# Open log returns a dataframe of the log specified by the user
 def open_log(uploaded_logs, known):
     log_name = find_log()
     if log_name == '':
@@ -108,6 +111,7 @@ def open_log(uploaded_logs, known):
         uploaded_logs[log_name] = log
         return
 
+# Find log gets a user selection of a log from the list of logs stored in the databse
 def find_log():
     names = get_lognames()
     if len(names) == 0:
