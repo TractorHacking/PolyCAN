@@ -23,6 +23,53 @@ import sys
 import matplotlib.pyplot as plt
 import collections
 
+def print_pgn(pgn_object, data):
+    global line_offset
+    print('\n'+line_offset+'-----------------------------------------')
+    print(line_offset+'{}'.format(pgn_object.pgn))
+    print(line_offset+'{}'.format(pgn_object.description))
+    print(line_offset+'\tData Length: {0:14d}'.format(pgn_object.data_length))
+    print(line_offset+'\tExtended Data Page: {0:7d}'.format(pgn_object.edp))
+    print(line_offset+'\tData Page: {0:16d}'.format(pgn_object.dp))
+    print(line_offset+'\tPDU Format: {0:15d}'.format(pgn_object.pdu_format))
+    print(line_offset+'\tPDU Specific: {0:13d}'.format(pgn_object.pdu_specific))
+    print(line_offset+'\tDefault Priority: {0:9d}'.format(pgn_object.default_priority))
+
+    if data != '':
+        print(line_offset+'\tData: {0:21s}'.format(data))
+    print('\n'+line_offset+'Start Position\tLength\tParameter Name\tSPN', end = '')
+
+    if data != '':
+        print(line_offset+'\tValue')
+        pdata = param_values(data, pgn_object.data_length, pgn_object.parameters)
+    else:
+        print()
+
+    for item in pgn_object.parameters:
+        print(line_offset+"%-*s %-*s %s" % (15, item.start_pos, 7, item.length, item.description), \
+        end = '')
+        if data != '':
+            print(line_offset + 10*' ' + "%d" % (pdata[item.description]), end='')
+        print()
+    input(line_offset+"Press Enter to continue...")
+def get_pgn(known):
+    while(1):
+        clear_screen()
+        choice = input(line_offset+"Please enter PGN or q to quit: ")
+        if choice == 'q':
+            return
+        try:
+            pgn = int(choice)
+        except:
+            print(line_offset+"Invalid input")
+            continue
+        if not pgn in known:
+            print(line_offset+"Unknown PGN")
+            continue
+        else: 
+            break
+    print_pgn(known[pgn], '')
+    
 def display_log(log):
     display_pages(log)
 
@@ -359,8 +406,10 @@ def compare_logs(log1, log2):
 
 def compare_logs(uploaded_logs, known, table):
     bol = False
+    global line_offset
+    clear_screen()
     if(table != "ok"):
-        input("\n --selecting log to compare with--")
+        input("\n" + line_offset+" --selecting log to compare with--")
         log2_Name = find_log()
         if log2_Name in uploaded_logs:
             log2 = uploaded_logs[log2_Name]
@@ -368,11 +417,12 @@ def compare_logs(uploaded_logs, known, table):
             log2 = get_log(log2_Name, known)
             uploaded_logs[log2_Name] = log2
         log2 = log2.values.tolist()
-        print("\n --log selected, comparing...--")
+        clear_screen()
+        print("\n"+line_offset+" --log selected, comparing...--")
         log1 = table
         bol = True
     else:
-        input("\n --selecting first log--")
+        input("\n"+line_offset+" --selecting first log--")
         log1_Name = find_log()
         if log1_Name in uploaded_logs:
             log1 = uploaded_logs[log1_Name]
@@ -380,7 +430,8 @@ def compare_logs(uploaded_logs, known, table):
             log1 = get_log(log1_Name, known)
             uploaded_logs[log1_Name] = log1
         log1 = log1.values.tolist()
-        input("\n --selecting second log--")
+        clear_screen()
+        input("\n"+line_offset+" --selecting second log--")
         log2_Name = find_log()
         if log2_Name in uploaded_logs:
             log2 = uploaded_logs[log2_Name]
@@ -388,7 +439,8 @@ def compare_logs(uploaded_logs, known, table):
             log2 = get_log(log2_Name, known)
             uploaded_logs[log2_Name] = log2
         log2 = log2.values.tolist()
-        print("\n --logs selected, comparing...--")
+        clear_screen()
+        print("\n"+line_offset+" --logs selected, comparing...--")
         bol = False
     table = []
     breakCount = 0;
@@ -466,18 +518,18 @@ def compare_logs(uploaded_logs, known, table):
                     
     printTable(table)
     printCodeResults(len1, breakCount, diffCount, pgnCount, dataCount, shortData, 0)
-    input('Press enter to continue...')
+    input(line_offset+'Press enter to continue...')
 
     while(1):
         options = ["Delete identical data codes", "Sort list", "Compare to an other log", "Done comparing logs"]
         choice = launch_menu(options)
         if choice == 0:
             delSame(table, len1, breakCount, diffCount, pgnCount, dataCount, shortData)
-            input('Press enter to continue...')
+            input(line_offset+'Press enter to continue...')
         elif choice == 1:
             table = sorted(table, key=itemgetter(4))
             printTable(table)
-            input('Press enter to continue...')
+            input(line_offset+'Press enter to continue...')
         elif choice == 2:
             return compare_logs(uploaded_logs, known, table)
         else:
@@ -536,21 +588,22 @@ def printTable(table):
 #@param {int} shortData number of data entries with less 16    
 #@param {list} table list of all entries which are found in on log but not in the other
 def printCodeResults(len1, breakCount, diffCount, pgnCount, dataCount, shortData, table):
-    print("Total codes") 
-    print(len1)
-    print("Total matches")
-    print(breakCount)
-    print("Total differences")
-    print(diffCount)
-    print("Total pgn differences")
-    print(pgnCount)
-    print("Total data differences")
-    print(dataCount)
-    print("Short Data")
-    print(shortData)
+    global line_offset
+    print(line_offset+"Total codes") 
+    print(line_offset+str(len1))
+    print(line_offset+"Total matches")
+    print(line_offset+str(breakCount))
+    print(line_offset+"Total differences")
+    print(line_offset+str(diffCount))
+    print(line_offset+"Total pgn differences")
+    print(line_offset+str(pgnCount))
+    print(line_offset+"Total data differences")
+    print(line_offset+str(dataCount))
+    print(line_offset+"Short Data")
+    print(line_offset+str(shortData))
     if(table != 0):
-        print("Unique codes")
-        print(len(table))
+        print(line_offset+"Unique codes")
+        print(line_offset+str(len(table)))
     
 #@des Call in a loop to create terminal progress bar
 #@param {int} iteration corrent iteration
@@ -561,10 +614,11 @@ def printCodeResults(len1, breakCount, diffCount, pgnCount, dataCount, shortData
 #@param {int} length character length of bar
 #@param {string} fill bar fill character
 def printProgressBar (iteration, total, prefix = '', suffix = '', decimals = 1, length = 100, fill = '█'):
+    global line_offset
     percent = ("{0:." + str(decimals) + "f}").format(100 * (iteration / float(total)))
     filledLength = int(length * iteration // total)
     bar = fill * filledLength + '-' * (length - filledLength)
-    print('\r%s |%s| %s%% %s' % (prefix, bar, percent, suffix), end = '\r')
+    print('\r'+line_offset+'%s |%s| %s%% %s' % (prefix, bar, percent, suffix), end = '\r')
     # Print New Line on Complete
     if iteration == total: 
         print()
@@ -572,7 +626,9 @@ def printProgressBar (iteration, total, prefix = '', suffix = '', decimals = 1, 
 #@des able to change data bytes in logfile and store it so it can be send to tractor
 #@param {dataframe} uploaded_logs Stored logfiles in database
 def manipulate_logs(using_database, known = []):
-    print("\n --select log which you want to clone and manipulate--")
+    global line_offset
+    clear_screen()
+    print("\n"+line_offset+" --select log which you want to clone and manipulate--")
     if (using_database):
         choice = launch_menu(["From Database", "From File"])
         if (choice == 0):
@@ -585,13 +641,13 @@ def manipulate_logs(using_database, known = []):
     if (log.empty): 
         return
     log = log.values.tolist()
-    print("choose pgn you want to manipulate (eg: 61444 for RPM)")
+    print(line_offset+"choose pgn you want to manipulate (eg: 61444 for RPM)")
     choosenPgn = input('')
     for i in range(0, 10):
         if(len(choosenPgn) == 5):
             break
         else:
-            print("Pgn must contain 5 digits long. Insert pgn")
+            print(line_offset+"Pgn must contain 5 digits long. Insert pgn")
             choosenPgn = input('')
     choosenPgn = int(choosenPgn)
     pgnIndexArray = []
@@ -599,20 +655,20 @@ def manipulate_logs(using_database, known = []):
         if(val[1] == choosenPgn):
             pgnIndexArray.append(idx)
     arrayLen = len(pgnIndexArray)
-    print(str(arrayLen) + " pgn matches")
+    print(line_offset+str(arrayLen) + " pgn matches")
     if(arrayLen == 0):
         return
-    print("from index " + str(pgnIndexArray[0]) + " to index " + str(pgnIndexArray[arrayLen - 1]))
-    print("In how many sectors do you want to split log:")
-    sectorAmount = input('')
+    print(line_offset+"from index " + str(pgnIndexArray[0]) + " to index " + str(pgnIndexArray[arrayLen - 1]))
+    print(line_offset+"In how many sectors do you want to split log:")
+    sectorAmount = input(line_offset+'')
     sectorAmount = int(sectorAmount)
     sectorArray = []
     for x in range(sectorAmount):
-        print("Choose sector  " + str(x + 1) + " index start:")
+        print(line_offset+"Choose sector  " + str(x + 1) + " index start:")
         sectorStart = input('')
         sectorStart = int(sectorStart)
-        print("Choose sector " + str(x + 1) + " index end:")
-        sectorEnd = input('')
+        print(line_offset+"Choose sector " + str(x + 1) + " index end:")
+        sectorEnd = input(line_offset+'')
         sectorEnd = int(sectorEnd)
         sectors = [sectorStart, sectorEnd]
         sectorArray.append(sectors)
@@ -622,18 +678,18 @@ def manipulate_logs(using_database, known = []):
             index = pgnIndexArray.index(closest)
             sectorArray[y][z] = index
     digitRangeArray = []
-    print("choose digits range start in data you want to change (eg. RPM = 6-9 so type 6)")
-    digitStart = input('')
+    print(line_offset+"choose digits range start in data you want to change (eg. RPM = 6-9 so type 6)")
+    digitStart = input(line_offset+'')
     digitStart = int(digitStart)
     digitRangeArray.append(digitStart)
-    print("choose digits range end in data you want to change (eg. RPM = 6-9, so type 9)")
-    digitEnd = input('')
+    print(line_offset+"choose digits range end in data you want to change (eg. RPM = 6-9, so type 9)")
+    digitEnd = input(line_offset+'')
     digitEnd = int(digitEnd)
     digitRangeArray.append(digitEnd)
     valueArray = []
     for h in range(sectorAmount):
-        print("choose value you want to replace sector " + str(h + 1) + " with: (eg: 1000rpm = 401F, 2000rpm = 803E, 3000rpm = C05D)")
-        value = input('')
+        print(line_offset+"choose value you want to replace sector " + str(h + 1) + " with: (eg: 1000rpm = 401F, 2000rpm = 803E, 3000rpm = C05D)")
+        value = input(line_offset+'')
         value = str(value)
         value = list(value)
         valueArray.append(value)
@@ -655,11 +711,11 @@ def manipulate_logs(using_database, known = []):
         manipulatedLog.append(mylist)
     for r in range(len(manipulatedLog)):
         print(manipulatedLog[r])
-    print("Name log (eg. manipulatedLog.csv)")
-    logName = input('')
+    print(line_offset+"Name log (eg. manipulatedLog.csv)")
+    logName = input(line_offset+'')
     csvfile = logName
     with open(csvfile, "w") as output:
         writer = csv.writer(output, lineterminator='\n')
         writer.writerows(manipulatedLog)
-    print("your log has been stored with name " + logName)
+    print(line_offset+"your log has been stored with name " + logName)
         

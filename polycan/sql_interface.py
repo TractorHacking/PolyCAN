@@ -103,6 +103,7 @@ class db:
         return
 
     def import_logs(self):
+        global line_offset
         #launch_menu(files)        
         end_messages = []
         print("Uploading Logs...\n")
@@ -146,8 +147,9 @@ class db:
             print("Uploading Logs...\n")
         for line in end_messages:
             print(line)
+        input('Press Enter to continue\n')
         return
-
+    
     def get_log(self, log, known):
         #columns=["time","pgn", "priority", "source", "destination", "data"]
         query = 'SELECT time, pgn, priority, source, destination, data FROM `5055E` WHERE `name` = "%s" ORDER BY `time`'

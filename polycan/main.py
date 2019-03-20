@@ -24,12 +24,14 @@ def clear_screen():
 def export_logs():
     choice = launch_menu(["Download all logs", "Download specific Log", "Cancel"]);
     if (choice == 0):
+        clear_screen()
         logs = get_lognames()
         text_output = []
         for name in logs:
             print(save_log(name, get_log(name)))
-        input('')
+        input('Press Enter to continue...')
     elif (choice == 1):
+        clear_screen()
         known = []
         log_name = find_log()
         log = get_log(log_name)
