@@ -47,8 +47,8 @@ def login_menu():
         line_select = launch_menu(login_text)
         if line_select == 0:
             clear_screen()
-            username = "t"
-            password = "TractorHackersPassword"
+            username = input('Username: ')
+            password = input('Password: ')
             try: 
                 init_db(username,password)
                 using_database = True
