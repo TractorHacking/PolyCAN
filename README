@@ -17,3 +17,8 @@ Account access is currently in closed beta.
 To setup development enviorment:
 1) Clone Repo
 2) run pip3 install -e path/to/repo/
+
+
+Known Issues:
+
+There is currently an issue with accessing locally stored logs. If you log in upon running the application, there should be no issues.
