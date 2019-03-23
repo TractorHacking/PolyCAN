@@ -47,8 +47,8 @@ def login_menu():
         line_select = launch_menu(login_text)
         if line_select == 0:
             clear_screen()
-            username = input('Username: ')
-            password = input('Password: ')
+            username = input(line_offset+"Username: ")
+            password = input(line_offset+"Password: ")
             try: 
                 init_db(username,password)
                 using_database = True
@@ -96,7 +96,10 @@ def main_menu():
                 clear_screen()
                 print("Too many logs open")
             else:
-                open_log(uploaded_logs, known)
+                if (using_database):
+                    open_log(uploaded_logs, known)
+                else:
+                    open_log_file(uploaded_logs)
         elif choice == 1:
             if len(uploaded_logs) == 0:
                 clear_screen()

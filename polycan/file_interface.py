@@ -17,9 +17,11 @@ def get_file_path(path):
             else:
                 return ""
             
-def open_log():
+def open_log_file(uploaded_logs):
     path = "../logs"
     newpath = get_file_path(path)
+    name = newpath[len(path):-4]
+    input(name)
     print("Opening " + newpath + "...")
     with open(newpath) as csvfile:
         log = csv.DictReader(csvfile)                    
@@ -32,6 +34,7 @@ def open_log():
             records['destination'].append(int(line['DA'], 10))
             records['data'].append(line['Data'])
             df = pd.DataFrame(data=records)
+        uploaded_logs[name]=df
         return df
         
 def sendAndCapture_log():
