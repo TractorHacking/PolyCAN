@@ -2,6 +2,9 @@ Polycan is a CAN bus analysis tool that allows you to record data coming from yo
 use a variety of analysis tools in order to better understand the commands coming from the ECU. At this point, it 
 is only availible for Linux.
 
+For more information visit:
+https://tractorhacking.github.io/polycan/
+
 Install:
 pip install git+https://github.com/TractorHacking/polycan
 
@@ -11,8 +14,6 @@ pip install git+https://github.com/TractorHacking/polycan --upgrade
 Usage:
 polycan
 
-Logs are stored in /logs folder of install directory. Add logs there to open them using the program. 
-Account access is currently in closed beta. 
 
 To setup development enviorment:
 1) Clone Repo
