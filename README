@@ -3,10 +3,10 @@ use a variety of analysis tools in order to better understand the commands comin
 is only availible for Linux.
 
 Install:
-pip install git+https://github.com/Morgan-Swanson/polycan
+pip install git+https://github.com/TractorHacking/polycan
 
 Update:
-pip install git+https://github.com/Morgan-Swanson/polycan --upgrade
+pip install git+https://github.com/TractorHacking/polycan --upgrade
 
 Usage:
 polycan
