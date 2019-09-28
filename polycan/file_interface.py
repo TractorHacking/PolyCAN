@@ -18,13 +18,15 @@ def get_file_path(path):
                 return ""
             
 def open_log_file(uploaded_logs):
-    path = "../logs"
-    newpath = get_file_path(path)
-    name = newpath[len(path):-4]
-    input(name)
-    print("Opening " + newpath + "...")
-    with open(newpath) as csvfile:
-        log = csv.DictReader(csvfile)                    
+    filepath = input("Please enter path to .csv log file: ")
+    if filepath[-4:] != ".csv":
+        return open_log_file(uploaded_logs)
+    filename = filepath.rsplit('/', 1)[1]
+    logname = filename.rsplit('.', 1)[0]
+    print("Opening " + filename + "...")
+    with open(filepath) as csvfile:
+        log = list(csv.DictReader(csvfile))                    
+        """
         records = {'time': [], 'pgn': [], 'priority': [], 'source': [], 'destination': [], 'data': []}
         for line in log:
             records['time'].append(float(line['Time']))
@@ -35,8 +37,10 @@ def open_log_file(uploaded_logs):
             records['data'].append(line['Data'])
             df = pd.DataFrame(data=records)
         uploaded_logs[name]=df
-        return df
-        
+        """
+        df = pd.DataFrame(log, columns = ['time', 'pgn', 'priority', 'source', 'destination', 'data', 'description'])
+        uploaded_logs[logname] = df 
+
 def sendAndCapture_log():
     global line_offset
     clear_screen()
