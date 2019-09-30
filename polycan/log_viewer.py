@@ -1,5 +1,6 @@
 from polycan.menu import *
 from polycan.log_handler import *
+
 class LogDisplay:
     def __init__(self, log_name, log, resolution, known):
         self.__log = log
@@ -93,28 +94,39 @@ class LogDisplay:
     @data_breakdown.setter
     def data_breakdown(self, df):
         self.__data_breakdown = df
+
     def show(self):
-        print(self.log_name)
+        tdf = self.log.T
+        display_str = self.log_name + '\n'
         if self.expand == True:
             if self.active == True: 
                 if self.detailed == True:
-                    df1 = self.log[self.min_line:self.cur_line+1]
-                    print(df1)
-                    print(self.pgn_info.replace('\n', '\n\t'))
-                    print('\n\t', end='')
-                    print(self.data_breakdown.replace('\n','\n\t'))
-                    print('\n')
-                    df2 = pd.DataFrame(self.log[self.cur_line+1:self.max_line])
-                    if not df2.empty:
-                        lines = df2.to_string().split('\n',1)
-                        print(''.join(lines[1]))
-                        
+                    display_str += 'Detailed view\n'
+                    for i in range(self.min_line, self.cur_line + 1):
+                        display_str += self.log.iloc[i].to_string().rsplit('\n',1)[1] + '\n' 
+                    display_str += detailed_pgn(known[self.log.iloc[self.cur_line]['pgn']], self.log.iloc[self.cur_line]['data'])
+                    display_str += '\n'
+                    for i in range(self.cur_line + 1, self.max_line):
+                        display_str += self.log.iloc[i].to_string().rsplit('\n',1)[1] + '\n' 
+                    print(display_str)
                 else: 
-                    df = self.log[self.min_line:self.max_line]
-                    df.at[self.cur_line, ' '] = '>'
-                    print(df)
+                    display_str += 'Active view\n'
+                    display_str += '\t'.join(self.log.columns) + '\n'
+                    for i in range(self.min_line, self.cur_line):
+                        display_str += '  ' + '\t'.join(list(self.log.iloc[i].astype(str))) + '\n'
+                    display_str += '> ' + '\t'.join(list(self.log.iloc[self.cur_line].astype(str))) + '\n'
+                    for i in range(self.cur_line + 1, self.max_line):
+                        display_str += '  ' + '\t'.join(list(self.log.iloc[i].astype(str))) + '\n'
+                    print(display_str)
             else:
-                print(self.log[self.min_line:self.max_line])
+                display_str += 'Expanded view\n'
+                display_str += '\t'.join(self.log.columns) + '\n'
+                for i in range(self.min_line, self.max_line):
+                    display_str += '  ' + '\t'.join(list(self.log.iloc[i].astype(str))) + '\n'
+                print(display_str)
+        else:
+            print(display_str)
+
     def up(self):
         if self.detailed == True:
             pass
@@ -205,11 +217,11 @@ class LogDisplay:
         else:
             self.expand = False 
 class LogViewer:
-    def __init__(self, log_dict = {}, known = {}, max_display=2, resolution=12):
+    def __init__(self, log_dict = {}, known = {}, max_log_displays=2, resolution=12):
         self.__log_dict = log_dict
         self.__known = known
         self.__log_displays = []
-        self.__max_display = max_display
+        self.__max_log_displays = max_log_displays
         self.__resolution = resolution
     @property
     def log_dict(self):
@@ -224,42 +236,45 @@ class LogViewer:
     def resolution(self):
         return self.__resolution
     @property
-    def max_display(self):
-        return self.__max_display
+    def max_log_displays(self):
+        return self.__max_log_displays
     @log_dict.setter
     def set_log_dict(self, log_dict):
         self.__log_dict = log_dict
     @resolution.setter
     def set_resolution(self, r):
         self.__resolution = r
-    @max_display.setter
-    def set_max_display(self, n):
-        self.__max_display = n
+    @max_log_displays.setter
+    def set_max_log_displays(self, n):
+        self.__max_log_displays = n
 
     def add_log(self, log, name):
-        if name in self.__logdict:
+        if name in self.log_dict:
+            pass
+        elif len(self.log_displays) == self.max_log_displays:
             pass
         else:
             self.__log_dict[name] = {'cur_page':1, 'max_page':len(log)//resolution, 'log':log}
+
     def log_menu(self):
         for k,v in self.log_dict.items():
             log = v.copy(deep=True)
-            log.insert(0,' ', ' ')
             ld = LogDisplay(k, log, self.resolution, self.known)
             self.log_displays.append(ld)
 
         log_select = 0
-        log_select_max = len(self.log_displays)-1
+        log_select_max = len(self.log_displays) - 1
         while(1):
             clear_screen()
-            for i in range(0, log_select_max+1):
+            print("Log displays length %d" % len(self.log_displays))
+            for i in range(0, log_select_max + 1):
                 if i == log_select:
                     print("* ", end='')
                     self.log_displays[i].show()
                 else:
                     print("  ", end='')
                     self.log_displays[i].show()
-            print("x-delete|m-log_menu|s-stats|p-patterns|q-quit")
+            print("x-delete|c-collapse|enter-expand|m-log_menu|s-stats|p-patterns|q-quit")
             keyreader = kr.KeyReader()
             inp, outp, err = select.select([sys.stdin], [], [])
             entry = keyreader.getch()

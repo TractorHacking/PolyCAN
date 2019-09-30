@@ -18,28 +18,26 @@ def get_file_path(path):
                 return ""
             
 def open_log_file(uploaded_logs):
-    filepath = input("Please enter path to .csv log file: ")
-    if filepath[-4:] != ".csv":
-        return open_log_file(uploaded_logs)
-    filename = filepath.rsplit('/', 1)[1]
-    logname = filename.rsplit('.', 1)[0]
-    print("Opening " + filename + "...")
-    with open(filepath) as csvfile:
-        log = list(csv.DictReader(csvfile))                    
-        """
-        records = {'time': [], 'pgn': [], 'priority': [], 'source': [], 'destination': [], 'data': []}
-        for line in log:
-            records['time'].append(float(line['Time']))
-            records['pgn'].append(int(line['PGN'], 10))
-            records['priority'].append(int(line['Priority'], 10))
-            records['source'].append(int(line['SA'], 10))
-            records['destination'].append(int(line['DA'], 10))
-            records['data'].append(line['Data'])
-            df = pd.DataFrame(data=records)
-        uploaded_logs[name]=df
-        """
-        df = pd.DataFrame(log, columns = ['time', 'pgn', 'priority', 'source', 'destination', 'data', 'description'])
-        uploaded_logs[logname] = df 
+    while(1):
+        filepath = input("Please enter path to .csv log file or q to quit: ")
+        if filepath == 'q':
+            return
+        elif filepath[-4:] != ".csv":
+            print("Bad file path")
+            clear_screen()
+        else:
+            filename = filepath.rsplit('/', 1)[1]
+            logname = filename.rsplit('.', 1)[0]
+            print("Opening " + filename + "...")
+            try:
+                with open(filepath) as csvfile:
+                    df = pd.read_csv(csvfile, sep=',')
+                    df.columns = ['number','time','pgn','priority','source','destination','data','description']
+                    uploaded_logs[logname] = df 
+                    return
+            except FileNotFoundError:
+                print("File not found, please try again")
+                clear_screen()
 
 def sendAndCapture_log():
     global line_offset
