@@ -66,7 +66,7 @@ def display_log_pages(options, header=''):
                 line_select = line_select-1
             else:
                 line_select = to
-        elif (entry == chr(10)):
+        elif (entry == enter):
             return line_select
         elif (entry == left):
             if (page == 0):

@@ -44,18 +44,18 @@ class PgnParameter:
         res = 0
         
 class Pgn:
-    def __init__(self, pgn, data_len=0, dflt_prty=0, dp=0, edp=0, \
-    pdu_format=0, pdu_specific=0, name='', descr=''):
+    def __init__(self, pgn, data_length=0, default_priority=0, dp=0, edp=0, \
+    pdu_format=0, pdu_specific=0, name='', description='', parameters=[]):
         self.__pgn = pgn
-        self.__data_length = data_len
-        self.__default_priority = dflt_prty
+        self.__data_length = data_length
+        self.__default_priority = default_priority
         self.__dp = dp
         self.__edp = edp
         self.__pdu_format = pdu_format
         self.__pdu_specific = pdu_specific
         self.__name = name
-        self.__description = descr
-        self.__parameters = []
+        self.__description = description
+        self.__parameters = parameters
     @property
     def pgn(self):
         return self.__pgn
@@ -115,7 +115,7 @@ class Pgn:
         self.__parameters = parameters
     @staticmethod
     def from_dict(d):
-        res = Pgn(d['pgn'], d['data_length'], d['default_priority'], d['pdu_format'], \
-            d['dp'], d['edp'], d['pdu_specific'], \
-            d['name'], d['description'])
+        res = Pgn(d['pgn'], d['data_length'], d['default_priority'], \
+            d['dp'], d['edp'], d['pdu_format'], d['pdu_specific'], \
+            d['name'], d['description'], d['parameters'])
         return res

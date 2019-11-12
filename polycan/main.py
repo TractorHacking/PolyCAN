@@ -11,6 +11,8 @@ import termios, fcntl
 import select
 
 global using_database
+using_database = False
+
 def warn(*args, **kwargs):
     pass
 import warnings
@@ -46,6 +48,7 @@ def login_menu():
     while (1):
         line_select = launch_menu(login_text)
         if line_select == 0:
+            """
             clear_screen()
             username = input(line_offset+"Username: ")
             password = input(line_offset+"Password: ")
@@ -59,6 +62,7 @@ def login_menu():
                 input('')
             if (using_database):
                 break
+            """
         elif line_select == 1:
             using_database = False
             break
@@ -90,10 +94,10 @@ def main_menu():
             known = []
         main_text = ["Open Log", "Log Menu", "Capture Log", "Send While Capturing Data","Compare Logs", "Lookup PGN", "Manipulate Log", option_four, "Exit"]
         choice = launch_menu(main_text)
+        clear_screen()
         if (choice == 0): 
 #  main_text = ["Open Log", "Log menu", "Capture Log", "Send While Capturing Data","Compare Logs", "Lookup PGN", option_four, "Exit"]
             if len(uploaded_logs) == 2:
-                clear_screen()
                 print("Too many logs open")
             else:
                 if (using_database):
@@ -102,7 +106,6 @@ def main_menu():
                     open_log_file(uploaded_logs)
         elif choice == 1:
             if len(uploaded_logs) == 0:
-                clear_screen()
                 print("No logs open")
             else: 
                 log_viewer = LogViewer(uploaded_logs, known)
@@ -130,6 +133,12 @@ def main_menu():
         elif (choice == 8):
             sys.exit()
 def main():
-    login_menu()
+    online = True
+    items = ['Online', 'Offline', 'Exit']
+    choice = launch_menu(items)
+    if choice == 0:
+        login_menu()
+    elif choice == 2:
+        exit()
     main_menu()
 

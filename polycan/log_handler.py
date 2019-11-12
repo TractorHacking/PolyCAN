@@ -22,6 +22,34 @@ import csv
 import sys
 import matplotlib.pyplot as plt
 import collections
+def detailed_pgn(pgn_object, data):
+    res = ''
+    res += '-----------------------------------------' + '\n'
+    res += '{}'.format(pgn_object.pgn) + '\n'
+    res += '{}'.format(pgn_object.description) + '\n'
+    res += '\tData Length: {0:14d}'.format(pgn_object.data_length) + '\n'
+    res += '\tExtended Data Page: {0:7d}'.format(pgn_object.edp) + '\n'
+    res += '\tData Page: {0:16d}'.format(pgn_object.dp) + '\n'
+    res += '\tPDU Format: {0:15d}'.format(pgn_object.pdu_format) + '\n'
+    res += '\tPDU Specific: {0:13d}'.format(pgn_object.pdu_specific) + '\n'
+    res += '\tDefault Priority: {0:9d}'.format(pgn_object.default_priority) + '\n'
+
+    if data != '':
+        res += '\tData: {0:21s}'.format(data) + '\n'
+    res += 'Start Position\tLength\tParameter Name\tSPN'
+
+    if data != '':
+        res += '\tValue' + '\n'
+        pdata = param_values(data, pgn_object.data_length, pgn_object.parameters)
+    else:
+        res += '\n'
+
+    for item in pgn_object.parameters:
+        res += "%-*s %-*s %s" % (15, item.start_pos, 7, item.length, item.description)
+        if data != '':
+            res += 10*' ' + "%d" % (pdata[item.description])
+        res += '\n'
+    return res
 
 def print_pgn(pgn_object, data):
     global line_offset
@@ -51,7 +79,7 @@ def print_pgn(pgn_object, data):
         if data != '':
             print(line_offset + 10*' ' + "%d" % (pdata[item.description]), end='')
         print()
-    input(line_offset+"Press Enter to continue...")
+    #input(line_offset+"Press Enter to continue...")
 def get_pgn(known):
     while(1):
         clear_screen()
