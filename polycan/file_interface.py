@@ -3,6 +3,7 @@ import csv
 from polycan.canable import *
 import pandas as pd
 from polycan.menu import *
+from pathlib import Path
 
 def get_file_path(path):
     while(1):
@@ -17,6 +18,12 @@ def get_file_path(path):
             else:
                 return ""
             
+
+def list_logs_file(self):
+    path = Path(os.path.dirname(os.path.realpath(__file__)))
+    print(path)
+
+
 def open_log_file(uploaded_logs):
     while(1):
         filepath = input("Please enter path to .csv log file or q to quit: ")
@@ -85,6 +92,7 @@ def save_log(name, log_frame):
                 return 
 
 '''
+
 def capture_log():
     global line_offset
     path = input(line_offset+'Enter log name: ')

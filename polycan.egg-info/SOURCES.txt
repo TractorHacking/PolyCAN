@@ -1,13 +1,13 @@
-README
+README.md
 setup.py
 polycan/__init__.py
 polycan/__main__.py
 polycan/canable.py
 polycan/file_interface.py
-polycan/firebase_interface.py
 polycan/keyreader.py
 polycan/log.py
 polycan/log_handler.py
+polycan/log_viewer.py
 polycan/main.py
 polycan/menu.py
 polycan/packet.py

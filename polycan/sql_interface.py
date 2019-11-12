@@ -168,11 +168,11 @@ class db:
         df_params = pd.read_sql(query2, con=self.connection)
         for index, row in df.iterrows():
             known[row['pgn']] = Pgn(pgn=row['pgn'],
-                                    data_len=row['data_length'],
-                                    dflt_prty=row['default_priority'],
+                                    data_length=row['data_length'],
+                                    default_priority=row['default_priority'],
+                                    pdu_format=int(row['pdu_format']),
                                     name=row['name'],
-                                    descr=row['description'],
-                                    pdu_format=int(row['pdu_format']))
+                                    description=row['description'])
             params[row['pgn']] = []
         for index, row in df_params.iterrows():
             params[row['pgn']].append(PgnParameter(start_pos=row['start_pos'],

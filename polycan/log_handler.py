@@ -268,6 +268,8 @@ def sort_menu(current_log, known):
         return current_log.sort_values(by='destination')
     else:
         return current_log
+
+
 def stats_menu(current_log):
     options = ["Data Frequency", "PGN Count", "Return"]
     option = launch_menu(options)

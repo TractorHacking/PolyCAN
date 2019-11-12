@@ -48,7 +48,6 @@ def login_menu():
     while (1):
         line_select = launch_menu(login_text)
         if line_select == 0:
-            """
             clear_screen()
             username = input(line_offset+"Username: ")
             password = input(line_offset+"Password: ")
@@ -62,7 +61,6 @@ def login_menu():
                 input('')
             if (using_database):
                 break
-            """
         elif line_select == 1:
             using_database = False
             break
