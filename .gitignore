@@ -7,3 +7,4 @@ polycan/__pycache__/
 polycan/__pycache__/* 
 /__pycache__/
 .DS_Store
+venv
