@@ -1,7 +1,7 @@
 from tqdm import tqdm
 from polycan.log import *
 import csv
-import os 
+import os
 import sys
 import collections
 import pandas as pd
@@ -31,14 +31,14 @@ class db:
 
     def list_logs(self):
         query = "SELECT name FROM `5055E` GROUP BY name"
-        names = [] 
+        names = []
         self.cursor.execute(query)
         for name in self.cursor:
             names.append(name[0])
         return names
 
     # This function parses the github website entries and imports them to the database
-    # it only needed to be run once to initialize the known database 
+    # it only needed to be run once to initialize the known database
     def import_known_old_group(self):
         unique = []
         print("Uploading Known...\n")
@@ -72,27 +72,27 @@ class db:
                         data['edp'] = 0
                         data['pdu_specific'] = 0
                         data['parameters'].append({'length': tokens[1], 'param_name': tokens[0], 'start_pos' : tokens[2]})
-                
-                records = ((self.username, data['pgn'], "5055E", data['name'], data['description'], 
+
+                records = ((self.username, data['pgn'], "5055E", data['name'], data['description'],
                                 data['pdu_format'], data['data_length'], data['default_priority']))
-                
+
                 for x in data['parameters']:
                     params.append((self.username, data['pgn'], x['start_pos'], "5055E", x['param_name'], x['length']))
-       
+
             #Upload all of the data to database
             sql_insert_query = ("INSERT INTO `known` (`username`, `pgn`, `model`, `name`, `description`, "
                                 +"`pdu_format`, `data_length`, `default_priority`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
                                 +"ON DUPLICATE KEY UPDATE `model` = %s, `name` = %s, `description` = %s, "
                                 +"`pdu_format` = %s, `data_length` = %s, `default_priority` = %s")
             result = self.cursor.execute(sql_insert_query, (records + records[2:]))
-           
+
             sql_insert_query2 = ("INSERT INTO `known_params` (`username`, `pgn`, `start_pos`, `model`, `param_name`, `length`) "
                                 +"VALUES (%s, %s, %s, %s, %s, %s)"
                                 +"ON DUPLICATE KEY UPDATE `param_name` = %s, `length` = %s")
             for x in params:
                 self.cursor.execute(sql_insert_query2, (x + (x[4], x[5])))
             self.connection.commit()
-            
+
         print("Uploaded " + str(len(unique)), "entries")
         for entry in unique:
             print("\t" + entry)
@@ -103,11 +103,11 @@ class db:
 
     def import_logs(self):
         global line_offset
-        #launch_menu(files)        
+        #launch_menu(files)
         end_messages = []
         print("Uploading Logs...\n")
         db_Info = self.connection.get_server_info()
-        files = glob.glob("../logs/*.csv")
+        files = glob.glob("./logs/*.csv")
         logs = self.list_logs()
         for file in tqdm(files):
             name = ntpath.basename(file)[:-4]
@@ -118,27 +118,27 @@ class db:
                 print("Uploading Logs...\n")
                 continue
             try:
-                print("\nUploading " + name + "...") 
+                print("\nUploading " + name + "...")
                 with open(file, newline='') as csvfile:
-                    log = csv.DictReader(csvfile)                    
+                    log = csv.DictReader(csvfile)
                     sql_insert_query = "INSERT INTO `5055E` (`name`, `pgn`, `destination`, `source`, `priority`, `time`, `data`) VALUES (%s,%s,%s,%s,%s,%s,%s)"
                     records = []
                     init_time=None
                     for line in log:
                         if (init_time==None):
                             init_time=float(line['Time'])
-                        data = (ntpath.basename(file)[:-4], 
+                        data = (ntpath.basename(file)[:-4],
                                 int(line['PGN'], 10),
-                                int(line['DA'], 10),  
-                                int(line['SA'], 10), 
-                                int(line['Priority'], 10), 
-                                (float(line['Time'])-init_time)*1000, 
-                                line['Data']) 
+                                int(line['DA'], 10),
+                                int(line['SA'], 10),
+                                int(line['Priority'], 10),
+                                (float(line['Time'])-init_time)*1000,
+                                line['Data'])
                         records.append(data)
-                    
-                    
+
+
                     result = self.cursor.executemany(sql_insert_query, records)
-                    self.connection.commit() 
+                    self.connection.commit()
             except FileNotFoundError:
                 print("Error. File not found.")
                 continue
@@ -148,7 +148,7 @@ class db:
             print(line)
         input('Press Enter to continue\n')
         return
-    
+
     def get_log(self, log, known):
         #columns=["time","pgn", "priority", "source", "destination", "data"]
         query = 'SELECT time, pgn, priority, source, destination, data FROM `5055E` WHERE `name` = "%s" ORDER BY `time`'
@@ -156,9 +156,9 @@ class db:
         dat2 = pd.DataFrame({'description': []})
         df.join(dat2)
         df['description'] = ["Unknown" if df.at[x,'pgn'] not in known else known[df.at[x,'pgn']].description for x in range(0,len(df))]
-        
+
         return df
-    
+
     def get_known(self):
         known = {}
         params = {}
@@ -180,7 +180,7 @@ class db:
                                                    description=row['param_name']))
         for key,value in params.items():
             known[key].parameters = value
-    
+
         return known
 
     def close(self):
@@ -189,13 +189,13 @@ class db:
             self.connection.close()
 
 def init_db(username, password):
-    global database 
+    global database
     database = db(username, password)
     return
 
 def get_log(log, known=[]):
     return database.get_log(log, known)
-    
+
 def close_db():
     database.close()
 
