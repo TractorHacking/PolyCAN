@@ -8,3 +8,5 @@ polycan/__pycache__/*
 /__pycache__/
 .DS_Store
 venv
+**/__pycache__
+**/J1939DA_202007.xlsx
